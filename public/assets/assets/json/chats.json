@@ -1,0 +1,141 @@
+[
+    {
+      "chats": [
+        {
+          "id": 1,
+          "from_id": 2,
+          "to_id": 1,
+          "msg": "صبح بخیر 😊",
+          "has_dropDown": true,
+          "has_images": [],
+          "has_files": [],
+          "datetime": "09:07 صبح",
+          "isReplied": 2
+        },
+        {
+          "id": 2,
+          "from_id": 1,
+          "to_id": 2,
+          "has_dropDown": true,
+          "msg": "صبح بخیر، حالت چطوره؟ درباره جلسه بعدی‌مون چی؟",      
+          "has_images": [],
+          "has_files": [],
+          "datetime": "09:08 صبح",     
+          "isReplied": 1
+        },
+        {
+          "id": 3,
+          "from_id": 2,
+          "to_id": 1,
+          "has_dropDown": true,
+          "msg": "بله، همه چیز خوبه. جلسه بعدی‌مون فردا ساعت ۱۰ صبحه",        
+          "has_images": [],
+          "has_files": [],
+          "datetime": "09:10 صبح",       
+          "isReplied": 2
+        },
+        {
+          "id": 4,
+          "from_id": 2,
+          "to_id": 1,
+          "has_dropDown": true,
+          "msg": "سلام، می‌خوام با یکی از دوستانم در فروشگاه ملاقات کنم. باید برای والدینم چند هدیه بخرم 🎁.",       
+          "has_images": [],
+          "has_files": [],
+          "datetime": "09:12 صبح",
+          "isReplied": 2
+        },
+        {
+          "id": 5,
+          "from_id": 1,
+          "to_id": 2,
+          "msg": "وای، عالیه", 
+          "has_dropDown": true,      
+          "has_images": [],
+          "has_files": [],
+          "datetime": "09:30 صبح",
+          "isReplied": 1
+        },
+        {
+          "id": 6,
+          "from_id": 2,
+          "to_id": 1,
+          "msg": null,   
+          "has_dropDown": false,    
+          "has_images": ["assets/images/small/img-1.jpg","assets/images/small/img-2.jpg"],
+          "has_files": [],
+          "datetime": "10:15 صبح",
+          "isReplied": 1
+        }
+      ], 
+   
+      "channel_chat" :[
+        {
+          "id": 1,
+          "from_id": 2,
+          "to_id": 1,
+          "msg": "صبح بخیر به همه",    
+          "has_dropDown": true,   
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:07 صبح",
+          "isReplied": []
+        },
+        {
+          "id": 2,
+          "from_id": 1,
+          "to_id": 2,
+          "has_dropDown": true,
+          "msg": "صبح بخیر، حالت چطوره؟ درباره جلسه بعدی‌مون چی؟",       
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:12 صبح",
+          "isReplied": []
+        },
+        {
+          "id": 3,
+          "from_id": 7,
+          "to_id": 6,
+          "msg": "بله، همه چیز خوبه، جلسه بعدی‌مون فردا ساعت ۱۰ صبحه",   
+          "has_dropDown": true,    
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:13 صبح",
+          "isReplied": []
+        },
+        {
+          "id": 4,
+          "from_id": 7,
+          "to_id": 6,
+          "has_dropDown": true,
+          "msg": "وای، عالیه",       
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:14 صبح",
+          "isReplied": []
+        },
+        {
+          "id": 5,
+          "from_id": 1,
+          "to_id": 2,
+          "has_dropDown": true,
+          "msg": "@Jean Berwick، لطفاً AB-123 را به من اختصاص بده",       
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:14 صبح",
+          "isReplied": []
+        },
+        {
+          "id": 6,
+          "from_id": 2,
+          "to_id":1,
+          "msg": "باشه، حتماً",
+          "has_dropDown": true,       
+          "has_images": [],
+          "has_files": [],
+          "datetime": "10:15 صبح",
+          "isReplied": []
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html lang="en" data-layout="vertical" data-sidebar="dark" data-sidebar-image="img-1" data-sidebar-size="lg" data-preloader="disable" data-theme="default" dir="rtl" data-topbar="light" data-bs-theme="light" data-theme-color="0">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>عنوان | داسیکس - قالب مدیریت و داشبورد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="قالب مینیمال مدیریت و داشبورد" name="description">
+    <meta content="Themesbrand" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    
+    <!-- Fonts css load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="assets/css/app-rtl.min.css" rel="stylesheet" type="text/css">
+    <!-- custom Css-->
+    <link href="assets/css/custom-rtl.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+
+    <section class="auth-page-wrapper p-2 p-lg-4 position-relative d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card mb-0 w-100 p-3 p-lg-2" style="background-image: url('assets/images/auth/auth.jpg');background-size: cover;background-position: center;">
+            <div class="effect-one"></div>
+            <div class="row g-0 align-items-center">
+                <div class="col-xxl-8 order-last order-xl-first">
+                    <div class="card auth-card border-0 shadow-none mb-0 bg-transparent">
+                        <div class="card-body p-4 p-xl-5 d-flex justify-content-between flex-column h-100">
+    
+                            <div class="text-center mt-auto">
+                                <p class="mb-0 mt-3 text-white">
+                                    &copy;
+                                    <script>document.write(new Date().getFullYear())</script> داسیکس. با عشق طراحی شده <i class="mdi mdi-heart text-danger"></i> توسط تیم Themesbrand
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-xxl-4 mx-auto">
+                    <div class="card shadow-lg border-none m-lg-5">
+                        <div class="card-body">
+                            <div class="text-center mt-4">
+                                <div class="mb-4 pb-2">
+                                    <a href="index.html" class="auth-logo">
+                                        <img src="assets/images/logo-dark.png" alt="" height="30" class="auth-logo-dark mx-auto">
+                                        <img src="assets/images/logo-light.png" alt="" height="30" class="auth-logo-light mx-auto">
+                                    </a>
+                                </div>
+                                <h5 class="fs-3xl">حساب کاربری رایگان خود را ایجاد کنید</h5>
+                                <p class="text-muted">اکنون حساب رایگان داسیکس خود را دریافت کنید</p>
+                            </div>
+                            <div class="p-2 mt-4">
+                                <form class="needs-validation" novalidate="" action="index.html">
+                                
+                                    <div class="mb-3">
+                                        <label for="useremail" class="form-label">ایمیل <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="useremail" placeholder="آدرس ایمیل را وارد کنید" required="">
+                                        <div class="invalid-feedback">
+                                            لطفاً ایمیل را وارد کنید
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">نام کاربری <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control " id="username" placeholder="نام کاربری را وارد کنید" required="">
+                                        <div class="invalid-feedback">
+                                            لطفاً نام کاربری را وارد کنید
+                                        </div>
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password-input">رمز عبور <span class="text-danger">*</span></label>
+                                        <div class="position-relative auth-pass-inputgroup">
+                                            <input type="password" class="form-control password-input pe-5" onpaste="return false" placeholder="رمز عبور را وارد کنید" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="">
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                            <div class="invalid-feedback">
+                                                لطفاً رمز عبور را وارد کنید
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="mb-4">
+                                        <p class="mb-0 fs-xs text-muted fst-italic">با ثبت‌نام شما با <a href="pages-term-conditions.html" class="text-primary text-decoration-underline fst-normal fw-medium">شرایط استفاده</a> داسیکس موافقت می‌کنید</p>
+                                    </div>
+                                
+                                    <div id="password-contain" class="p-3 bg-light mb-2 rounded">
+                                        <h5 class="fs-sm">رمز عبور باید شامل:</h5>
+                                        <p id="pass-length" class="invalid fs-xs mb-2">حداقل <b>8 کاراکتر</b></p>
+                                        <p id="pass-lower" class="invalid fs-xs mb-2">حداقل یک <b>حرف کوچک</b> (a-z)</p>
+                                        <p id="pass-upper" class="invalid fs-xs mb-2">حداقل یک <b>حرف بزرگ</b> (A-Z)</p>
+                                        <p id="pass-number" class="invalid fs-xs mb-0">حداقل یک <b>عدد</b> (0-9)</p>
+                                    </div>
+                                
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary w-100" type="submit">ثبت‌نام</button>
+                                    </div>
+                                
+                                    <div class="mt-4 text-center">
+                                        <div class="signin-other-title position-relative">
+                                            <h5 class="fs-sm mb-4 title text-muted">ایجاد حساب با</h5>
+                                        </div>
+                                
+                                        <div>
+                                            <button type="button" class="btn btn-subtle-primary btn-icon "><i class="ri-facebook-fill fs-lg"></i></button>
+                                            <button type="button" class="btn btn-subtle-danger btn-icon "><i class="ri-google-fill fs-lg"></i></button>
+                                            <button type="button" class="btn btn-subtle-dark btn-icon "><i class="ri-github-fill fs-lg"></i></button>
+                                            <button type="button" class="btn btn-subtle-info btn-icon "><i class="ri-twitter-fill fs-lg"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+        
+                                <div class="mt-5 text-center">
+                                    <p class="mb-0">قبلاً حساب دارید؟ <a href="auth-signin.html" class="fw-semibold text-primary text-decoration-underline">ورود</a> </p>
+                                </div>
+                            </div>
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <script src="assets/js/pages/passowrd-create.init.js"></script>
+
+</body>
+
+</html>
