@@ -8,4 +8,8 @@ Route::get('/', function () {
         : redirect()->route('login');
 });
 
+Route::get('/test', function () {
+    return view('test');
+})->name('test');
+
 require __DIR__.'/auth.php';
