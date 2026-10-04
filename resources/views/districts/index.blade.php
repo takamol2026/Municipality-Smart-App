@@ -1,0 +1,224 @@
+@extends('layouts.main')
+
+@section('title', 'لیست مناطق')
+@section('page-title', 'لیست مناطق')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">داشبورد</a></li>
+    <li class="breadcrumb-item active">مناطق</li>
+@endsection
+
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">جستجو</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('districts.index') }}" method="GET">
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
+                                        <label for="name" class="form-label">نام</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="نام منطقه را وارد کنید">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
+                                        <label class="form-label">وضعیت</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="form-check form-check-inline form-radio-success">
+                                            <input class="form-check-input" type="radio" name="status" id="status_active" value="active" @checked(request('status') === 'active')>
+                                            <label class="form-check-label" for="status_active">فعال</label>
+                                        </div>
+                                        <div class="form-check form-check-inline form-radio-danger">
+                                            <input class="form-check-input" type="radio" name="status" id="status_inactive" value="inactive" @checked(request('status') === 'inactive')>
+                                            <label class="form-check-label" for="status_inactive">غیرفعال</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-10">
+                                        <div class="text-start">
+                                            <button type="submit" class="btn btn-primary">جستجو</button>
+                                            <a href="{{ route('districts.index') }}" class="btn btn-light">پاک کردن</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title mb-0">مناطق</h5>
+                    <a href="{{ route('districts.create') }}" class="btn btn-primary btn-sm">
+                        <i class="bx bx-plus"></i> افزودن منطقه
+                    </a>
+                </div>
+                <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>نام</th>
+                                    <th>شماره</th>
+                                    <th>اسلاگ</th>
+                                    <th>وضعیت</th>
+                                    <th>ترتیب</th>
+                                    <th>تاریخ ثبت</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($districts as $district)
+                                    <tr>
+                                        <td>{{ $district->id }}</td>
+                                        <td>{{ $district->name }}</td>
+                                        <td>{{ $district->number ?: '—' }}</td>
+                                        <td>{{ $district->slug }}</td>
+                                        <td>
+                                            @if ($district->status === \App\Enums\RecordStatus::Active)
+                                                <span class="badge bg-success-subtle text-success">فعال</span>
+                                            @else
+                                                <span class="badge bg-danger-subtle text-danger">غیرفعال</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $district->sort_order }}</td>
+                                        <td>{{ $district->created_at?->format('Y/m/d') }}</td>
+                                        <td>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#districtModal{{ $district->id }}">نمایش</button>
+                                                <a href="{{ route('districts.edit', $district) }}" class="btn btn-sm btn-primary">ویرایش</a>
+                                                <form action="{{ route('districts.destroy', $district) }}" method="POST" onsubmit="return confirm('این منطقه حذف شود؟')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">حذف</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center text-muted py-4">موردی ثبت نشده است.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+
+                    @if ($districts->hasPages())
+                        <div class="mt-3">
+                            {{ $districts->links() }}
+                        </div>
+                    @endif
+
+                    @foreach ($districts as $district)
+                        <div class="modal fade" id="districtModal{{ $district->id }}" tabindex="-1" aria-labelledby="districtModalLabel{{ $district->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="districtModalLabel{{ $district->id }}">لیست اطلاعات وارد شده</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <dl class="row mb-0">
+                                            <dt class="col-sm-3">نام</dt>
+                                            <dd class="col-sm-9">{{ $district->name }}</dd>
+
+                                            <dt class="col-sm-3">شماره</dt>
+                                            <dd class="col-sm-9">{{ $district->number ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">اسلاگ</dt>
+                                            <dd class="col-sm-9">{{ $district->slug ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">تلفن</dt>
+                                            <dd class="col-sm-9">{{ $district->phone ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">ایمیل</dt>
+                                            <dd class="col-sm-9">{{ $district->email ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">وضعیت</dt>
+                                            <dd class="col-sm-9">
+                                                @if ($district->status === \App\Enums\RecordStatus::Active)
+                                                    فعال
+                                                @else
+                                                    غیرفعال
+                                                @endif
+                                            </dd>
+
+                                            <dt class="col-sm-3">ترتیب نمایش</dt>
+                                            <dd class="col-sm-9">{{ $district->sort_order }}</dd>
+
+                                            <dt class="col-sm-3">توضیحات</dt>
+                                            <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $district->description ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">آدرس</dt>
+                                            <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $district->address ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">تصویر</dt>
+                                            <dd class="col-sm-9">
+                                                @if ($district->image)
+                                                    <div class="d-flex flex-column align-items-start gap-2">
+                                                        <img src="{{ asset('storage/'.$district->image) }}" alt="{{ $district->name }}" class="img-thumbnail" style="max-height: 160px;">
+                                                        <a href="{{ route('districts.image', $district) }}" class="btn btn-sm btn-primary">دانلود تصویر</a>
+                                                    </div>
+                                                @else
+                                                    —
+                                                @endif
+                                            </dd>
+
+                                            <dt class="col-sm-3">تصاویر</dt>
+                                            <dd class="col-sm-9">
+                                                @if ($district->files->isNotEmpty())
+                                                    <div class="d-flex flex-wrap gap-3">
+                                                        @foreach ($district->files as $file)
+                                                            <div class="d-flex flex-column align-items-start gap-2">
+                                                                <img src="{{ asset('storage/'.$file->location) }}" alt="{{ $district->name }}" class="img-thumbnail" style="width: 140px; height: 140px; object-fit: cover;">
+                                                                <a href="{{ route('districts.files.download', [$district, $file]) }}" class="btn btn-sm btn-primary">دانلود تصویر</a>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    —
+                                                @endif
+                                            </dd>
+
+                                            <dt class="col-sm-3">تاریخ ثبت</dt>
+                                            <dd class="col-sm-9">{{ $district->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">ثبت‌کننده</dt>
+                                            <dd class="col-sm-9 mb-0">{{ trim(($district->user?->name ?? '').' '.($district->user?->last_name ?? '')) ?: '—' }}</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

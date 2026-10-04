@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,16 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('districts', [DistrictController::class, 'index'])->name('districts.index');
+    Route::get('districts/create', [DistrictController::class, 'create'])->name('districts.create');
+    Route::post('districts', [DistrictController::class, 'store'])->name('districts.store');
+    Route::get('districts/{district}/image', [DistrictController::class, 'downloadImage'])->name('districts.image');
+    Route::get('districts/{district}/files/{file}', [DistrictController::class, 'downloadFile'])->name('districts.files.download');
+    Route::delete('districts/{district}/files/{file}', [DistrictController::class, 'destroyFile'])->name('districts.files.destroy');
+    Route::get('districts/{district}/edit', [DistrictController::class, 'edit'])->name('districts.edit');
+    Route::put('districts/{district}', [DistrictController::class, 'update'])->name('districts.update');
+    Route::delete('districts/{district}', [DistrictController::class, 'destroy'])->name('districts.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

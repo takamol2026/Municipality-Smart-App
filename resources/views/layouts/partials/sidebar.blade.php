@@ -67,19 +67,19 @@
 
                 {{-- مناطق --}}
                 <li class="nav-item">
-                    <a href="#sidebarDistricts" class="nav-link menu-link {{ $isActive('districts') || $isActive('district-files') ? '' : 'collapsed' }}"
+                    <a href="#sidebarDistricts" class="nav-link menu-link {{ $isActive('districts') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('districts') || $isActive('district-files') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('districts') ? 'true' : 'false' }}"
                        aria-controls="sidebarDistricts">
                         <i class="bx bx-map-alt"></i> <span>مناطق</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('districts') || $isActive('district-files') ? 'show' : '' }}" id="sidebarDistricts">
+                    <div class="collapse menu-dropdown {{ $isActive('districts') ? 'show' : '' }}" id="sidebarDistricts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('districts') }}" class="nav-link {{ $isActive('districts') ? 'active' : '' }}">لیست مناطق</a>
+                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->routeIs('districts.index') ? 'active' : '' }}">لیست مناطق</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('district-files') }}" class="nav-link {{ $isActive('district-files') ? 'active' : '' }}">فایل‌های منطقه</a>
+                                <a href="{{ route('districts.create') }}" class="nav-link {{ request()->routeIs('districts.create') ? 'active' : '' }}">افزودن منطقه</a>
                             </li>
                         </ul>
                     </div>
