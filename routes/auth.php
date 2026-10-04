@@ -29,4 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');
     Route::post('scholars', [ScholarController::class, 'store'])->name('scholars.store');
+    Route::get('scholars/{scholar}/image', [ScholarController::class, 'downloadImage'])->name('scholars.image');
+    Route::get('scholars/{scholar}/edit', [ScholarController::class, 'edit'])->name('scholars.edit');
+    Route::put('scholars/{scholar}', [ScholarController::class, 'update'])->name('scholars.update');
+    Route::delete('scholars/{scholar}', [ScholarController::class, 'destroy'])->name('scholars.destroy');
 });

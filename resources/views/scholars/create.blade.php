@@ -161,8 +161,8 @@
                                     <div class="col-lg-2"></div>
                                     <div class="col-lg-10">
                                         <div class="text-start">
-                                            <a href="{{ route('scholars.index') }}" class="btn btn-light">انصراف</a>
                                             <button type="submit" class="btn btn-primary">ذخیره</button>
+                                            <a href="{{ route('scholars.index') }}" class="btn btn-light">انصراف</a>
                                         </div>
                                     </div>
                                 </div>
