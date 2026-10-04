@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Enums\RecordStatus;
+use App\Http\Requests\UrbanServiceCategoryStoreValidation;
+use App\Http\Requests\UrbanServiceCategoryUpdateValidation;
+use App\Models\UrbanServiceCategory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
+
+class UrbanServiceCategoryController extends Controller
+{
+    public function index(Request $request): View
+    {
+        $categories = UrbanServiceCategory::query()
+            ->with('user')
+            ->when($request->filled('name'), function ($query) use ($request) {
+                $query->where('name', 'like', '%'.$request->string('name').'%');
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                $query->where('status', $request->string('status'));
+            })
+            ->latest('id')
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('urban-service-categories.index', compact('categories'));
+    }
+
+    public function create(): View
+    {
+        return view('urban-service-categories.create');
+    }
+
+    public function store(UrbanServiceCategoryStoreValidation $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
+        $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['status'] = RecordStatus::from($validated['status']);
+        $validated['user_id'] = $request->user()->id;
+
+        UrbanServiceCategory::create($validated);
+
+        return redirect()
+            ->route('urban-service-categories.index')
+            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+    }
+
+    public function edit(UrbanServiceCategory $urbanServiceCategory): View
+    {
+        return view('urban-service-categories.edit', [
+            'category' => $urbanServiceCategory,
+        ]);
+    }
+
+    public function update(UrbanServiceCategoryUpdateValidation $request, UrbanServiceCategory $urbanServiceCategory): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
+        $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['status'] = RecordStatus::from($validated['status']);
+
+        $urbanServiceCategory->update($validated);
+
+        return redirect()
+            ->route('urban-service-categories.index')
+            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+    }
+
+    public function destroy(UrbanServiceCategory $urbanServiceCategory): RedirectResponse
+    {
+        if ($urbanServiceCategory->services()->exists()) {
+            return redirect()
+                ->route('urban-service-categories.index')
+                ->with('error', 'این دسته‌بندی به دلیل داشتن خدمات قابل حذف نیست.');
+        }
+
+        $urbanServiceCategory->delete();
+
+        return redirect()
+            ->route('urban-service-categories.index')
+            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+    }
+}

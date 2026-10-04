@@ -85,19 +85,36 @@
                     </div>
                 </li>
 
+                {{-- دسته‌بندی خدمات شهری --}}
+                <li class="nav-item">
+                    <a href="#sidebarUrbanServiceCategories" class="nav-link menu-link {{ $isActive('urban-service-categories') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('urban-service-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarUrbanServiceCategories">
+                        <i class="bx bx-category"></i> <span>دسته‌بندی خدمات شهری</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('urban-service-categories') ? 'show' : '' }}" id="sidebarUrbanServiceCategories">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('urban-service-categories.index') }}" class="nav-link {{ request()->routeIs('urban-service-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('urban-service-categories.create') }}" class="nav-link {{ request()->routeIs('urban-service-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- خدمات شهری --}}
                 <li class="nav-item">
-                    <a href="#sidebarUrbanServices" class="nav-link menu-link {{ $isActive('urban-service-categories') || $isActive('urban-services') ? '' : 'collapsed' }}"
+                    <a href="#sidebarUrbanServices" class="nav-link menu-link {{ $isActive('urban-services') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('urban-service-categories') || $isActive('urban-services') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('urban-services') ? 'true' : 'false' }}"
                        aria-controls="sidebarUrbanServices">
                         <i class="bx bx-buildings"></i> <span>خدمات شهری</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('urban-service-categories') || $isActive('urban-services') ? 'show' : '' }}" id="sidebarUrbanServices">
+                    <div class="collapse menu-dropdown {{ $isActive('urban-services') ? 'show' : '' }}" id="sidebarUrbanServices">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ url('urban-service-categories') }}" class="nav-link {{ $isActive('urban-service-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
-                            </li>
                             <li class="nav-item">
                                 <a href="{{ url('urban-services') }}" class="nav-link {{ $isActive('urban-services') ? 'active' : '' }}">خدمات</a>
                             </li>
