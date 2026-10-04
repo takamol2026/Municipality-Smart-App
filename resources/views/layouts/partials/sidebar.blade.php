@@ -45,21 +45,21 @@
                     </a>
                 </li>
 
-                {{-- کاربران و نقش‌ها --}}
+                {{-- کاربران --}}
                 <li class="nav-item">
-                    <a href="#sidebarUsers" class="nav-link menu-link {{ $isActive('users') || $isActive('roles') ? '' : 'collapsed' }}"
+                    <a href="#sidebarUsers" class="nav-link menu-link {{ $isActive('users') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('users') || $isActive('roles') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('users') ? 'true' : 'false' }}"
                        aria-controls="sidebarUsers">
-                        <i class="bx bx-user-circle"></i> <span>کاربران و نقش‌ها</span>
+                        <i class="bx bx-user-circle"></i> <span>کاربران</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('users') || $isActive('roles') ? 'show' : '' }}" id="sidebarUsers">
+                    <div class="collapse menu-dropdown {{ $isActive('users') ? 'show' : '' }}" id="sidebarUsers">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('users') }}" class="nav-link {{ $isActive('users') ? 'active' : '' }}">کاربران</a>
+                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">لیست کاربران</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('roles') }}" class="nav-link {{ $isActive('roles') ? 'active' : '' }}">نقش‌ها</a>
+                                <a href="{{ route('users.create') }}" class="nav-link {{ request()->routeIs('users.create') ? 'active' : '' }}">افزودن کاربر</a>
                             </li>
                         </ul>
                     </div>
