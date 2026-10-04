@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UrbanServiceCategoryController;
+use App\Http\Controllers\UrbanServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,13 @@ Route::middleware('auth')->group(function () {
     Route::get('urban-service-categories/{urbanServiceCategory}/edit', [UrbanServiceCategoryController::class, 'edit'])->name('urban-service-categories.edit');
     Route::put('urban-service-categories/{urbanServiceCategory}', [UrbanServiceCategoryController::class, 'update'])->name('urban-service-categories.update');
     Route::delete('urban-service-categories/{urbanServiceCategory}', [UrbanServiceCategoryController::class, 'destroy'])->name('urban-service-categories.destroy');
+
+    Route::get('urban-services', [UrbanServiceController::class, 'index'])->name('urban-services.index');
+    Route::get('urban-services/create', [UrbanServiceController::class, 'create'])->name('urban-services.create');
+    Route::post('urban-services', [UrbanServiceController::class, 'store'])->name('urban-services.store');
+    Route::get('urban-services/{urbanService}/edit', [UrbanServiceController::class, 'edit'])->name('urban-services.edit');
+    Route::put('urban-services/{urbanService}', [UrbanServiceController::class, 'update'])->name('urban-services.update');
+    Route::delete('urban-services/{urbanService}', [UrbanServiceController::class, 'destroy'])->name('urban-services.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

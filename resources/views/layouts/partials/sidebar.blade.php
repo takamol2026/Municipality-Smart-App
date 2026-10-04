@@ -116,7 +116,10 @@
                     <div class="collapse menu-dropdown {{ $isActive('urban-services') ? 'show' : '' }}" id="sidebarUrbanServices">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('urban-services') }}" class="nav-link {{ $isActive('urban-services') ? 'active' : '' }}">خدمات</a>
+                                <a href="{{ route('urban-services.index') }}" class="nav-link {{ request()->routeIs('urban-services.index') ? 'active' : '' }}">لیست خدمات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('urban-services.create') }}" class="nav-link {{ request()->routeIs('urban-services.create') ? 'active' : '' }}">افزودن خدمت</a>
                             </li>
                         </ul>
                     </div>
