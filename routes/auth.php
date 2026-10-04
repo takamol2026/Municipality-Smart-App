@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\HistoricalAttractionCategoryController;
+use App\Http\Controllers\HistoricalAttractionController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
@@ -60,6 +62,22 @@ Route::middleware('auth')->group(function () {
     Route::get('urban-services/{urbanService}/edit', [UrbanServiceController::class, 'edit'])->name('urban-services.edit');
     Route::put('urban-services/{urbanService}', [UrbanServiceController::class, 'update'])->name('urban-services.update');
     Route::delete('urban-services/{urbanService}', [UrbanServiceController::class, 'destroy'])->name('urban-services.destroy');
+
+    Route::get('historical-attraction-categories', [HistoricalAttractionCategoryController::class, 'index'])->name('historical-attraction-categories.index');
+    Route::get('historical-attraction-categories/create', [HistoricalAttractionCategoryController::class, 'create'])->name('historical-attraction-categories.create');
+    Route::post('historical-attraction-categories', [HistoricalAttractionCategoryController::class, 'store'])->name('historical-attraction-categories.store');
+    Route::get('historical-attraction-categories/{historicalAttractionCategory}/image', [HistoricalAttractionCategoryController::class, 'downloadImage'])->name('historical-attraction-categories.image');
+    Route::get('historical-attraction-categories/{historicalAttractionCategory}/edit', [HistoricalAttractionCategoryController::class, 'edit'])->name('historical-attraction-categories.edit');
+    Route::put('historical-attraction-categories/{historicalAttractionCategory}', [HistoricalAttractionCategoryController::class, 'update'])->name('historical-attraction-categories.update');
+    Route::delete('historical-attraction-categories/{historicalAttractionCategory}', [HistoricalAttractionCategoryController::class, 'destroy'])->name('historical-attraction-categories.destroy');
+
+    Route::get('historical-attractions', [HistoricalAttractionController::class, 'index'])->name('historical-attractions.index');
+    Route::get('historical-attractions/create', [HistoricalAttractionController::class, 'create'])->name('historical-attractions.create');
+    Route::post('historical-attractions', [HistoricalAttractionController::class, 'store'])->name('historical-attractions.store');
+    Route::get('historical-attractions/{historicalAttraction}/image', [HistoricalAttractionController::class, 'downloadImage'])->name('historical-attractions.image');
+    Route::get('historical-attractions/{historicalAttraction}/edit', [HistoricalAttractionController::class, 'edit'])->name('historical-attractions.edit');
+    Route::put('historical-attractions/{historicalAttraction}', [HistoricalAttractionController::class, 'update'])->name('historical-attractions.update');
+    Route::delete('historical-attractions/{historicalAttraction}', [HistoricalAttractionController::class, 'destroy'])->name('historical-attractions.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

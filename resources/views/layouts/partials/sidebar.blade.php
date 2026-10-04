@@ -125,21 +125,41 @@
                     </div>
                 </li>
 
+                {{-- دسته‌بندی جاذبه‌های تاریخی --}}
+                <li class="nav-item">
+                    <a href="#sidebarHistoricalCategories" class="nav-link menu-link {{ $isActive('historical-attraction-categories') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('historical-attraction-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarHistoricalCategories">
+                        <i class="bx bx-collection"></i> <span>دسته‌بندی جاذبه‌های تاریخی</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('historical-attraction-categories') ? 'show' : '' }}" id="sidebarHistoricalCategories">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('historical-attraction-categories.index') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('historical-attraction-categories.create') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- جاذبه‌های تاریخی --}}
                 <li class="nav-item">
-                    <a href="#sidebarHistorical" class="nav-link menu-link {{ $isActive('historical-attraction-categories') || $isActive('historical-attractions') ? '' : 'collapsed' }}"
+                    <a href="#sidebarHistorical" class="nav-link menu-link {{ $isActive('historical-attractions') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('historical-attraction-categories') || $isActive('historical-attractions') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('historical-attractions') ? 'true' : 'false' }}"
                        aria-controls="sidebarHistorical">
                         <i class="bx bx-history"></i> <span>جاذبه‌های تاریخی</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('historical-attraction-categories') || $isActive('historical-attractions') ? 'show' : '' }}" id="sidebarHistorical">
+                    <div class="collapse menu-dropdown {{ $isActive('historical-attractions') ? 'show' : '' }}" id="sidebarHistorical">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('historical-attraction-categories') }}" class="nav-link {{ $isActive('historical-attraction-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('historical-attractions.index') }}" class="nav-link {{ request()->routeIs('historical-attractions.index') ? 'active' : '' }}">لیست جاذبه‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('historical-attractions') }}" class="nav-link {{ $isActive('historical-attractions') ? 'active' : '' }}">جاذبه‌ها</a>
+                                <a href="{{ route('historical-attractions.create') }}" class="nav-link {{ request()->routeIs('historical-attractions.create') ? 'active' : '' }}">افزودن جاذبه</a>
                             </li>
                         </ul>
                     </div>
