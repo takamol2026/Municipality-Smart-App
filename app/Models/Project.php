@@ -50,6 +50,6 @@ class Project extends Model
 
     public function media(): HasMany
     {
-        return $this->hasMany(ProjectMedia::class);
+        return $this->hasMany(ProjectMedia::class)->orderBy('sort_order')->orderBy('id');
     }
 }

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('image')->nullable();
-            $table->enum('status_publish', ['draft', 'published'])->default('draft');
+            $table->enum('status_publish', ['in_progress', 'completed', 'not_started'])->default('not_started');
             $table->unsignedInteger('sort_order')->default(0);
             $table->foreignId('user_id')->constrained()->restrictOnDelete();
             $table->timestamps();

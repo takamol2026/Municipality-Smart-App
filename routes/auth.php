@@ -10,6 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HistoricalAttractionCategoryController;
 use App\Http\Controllers\HistoricalAttractionController;
+use App\Http\Controllers\ProjectCategoryController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
@@ -96,6 +98,24 @@ Route::middleware('auth')->group(function () {
     Route::get('announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcements.edit');
     Route::put('announcements/{announcement}', [AnnouncementController::class, 'update'])->name('announcements.update');
     Route::delete('announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcements.destroy');
+
+    Route::get('project-categories', [ProjectCategoryController::class, 'index'])->name('project-categories.index');
+    Route::get('project-categories/create', [ProjectCategoryController::class, 'create'])->name('project-categories.create');
+    Route::post('project-categories', [ProjectCategoryController::class, 'store'])->name('project-categories.store');
+    Route::get('project-categories/{projectCategory}/image', [ProjectCategoryController::class, 'downloadImage'])->name('project-categories.image');
+    Route::get('project-categories/{projectCategory}/edit', [ProjectCategoryController::class, 'edit'])->name('project-categories.edit');
+    Route::put('project-categories/{projectCategory}', [ProjectCategoryController::class, 'update'])->name('project-categories.update');
+    Route::delete('project-categories/{projectCategory}', [ProjectCategoryController::class, 'destroy'])->name('project-categories.destroy');
+
+    Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::post('projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('projects/{project}/image', [ProjectController::class, 'downloadImage'])->name('projects.image');
+    Route::get('projects/{project}/media/{projectMedia}', [ProjectController::class, 'downloadMedia'])->name('projects.media.download');
+    Route::delete('projects/{project}/media/{projectMedia}', [ProjectController::class, 'destroyMedia'])->name('projects.media.destroy');
+    Route::get('projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

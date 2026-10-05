@@ -225,24 +225,41 @@
                     </div>
                 </li>
 
+                {{-- دسته‌بندی پروژه‌ها --}}
+                <li class="nav-item">
+                    <a href="#sidebarProjectCategories" class="nav-link menu-link {{ $isActive('project-categories') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('project-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarProjectCategories">
+                        <i class="bx bx-purchase-tag"></i> <span>دسته‌بندی پروژه‌ها</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('project-categories') ? 'show' : '' }}" id="sidebarProjectCategories">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('project-categories.index') }}" class="nav-link {{ request()->routeIs('project-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('project-categories.create') }}" class="nav-link {{ request()->routeIs('project-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- پروژه‌ها --}}
                 <li class="nav-item">
-                    <a href="#sidebarProjects" class="nav-link menu-link {{ $isActive('project-categories') || $isActive('projects') || $isActive('project-media') ? '' : 'collapsed' }}"
+                    <a href="#sidebarProjects" class="nav-link menu-link {{ $isActive('projects') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('project-categories') || $isActive('projects') || $isActive('project-media') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('projects') ? 'true' : 'false' }}"
                        aria-controls="sidebarProjects">
                         <i class="bx bx-briefcase"></i> <span>پروژه‌ها</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('project-categories') || $isActive('projects') || $isActive('project-media') ? 'show' : '' }}" id="sidebarProjects">
+                    <div class="collapse menu-dropdown {{ $isActive('projects') ? 'show' : '' }}" id="sidebarProjects">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('project-categories') }}" class="nav-link {{ $isActive('project-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">لیست پروژه‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('projects') }}" class="nav-link {{ $isActive('projects') ? 'active' : '' }}">پروژه‌ها</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('project-media') }}" class="nav-link {{ $isActive('project-media') ? 'active' : '' }}">رسانه‌ها</a>
+                                <a href="{{ route('projects.create') }}" class="nav-link {{ request()->routeIs('projects.create') ? 'active' : '' }}">افزودن پروژه</a>
                             </li>
                         </ul>
                     </div>

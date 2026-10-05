@@ -38,4 +38,46 @@ class ProjectMedia extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function typeLabel(): string
+    {
+        return match ($this->type) {
+            'image' => 'تصویر',
+            'video' => 'ویدیو',
+            'document' => 'سند',
+            default => $this->type ?: '—',
+        };
+    }
+
+    public function isImageFile(): bool
+    {
+        if ($this->type === 'image') {
+            return true;
+        }
+
+        return in_array($this->extension(), ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'], true);
+    }
+
+    public function isVideoFile(): bool
+    {
+        if ($this->type === 'video') {
+            return true;
+        }
+
+        return in_array($this->extension(), ['mp4', 'webm', 'ogg', 'mov'], true);
+    }
+
+    public function previewPath(): ?string
+    {
+        if ($this->thumbnail) {
+            return $this->thumbnail;
+        }
+
+        return $this->isImageFile() ? $this->file : null;
+    }
+
+    private function extension(): string
+    {
+        return strtolower(pathinfo((string) $this->file, PATHINFO_EXTENSION));
+    }
 }
