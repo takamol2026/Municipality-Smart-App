@@ -1576,10 +1576,6 @@ File: Main Js File
 			});
 			sessionStorage.setItem("defaultAttribute", JSON.stringify(isLayoutAttributes));
 			layoutSwitch(isLayoutAttributes);
-
-			// open right sidebar on first time load
-			var offCanvas = document.querySelector('.btn[data-bs-target="#theme-settings-offcanvas"]');
-			offCanvas && offCanvas.click();
 		} else {
 			var isLayoutAttributes = {};
 			var attributesToRetrieve = [
