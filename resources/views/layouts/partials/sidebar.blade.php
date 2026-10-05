@@ -345,21 +345,41 @@
                     </div>
                 </li>
 
-                {{-- صفایی --}}
+                {{-- دسته‌بندی صفایی --}}
                 <li class="nav-item">
-                    <a href="#sidebarSafaei" class="nav-link menu-link {{ $isActive('safaei-categories') || $isActive('safaei') ? '' : 'collapsed' }}"
+                    <a href="#sidebarSafaeiCategories" class="nav-link menu-link {{ $isActive('safaei-categories') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('safaei-categories') || $isActive('safaei') ? 'true' : 'false' }}"
-                       aria-controls="sidebarSafaei">
-                        <i class="bx bx-folder"></i> <span>صفایی</span>
+                       aria-expanded="{{ $isActive('safaei-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarSafaeiCategories">
+                        <i class="bx bx-purchase-tag"></i> <span>دسته‌بندی صفایی</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('safaei-categories') || $isActive('safaei') ? 'show' : '' }}" id="sidebarSafaei">
+                    <div class="collapse menu-dropdown {{ $isActive('safaei-categories') ? 'show' : '' }}" id="sidebarSafaeiCategories">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('safaei-categories') }}" class="nav-link {{ $isActive('safaei-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('safaei-categories.index') }}" class="nav-link {{ request()->routeIs('safaei-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('safaei') }}" class="nav-link {{ $isActive('safaei') ? 'active' : '' }}">فایل‌ها</a>
+                                <a href="{{ route('safaei-categories.create') }}" class="nav-link {{ request()->routeIs('safaei-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- فایل‌های صفایی --}}
+                <li class="nav-item">
+                    <a href="#sidebarSafaei" class="nav-link menu-link {{ $isActive('safaei') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('safaei') ? 'true' : 'false' }}"
+                       aria-controls="sidebarSafaei">
+                        <i class="bx bx-folder"></i> <span>فایل‌های صفایی</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('safaei') ? 'show' : '' }}" id="sidebarSafaei">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('safaei.index') }}" class="nav-link {{ request()->routeIs('safaei.index') ? 'active' : '' }}">لیست فایل‌ها</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('safaei.create') }}" class="nav-link {{ request()->routeIs('safaei.create') ? 'active' : '' }}">افزودن فایل</a>
                             </li>
                         </ul>
                     </div>

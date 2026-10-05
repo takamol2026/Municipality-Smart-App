@@ -16,6 +16,8 @@ use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RentalCategoryController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\SafaeiCategoryController;
+use App\Http\Controllers\SafaeiController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
@@ -154,6 +156,21 @@ Route::middleware('auth')->group(function () {
     Route::get('rentals/{rental}/edit', [RentalController::class, 'edit'])->name('rentals.edit');
     Route::put('rentals/{rental}', [RentalController::class, 'update'])->name('rentals.update');
     Route::delete('rentals/{rental}', [RentalController::class, 'destroy'])->name('rentals.destroy');
+
+    Route::get('safaei-categories', [SafaeiCategoryController::class, 'index'])->name('safaei-categories.index');
+    Route::get('safaei-categories/create', [SafaeiCategoryController::class, 'create'])->name('safaei-categories.create');
+    Route::post('safaei-categories', [SafaeiCategoryController::class, 'store'])->name('safaei-categories.store');
+    Route::get('safaei-categories/{safaeiCategory}/edit', [SafaeiCategoryController::class, 'edit'])->name('safaei-categories.edit');
+    Route::put('safaei-categories/{safaeiCategory}', [SafaeiCategoryController::class, 'update'])->name('safaei-categories.update');
+    Route::delete('safaei-categories/{safaeiCategory}', [SafaeiCategoryController::class, 'destroy'])->name('safaei-categories.destroy');
+
+    Route::get('safaei', [SafaeiController::class, 'index'])->name('safaei.index');
+    Route::get('safaei/create', [SafaeiController::class, 'create'])->name('safaei.create');
+    Route::post('safaei', [SafaeiController::class, 'store'])->name('safaei.store');
+    Route::get('safaei/{safaei}/download', [SafaeiController::class, 'download'])->name('safaei.download');
+    Route::get('safaei/{safaei}/edit', [SafaeiController::class, 'edit'])->name('safaei.edit');
+    Route::put('safaei/{safaei}', [SafaeiController::class, 'update'])->name('safaei.update');
+    Route::delete('safaei/{safaei}', [SafaeiController::class, 'destroy'])->name('safaei.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

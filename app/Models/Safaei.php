@@ -18,4 +18,16 @@ class Safaei extends Model
     {
         return $this->belongsTo(SafaeiCategory::class, 'safaei_category_id');
     }
+
+    public function fileName(): string
+    {
+        return $this->file_path ? basename($this->file_path) : '—';
+    }
+
+    public function isImageFile(): bool
+    {
+        $extension = strtolower(pathinfo((string) $this->file_path, PATHINFO_EXTENSION));
+
+        return in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'], true);
+    }
 }
