@@ -185,21 +185,41 @@
                     </div>
                 </li>
 
+                {{-- دسته‌بندی اطلاعیه‌ها --}}
+                <li class="nav-item">
+                    <a href="#sidebarAnnouncementCategories" class="nav-link menu-link {{ $isActive('announcement-categories') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('announcement-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarAnnouncementCategories">
+                        <i class="bx bx-purchase-tag"></i> <span>دسته‌بندی اطلاعیه‌ها</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('announcement-categories') ? 'show' : '' }}" id="sidebarAnnouncementCategories">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('announcement-categories.index') }}" class="nav-link {{ request()->routeIs('announcement-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('announcement-categories.create') }}" class="nav-link {{ request()->routeIs('announcement-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- اطلاعیه‌ها --}}
                 <li class="nav-item">
-                    <a href="#sidebarAnnouncements" class="nav-link menu-link {{ $isActive('announcement-categories') || $isActive('announcements') ? '' : 'collapsed' }}"
+                    <a href="#sidebarAnnouncements" class="nav-link menu-link {{ $isActive('announcements') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('announcement-categories') || $isActive('announcements') ? 'true' : 'false' }}"
+                       aria-expanded="{{ $isActive('announcements') ? 'true' : 'false' }}"
                        aria-controls="sidebarAnnouncements">
                         <i class="bx bx-news"></i> <span>اطلاعیه‌ها</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('announcement-categories') || $isActive('announcements') ? 'show' : '' }}" id="sidebarAnnouncements">
+                    <div class="collapse menu-dropdown {{ $isActive('announcements') ? 'show' : '' }}" id="sidebarAnnouncements">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('announcement-categories') }}" class="nav-link {{ $isActive('announcement-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('announcements.index') }}" class="nav-link {{ request()->routeIs('announcements.index') ? 'active' : '' }}">لیست اطلاعیه‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('announcements') }}" class="nav-link {{ $isActive('announcements') ? 'active' : '' }}">اطلاعیه‌ها</a>
+                                <a href="{{ route('announcements.create') }}" class="nav-link {{ request()->routeIs('announcements.create') ? 'active' : '' }}">افزودن اطلاعیه</a>
                             </li>
                         </ul>
                     </div>

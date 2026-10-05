@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AnnouncementCategoryController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HistoricalAttractionCategoryController;
@@ -78,6 +80,22 @@ Route::middleware('auth')->group(function () {
     Route::get('historical-attractions/{historicalAttraction}/edit', [HistoricalAttractionController::class, 'edit'])->name('historical-attractions.edit');
     Route::put('historical-attractions/{historicalAttraction}', [HistoricalAttractionController::class, 'update'])->name('historical-attractions.update');
     Route::delete('historical-attractions/{historicalAttraction}', [HistoricalAttractionController::class, 'destroy'])->name('historical-attractions.destroy');
+
+    Route::get('announcement-categories', [AnnouncementCategoryController::class, 'index'])->name('announcement-categories.index');
+    Route::get('announcement-categories/create', [AnnouncementCategoryController::class, 'create'])->name('announcement-categories.create');
+    Route::post('announcement-categories', [AnnouncementCategoryController::class, 'store'])->name('announcement-categories.store');
+    Route::get('announcement-categories/{announcementCategory}/edit', [AnnouncementCategoryController::class, 'edit'])->name('announcement-categories.edit');
+    Route::put('announcement-categories/{announcementCategory}', [AnnouncementCategoryController::class, 'update'])->name('announcement-categories.update');
+    Route::delete('announcement-categories/{announcementCategory}', [AnnouncementCategoryController::class, 'destroy'])->name('announcement-categories.destroy');
+
+    Route::get('announcements', [AnnouncementController::class, 'index'])->name('announcements.index');
+    Route::get('announcements/create', [AnnouncementController::class, 'create'])->name('announcements.create');
+    Route::post('announcements', [AnnouncementController::class, 'store'])->name('announcements.store');
+    Route::get('announcements/{announcement}/image', [AnnouncementController::class, 'downloadImage'])->name('announcements.image');
+    Route::get('announcements/{announcement}/attachment', [AnnouncementController::class, 'downloadAttachment'])->name('announcements.attachment');
+    Route::get('announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcements.edit');
+    Route::put('announcements/{announcement}', [AnnouncementController::class, 'update'])->name('announcements.update');
+    Route::delete('announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcements.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');
