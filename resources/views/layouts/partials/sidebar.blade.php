@@ -265,24 +265,41 @@
                     </div>
                 </li>
 
-                {{-- نقشه --}}
+                {{-- دسته‌بندی نقشه --}}
                 <li class="nav-item">
-                    <a href="#sidebarMap" class="nav-link menu-link {{ $isActive('map-categories') || $isActive('map-locations') || $isActive('map-media') ? '' : 'collapsed' }}"
+                    <a href="#sidebarMapCategories" class="nav-link menu-link {{ $isActive('map-categories') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('map-categories') || $isActive('map-locations') || $isActive('map-media') ? 'true' : 'false' }}"
-                       aria-controls="sidebarMap">
-                        <i class="bx bx-map"></i> <span>نقشه</span>
+                       aria-expanded="{{ $isActive('map-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarMapCategories">
+                        <i class="bx bx-purchase-tag"></i> <span>دسته‌بندی نقشه</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('map-categories') || $isActive('map-locations') || $isActive('map-media') ? 'show' : '' }}" id="sidebarMap">
+                    <div class="collapse menu-dropdown {{ $isActive('map-categories') ? 'show' : '' }}" id="sidebarMapCategories">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('map-categories') }}" class="nav-link {{ $isActive('map-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('map-categories.index') }}" class="nav-link {{ request()->routeIs('map-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('map-locations') }}" class="nav-link {{ $isActive('map-locations') ? 'active' : '' }}">مکان‌ها</a>
+                                <a href="{{ route('map-categories.create') }}" class="nav-link {{ request()->routeIs('map-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- مکان‌های نقشه --}}
+                <li class="nav-item">
+                    <a href="#sidebarMapLocations" class="nav-link menu-link {{ $isActive('map-locations') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('map-locations') ? 'true' : 'false' }}"
+                       aria-controls="sidebarMapLocations">
+                        <i class="bx bx-map"></i> <span>مکان‌های نقشه</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('map-locations') ? 'show' : '' }}" id="sidebarMapLocations">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('map-locations.index') }}" class="nav-link {{ request()->routeIs('map-locations.index') ? 'active' : '' }}">لیست مکان‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('map-media') }}" class="nav-link {{ $isActive('map-media') ? 'active' : '' }}">رسانه‌ها</a>
+                                <a href="{{ route('map-locations.create') }}" class="nav-link {{ request()->routeIs('map-locations.create') ? 'active' : '' }}">افزودن مکان</a>
                             </li>
                         </ul>
                     </div>

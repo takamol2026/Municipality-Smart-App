@@ -45,6 +45,6 @@ class MapLocation extends Model
 
     public function media(): HasMany
     {
-        return $this->hasMany(MapMedia::class);
+        return $this->hasMany(MapMedia::class)->latest('id');
     }
 }

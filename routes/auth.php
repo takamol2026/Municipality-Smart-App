@@ -10,6 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HistoricalAttractionCategoryController;
 use App\Http\Controllers\HistoricalAttractionController;
+use App\Http\Controllers\MapCategoryController;
+use App\Http\Controllers\MapLocationController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScholarController;
@@ -116,6 +118,24 @@ Route::middleware('auth')->group(function () {
     Route::get('projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+    Route::get('map-categories', [MapCategoryController::class, 'index'])->name('map-categories.index');
+    Route::get('map-categories/create', [MapCategoryController::class, 'create'])->name('map-categories.create');
+    Route::post('map-categories', [MapCategoryController::class, 'store'])->name('map-categories.store');
+    Route::get('map-categories/{mapCategory}/image', [MapCategoryController::class, 'downloadImage'])->name('map-categories.image');
+    Route::get('map-categories/{mapCategory}/edit', [MapCategoryController::class, 'edit'])->name('map-categories.edit');
+    Route::put('map-categories/{mapCategory}', [MapCategoryController::class, 'update'])->name('map-categories.update');
+    Route::delete('map-categories/{mapCategory}', [MapCategoryController::class, 'destroy'])->name('map-categories.destroy');
+
+    Route::get('map-locations', [MapLocationController::class, 'index'])->name('map-locations.index');
+    Route::get('map-locations/create', [MapLocationController::class, 'create'])->name('map-locations.create');
+    Route::post('map-locations', [MapLocationController::class, 'store'])->name('map-locations.store');
+    Route::get('map-locations/{mapLocation}/image', [MapLocationController::class, 'downloadImage'])->name('map-locations.image');
+    Route::get('map-locations/{mapLocation}/media/{mapMedia}', [MapLocationController::class, 'downloadMedia'])->name('map-locations.media.download');
+    Route::delete('map-locations/{mapLocation}/media/{mapMedia}', [MapLocationController::class, 'destroyMedia'])->name('map-locations.media.destroy');
+    Route::get('map-locations/{mapLocation}/edit', [MapLocationController::class, 'edit'])->name('map-locations.edit');
+    Route::put('map-locations/{mapLocation}', [MapLocationController::class, 'update'])->name('map-locations.update');
+    Route::delete('map-locations/{mapLocation}', [MapLocationController::class, 'destroy'])->name('map-locations.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');
