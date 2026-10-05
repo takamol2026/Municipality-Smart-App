@@ -305,21 +305,41 @@
                     </div>
                 </li>
 
-                {{-- اجاره --}}
+                {{-- دسته‌بندی اجاره --}}
                 <li class="nav-item">
-                    <a href="#sidebarRentals" class="nav-link menu-link {{ $isActive('rental-categories') || $isActive('rentals') ? '' : 'collapsed' }}"
+                    <a href="#sidebarRentalCategories" class="nav-link menu-link {{ $isActive('rental-categories') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
-                       aria-expanded="{{ $isActive('rental-categories') || $isActive('rentals') ? 'true' : 'false' }}"
-                       aria-controls="sidebarRentals">
-                        <i class="bx bx-store"></i> <span>اجاره</span>
+                       aria-expanded="{{ $isActive('rental-categories') ? 'true' : 'false' }}"
+                       aria-controls="sidebarRentalCategories">
+                        <i class="bx bx-purchase-tag"></i> <span>دسته‌بندی اجاره</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ $isActive('rental-categories') || $isActive('rentals') ? 'show' : '' }}" id="sidebarRentals">
+                    <div class="collapse menu-dropdown {{ $isActive('rental-categories') ? 'show' : '' }}" id="sidebarRentalCategories">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('rental-categories') }}" class="nav-link {{ $isActive('rental-categories') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('rental-categories.index') }}" class="nav-link {{ request()->routeIs('rental-categories.index') ? 'active' : '' }}">لیست دسته‌بندی‌ها</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('rentals') }}" class="nav-link {{ $isActive('rentals') ? 'active' : '' }}">موارد اجاره</a>
+                                <a href="{{ route('rental-categories.create') }}" class="nav-link {{ request()->routeIs('rental-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- موارد اجاره --}}
+                <li class="nav-item">
+                    <a href="#sidebarRentals" class="nav-link menu-link {{ $isActive('rentals') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('rentals') ? 'true' : 'false' }}"
+                       aria-controls="sidebarRentals">
+                        <i class="bx bx-store"></i> <span>موارد اجاره</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('rentals') ? 'show' : '' }}" id="sidebarRentals">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('rentals.index') }}" class="nav-link {{ request()->routeIs('rentals.index') ? 'active' : '' }}">لیست موارد اجاره</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('rentals.create') }}" class="nav-link {{ request()->routeIs('rentals.create') ? 'active' : '' }}">افزودن مورد اجاره</a>
                             </li>
                         </ul>
                     </div>

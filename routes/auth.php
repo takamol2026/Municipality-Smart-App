@@ -14,6 +14,8 @@ use App\Http\Controllers\MapCategoryController;
 use App\Http\Controllers\MapLocationController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RentalCategoryController;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
@@ -136,6 +138,22 @@ Route::middleware('auth')->group(function () {
     Route::get('map-locations/{mapLocation}/edit', [MapLocationController::class, 'edit'])->name('map-locations.edit');
     Route::put('map-locations/{mapLocation}', [MapLocationController::class, 'update'])->name('map-locations.update');
     Route::delete('map-locations/{mapLocation}', [MapLocationController::class, 'destroy'])->name('map-locations.destroy');
+
+    Route::get('rental-categories', [RentalCategoryController::class, 'index'])->name('rental-categories.index');
+    Route::get('rental-categories/create', [RentalCategoryController::class, 'create'])->name('rental-categories.create');
+    Route::post('rental-categories', [RentalCategoryController::class, 'store'])->name('rental-categories.store');
+    Route::get('rental-categories/{rentalCategory}/image', [RentalCategoryController::class, 'downloadImage'])->name('rental-categories.image');
+    Route::get('rental-categories/{rentalCategory}/edit', [RentalCategoryController::class, 'edit'])->name('rental-categories.edit');
+    Route::put('rental-categories/{rentalCategory}', [RentalCategoryController::class, 'update'])->name('rental-categories.update');
+    Route::delete('rental-categories/{rentalCategory}', [RentalCategoryController::class, 'destroy'])->name('rental-categories.destroy');
+
+    Route::get('rentals', [RentalController::class, 'index'])->name('rentals.index');
+    Route::get('rentals/create', [RentalController::class, 'create'])->name('rentals.create');
+    Route::post('rentals', [RentalController::class, 'store'])->name('rentals.store');
+    Route::get('rentals/{rental}/image', [RentalController::class, 'downloadImage'])->name('rentals.image');
+    Route::get('rentals/{rental}/edit', [RentalController::class, 'edit'])->name('rentals.edit');
+    Route::put('rentals/{rental}', [RentalController::class, 'update'])->name('rentals.update');
+    Route::delete('rentals/{rental}', [RentalController::class, 'destroy'])->name('rentals.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');
