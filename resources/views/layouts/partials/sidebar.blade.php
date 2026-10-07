@@ -54,8 +54,6 @@
                     </a>
                 </li>
 
-                <li class="menu-title"><span>محتوا</span></li>
-
                 {{-- مناطق --}}
                 <li class="nav-item">
                     <a href="#sidebarDistricts" class="nav-link menu-link {{ $isActive('districts') ? '' : 'collapsed' }}"
