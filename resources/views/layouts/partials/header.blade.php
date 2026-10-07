@@ -35,6 +35,10 @@
                         </button>
                     </div>
 
+                    <div class="header-item d-flex align-items-center me-3">
+                        <span class="header-org-title">ریاست شاروالی ولایت هرات</span>
+                    </div>
+
                     <h4 class="mb-sm-0 header-item page-title lh-base">@yield('page-title', 'داشبورد')</h4>
                 </div>
 
@@ -109,3 +113,13 @@
         </div>
     </header>
 </div>
+
+<style>
+    .header-org-title {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1.4;
+        color: var(--tb-header-item-color);
+        white-space: nowrap;
+    }
+</style>
