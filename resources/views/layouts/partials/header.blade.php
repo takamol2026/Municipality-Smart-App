@@ -36,10 +36,10 @@
                     </div>
 
                     <div class="header-item d-flex align-items-center me-3">
-                        <span class="header-org-title">ریاست شاروالی ولایت هرات</span>
+                        <span class="header-org-title">{{ __('header.org_title') }}</span>
                     </div>
 
-                    <h4 class="mb-sm-0 header-item page-title lh-base">@yield('page-title', 'داشبورد')</h4>
+                    <h4 class="mb-sm-0 header-item page-title lh-base">@yield('page-title', __('dashboard.title'))</h4>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -51,7 +51,7 @@
                             <form class="p-3">
                                 <div class="form-group m-0">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="جستجو ..." aria-label="جستجو">
+                                        <input type="text" class="form-control" placeholder="{{ __('header.search_placeholder') }}" aria-label="{{ __('header.search') }}">
                                         <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
                                     </div>
                                 </div>
@@ -66,13 +66,26 @@
                     </div>
 
                     <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                        <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="{{ __('header.language') }}">
+                            <i class="bx bx-globe align-middle fs-3xl"></i>
+                        </button>
+                        <div class="dropdown-menu p-2 dropdown-menu-end">
+                            @foreach (config('locales.supported') as $code => $locale)
+                                <a href="{{ route('locale.update', $code) }}" class="dropdown-item {{ app()->getLocale() === $code ? 'active' : '' }}">
+                                    {{ $locale['label'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="dropdown topbar-head-dropdown ms-1 header-item">
                         <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle mode-layout" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bx bx-sun align-middle fs-3xl"></i>
                         </button>
                         <div class="dropdown-menu p-2 dropdown-menu-end" id="light-dark-mode">
-                            <a href="#!" class="dropdown-item" data-mode="light"><i class="bx bx-sun align-middle me-2"></i> پیش‌فرض (حالت روشن)</a>
-                            <a href="#!" class="dropdown-item" data-mode="dark"><i class="bx bx-moon align-middle me-2"></i> تاریک</a>
-                            <a href="#!" class="dropdown-item" data-mode="auto"><i class="bx bx-desktop align-middle me-2"></i> خودکار (پیش‌فرض سیستم)</a>
+                            <a href="#!" class="dropdown-item" data-mode="light"><i class="bx bx-sun align-middle me-2"></i> {{ __('header.theme_light') }}</a>
+                            <a href="#!" class="dropdown-item" data-mode="dark"><i class="bx bx-moon align-middle me-2"></i> {{ __('header.theme_dark') }}</a>
+                            <a href="#!" class="dropdown-item" data-mode="auto"><i class="bx bx-desktop align-middle me-2"></i> {{ __('header.theme_auto') }}</a>
                         </div>
                     </div>
 
@@ -82,28 +95,28 @@
                                 <img class="rounded-circle header-profile-user" src="{{ asset('assets/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
                                 <span class="text-start ms-xl-2">
                                     <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                        {{ $authUser?->name ?? 'کاربر' }} {{ $authUser?->last_name }}
+                                        {{ $authUser?->name ?? __('header.user') }} {{ $authUser?->last_name }}
                                     </span>
                                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text">
-                                        {{ $authUser?->username ?? 'مهمان' }}
+                                        {{ $authUser?->username ?? __('header.guest') }}
                                     </span>
                                 </span>
                             </span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <h6 class="dropdown-header">خوش آمدید {{ $authUser?->name ?? '' }}</h6>
+                            <h6 class="dropdown-header">{{ __('header.welcome') }} {{ $authUser?->name ?? '' }}</h6>
                             @auth
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
                                         <i class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i>
-                                        <span class="align-middle">خروج</span>
+                                        <span class="align-middle">{{ __('header.logout') }}</span>
                                     </button>
                                 </form>
                             @else
                                 <a class="dropdown-item" href="{{ route('login') }}">
                                     <i class="mdi mdi-login text-muted fs-lg align-middle me-1"></i>
-                                    <span class="align-middle">ورود</span>
+                                    <span class="align-middle">{{ __('header.login') }}</span>
                                 </a>
                             @endauth
                         </div>

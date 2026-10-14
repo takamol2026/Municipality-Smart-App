@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="fa" data-layout="vertical" data-sidebar="dark" data-sidebar-image="img-1" data-sidebar-size="lg" data-preloader="disable" data-theme="default" dir="rtl" data-topbar="light" data-bs-theme="light" data-theme-color="0">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="vertical" data-sidebar="dark" data-sidebar-image="img-1" data-sidebar-size="lg" data-preloader="disable" data-theme="default" dir="{{ config('locales.supported.'.app()->getLocale().'.dir', 'rtl') }}" data-topbar="light" data-bs-theme="light" data-theme-color="0">
 
 <head>
     <meta charset="utf-8">
-    <title> ریاست شاروالی ولایت هرات |  @yield('title', 'پنل مدیریت')  </title>
+    <title>{{ __('header.org_title') }} | @yield('title', __('header.admin_panel'))</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Minimal Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">

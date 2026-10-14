@@ -8,7 +8,7 @@
         <div id="preloader">
             <div id="status">
                 <div class="spinner-border text-primary avatar-sm" role="status">
-                    <span class="visually-hidden">در حال بارگذاری...</span>
+                    <span class="visually-hidden">{{ __('header.loading') }}</span>
                 </div>
             </div>
         </div>
@@ -589,7 +589,7 @@
                                             <!-- <div id="preloader"> -->
                                             <span class="d-flex align-items-center justify-content-center">
                                                 <span class="spinner-border text-primary avatar-xxs m-auto" role="status">
-                                                    <span class="visually-hidden">در حال بارگذاری...</span>
+                                                    <span class="visually-hidden">{{ __('header.loading') }}</span>
                                                 </span>
                                             </span>
                                             <!-- </div> -->

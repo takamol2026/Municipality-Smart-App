@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', 'داشبورد')
-@section('page-title', 'داشبورد')
+@section('title', __('dashboard.title'))
+@section('page-title', __('dashboard.title'))
 
 @section('breadcrumb')
-    <li class="breadcrumb-item active">داشبورد</li>
+    <li class="breadcrumb-item active">{{ __('dashboard.title') }}</li>
 @endsection
 
 @section('content')

@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    طراحی و توسعه توسط تکامل شهر
+                    {{ __('footer.designed_by') }}
                 </div>
             </div>
         </div>

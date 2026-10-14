@@ -46,11 +46,11 @@
             <div id="two-column-menu"></div>
 
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span>منو</span></li>
+                <li class="menu-title"><span>{{ __('sidebar.menu') }}</span></li>
 
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                        <i class="bx bx-home-alt"></i> <span>داشبورد</span>
+                        <i class="bx bx-home-alt"></i> <span>{{ __('sidebar.dashboard') }}</span>
                     </a>
                 </li>
 
@@ -60,15 +60,15 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $isActive('districts') ? 'true' : 'false' }}"
                        aria-controls="sidebarDistricts">
-                        <i class="bx bx-map-alt"></i> <span>مناطق</span>
+                        <i class="bx bx-map-alt"></i> <span>{{ __('sidebar.districts') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $isActive('districts') ? 'show' : '' }}" id="sidebarDistricts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->routeIs('districts.index') ? 'active' : '' }}">لیست مناطق</a>
+                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->routeIs('districts.index') ? 'active' : '' }}">{{ __('sidebar.districts_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('districts.create') }}" class="nav-link {{ request()->routeIs('districts.create') ? 'active' : '' }}">افزودن منطقه</a>
+                                <a href="{{ route('districts.create') }}" class="nav-link {{ request()->routeIs('districts.create') ? 'active' : '' }}">{{ __('sidebar.districts_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -81,21 +81,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $urbanOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarUrbanServices">
-                        <i class="bx bx-buildings"></i> <span>خدمات شهری</span>
+                        <i class="bx bx-buildings"></i> <span>{{ __('sidebar.urban_services') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $urbanOpen ? 'show' : '' }}" id="sidebarUrbanServices">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('urban-services.index') }}" class="nav-link {{ request()->routeIs('urban-services.index') ? 'active' : '' }}">لیست خدمات</a>
+                                <a href="{{ route('urban-services.index') }}" class="nav-link {{ request()->routeIs('urban-services.index') ? 'active' : '' }}">{{ __('sidebar.services_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('urban-services.create') }}" class="nav-link {{ request()->routeIs('urban-services.create') ? 'active' : '' }}">افزودن خدمت</a>
+                                <a href="{{ route('urban-services.create') }}" class="nav-link {{ request()->routeIs('urban-services.create') ? 'active' : '' }}">{{ __('sidebar.services_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('urban-service-categories.index') }}" class="nav-link {{ request()->routeIs('urban-service-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('urban-service-categories.index') }}" class="nav-link {{ request()->routeIs('urban-service-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('urban-service-categories.create') }}" class="nav-link {{ request()->routeIs('urban-service-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('urban-service-categories.create') }}" class="nav-link {{ request()->routeIs('urban-service-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -108,21 +108,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $historicalOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarHistorical">
-                        <i class="bx bx-history"></i> <span>جاذبه‌های تاریخی</span>
+                        <i class="bx bx-history"></i> <span>{{ __('sidebar.historical') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $historicalOpen ? 'show' : '' }}" id="sidebarHistorical">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('historical-attractions.index') }}" class="nav-link {{ request()->routeIs('historical-attractions.index') ? 'active' : '' }}">لیست جاذبه‌ها</a>
+                                <a href="{{ route('historical-attractions.index') }}" class="nav-link {{ request()->routeIs('historical-attractions.index') ? 'active' : '' }}">{{ __('sidebar.attractions_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('historical-attractions.create') }}" class="nav-link {{ request()->routeIs('historical-attractions.create') ? 'active' : '' }}">افزودن جاذبه</a>
+                                <a href="{{ route('historical-attractions.create') }}" class="nav-link {{ request()->routeIs('historical-attractions.create') ? 'active' : '' }}">{{ __('sidebar.attractions_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('historical-attraction-categories.index') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('historical-attraction-categories.index') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('historical-attraction-categories.create') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('historical-attraction-categories.create') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -134,15 +134,15 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $isActive('scholars') ? 'true' : 'false' }}"
                        aria-controls="sidebarScholars">
-                        <i class="bx bx-book-reader"></i> <span>علما</span>
+                        <i class="bx bx-book-reader"></i> <span>{{ __('sidebar.scholars') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $isActive('scholars') ? 'show' : '' }}" id="sidebarScholars">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('scholars.index') }}" class="nav-link {{ request()->routeIs('scholars.index') ? 'active' : '' }}">لیست علما</a>
+                                <a href="{{ route('scholars.index') }}" class="nav-link {{ request()->routeIs('scholars.index') ? 'active' : '' }}">{{ __('sidebar.scholars_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('scholars.create') }}" class="nav-link {{ request()->routeIs('scholars.create') ? 'active' : '' }}">افزودن عالم</a>
+                                <a href="{{ route('scholars.create') }}" class="nav-link {{ request()->routeIs('scholars.create') ? 'active' : '' }}">{{ __('sidebar.scholars_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -155,21 +155,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $announcementsOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarAnnouncements">
-                        <i class="bx bx-news"></i> <span>اطلاعیه‌ها</span>
+                        <i class="bx bx-news"></i> <span>{{ __('sidebar.announcements') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $announcementsOpen ? 'show' : '' }}" id="sidebarAnnouncements">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('announcements.index') }}" class="nav-link {{ request()->routeIs('announcements.index') ? 'active' : '' }}">لیست اطلاعیه‌ها</a>
+                                <a href="{{ route('announcements.index') }}" class="nav-link {{ request()->routeIs('announcements.index') ? 'active' : '' }}">{{ __('sidebar.announcements_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('announcements.create') }}" class="nav-link {{ request()->routeIs('announcements.create') ? 'active' : '' }}">افزودن اطلاعیه</a>
+                                <a href="{{ route('announcements.create') }}" class="nav-link {{ request()->routeIs('announcements.create') ? 'active' : '' }}">{{ __('sidebar.announcements_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('announcement-categories.index') }}" class="nav-link {{ request()->routeIs('announcement-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('announcement-categories.index') }}" class="nav-link {{ request()->routeIs('announcement-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('announcement-categories.create') }}" class="nav-link {{ request()->routeIs('announcement-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('announcement-categories.create') }}" class="nav-link {{ request()->routeIs('announcement-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -182,21 +182,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $projectsOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarProjects">
-                        <i class="bx bx-briefcase"></i> <span>پروژه‌ها</span>
+                        <i class="bx bx-briefcase"></i> <span>{{ __('sidebar.projects') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $projectsOpen ? 'show' : '' }}" id="sidebarProjects">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">لیست پروژه‌ها</a>
+                                <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">{{ __('sidebar.projects_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('projects.create') }}" class="nav-link {{ request()->routeIs('projects.create') ? 'active' : '' }}">افزودن پروژه</a>
+                                <a href="{{ route('projects.create') }}" class="nav-link {{ request()->routeIs('projects.create') ? 'active' : '' }}">{{ __('sidebar.projects_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('project-categories.index') }}" class="nav-link {{ request()->routeIs('project-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('project-categories.index') }}" class="nav-link {{ request()->routeIs('project-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('project-categories.create') }}" class="nav-link {{ request()->routeIs('project-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('project-categories.create') }}" class="nav-link {{ request()->routeIs('project-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -209,21 +209,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $mapOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarMapLocations">
-                        <i class="bx bx-map"></i> <span>نقشه</span>
+                        <i class="bx bx-map"></i> <span>{{ __('sidebar.map') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $mapOpen ? 'show' : '' }}" id="sidebarMapLocations">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('map-locations.index') }}" class="nav-link {{ request()->routeIs('map-locations.index') ? 'active' : '' }}">لیست مکان‌ها</a>
+                                <a href="{{ route('map-locations.index') }}" class="nav-link {{ request()->routeIs('map-locations.index') ? 'active' : '' }}">{{ __('sidebar.locations_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('map-locations.create') }}" class="nav-link {{ request()->routeIs('map-locations.create') ? 'active' : '' }}">افزودن مکان</a>
+                                <a href="{{ route('map-locations.create') }}" class="nav-link {{ request()->routeIs('map-locations.create') ? 'active' : '' }}">{{ __('sidebar.locations_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('map-categories.index') }}" class="nav-link {{ request()->routeIs('map-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('map-categories.index') }}" class="nav-link {{ request()->routeIs('map-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('map-categories.create') }}" class="nav-link {{ request()->routeIs('map-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('map-categories.create') }}" class="nav-link {{ request()->routeIs('map-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -236,21 +236,21 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $rentalsOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarRentals">
-                        <i class="bx bx-store"></i> <span>اجاره</span>
+                        <i class="bx bx-store"></i> <span>{{ __('sidebar.rentals') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $rentalsOpen ? 'show' : '' }}" id="sidebarRentals">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('rentals.index') }}" class="nav-link {{ request()->routeIs('rentals.index') ? 'active' : '' }}">لیست موارد اجاره</a>
+                                <a href="{{ route('rentals.index') }}" class="nav-link {{ request()->routeIs('rentals.index') ? 'active' : '' }}">{{ __('sidebar.rentals_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('rentals.create') }}" class="nav-link {{ request()->routeIs('rentals.create') ? 'active' : '' }}">افزودن مورد اجاره</a>
+                                <a href="{{ route('rentals.create') }}" class="nav-link {{ request()->routeIs('rentals.create') ? 'active' : '' }}">{{ __('sidebar.rentals_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('rental-categories.index') }}" class="nav-link {{ request()->routeIs('rental-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('rental-categories.index') }}" class="nav-link {{ request()->routeIs('rental-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('rental-categories.create') }}" class="nav-link {{ request()->routeIs('rental-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('rental-categories.create') }}" class="nav-link {{ request()->routeIs('rental-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -263,27 +263,27 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $safaeiOpen ? 'true' : 'false' }}"
                        aria-controls="sidebarSafaei">
-                        <i class="bx bx-folder"></i> <span>صفایی</span>
+                        <i class="bx bx-folder"></i> <span>{{ __('sidebar.safaei') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $safaeiOpen ? 'show' : '' }}" id="sidebarSafaei">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('safaei.index') }}" class="nav-link {{ request()->routeIs('safaei.index') ? 'active' : '' }}">لیست فایل‌ها</a>
+                                <a href="{{ route('safaei.index') }}" class="nav-link {{ request()->routeIs('safaei.index') ? 'active' : '' }}">{{ __('sidebar.files_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('safaei.create') }}" class="nav-link {{ request()->routeIs('safaei.create') ? 'active' : '' }}">افزودن فایل</a>
+                                <a href="{{ route('safaei.create') }}" class="nav-link {{ request()->routeIs('safaei.create') ? 'active' : '' }}">{{ __('sidebar.files_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('safaei-categories.index') }}" class="nav-link {{ request()->routeIs('safaei-categories.index') ? 'active' : '' }}">دسته‌بندی‌ها</a>
+                                <a href="{{ route('safaei-categories.index') }}" class="nav-link {{ request()->routeIs('safaei-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('safaei-categories.create') }}" class="nav-link {{ request()->routeIs('safaei-categories.create') ? 'active' : '' }}">افزودن دسته‌بندی</a>
+                                <a href="{{ route('safaei-categories.create') }}" class="nav-link {{ request()->routeIs('safaei-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
                             </li>
                         </ul>
                     </div>
                 </li>
 
-                <li class="menu-title"><span>مدیریت</span></li>
+                <li class="menu-title"><span>{{ __('sidebar.management') }}</span></li>
 
                 {{-- ثبت کاربران --}}
                 <li class="nav-item">
@@ -291,15 +291,15 @@
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $isActive('users') ? 'true' : 'false' }}"
                        aria-controls="sidebarUsers">
-                        <i class="bx bx-user-circle"></i> <span>ثبت کاربران</span>
+                        <i class="bx bx-user-circle"></i> <span>{{ __('sidebar.users') }}</span>
                     </a>
                     <div class="collapse menu-dropdown {{ $isActive('users') ? 'show' : '' }}" id="sidebarUsers">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">لیست کاربران</a>
+                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">{{ __('sidebar.users_list') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('users.create') }}" class="nav-link {{ request()->routeIs('users.create') ? 'active' : '' }}">افزودن کاربر</a>
+                                <a href="{{ route('users.create') }}" class="nav-link {{ request()->routeIs('users.create') ? 'active' : '' }}">{{ __('sidebar.users_create') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -314,28 +314,28 @@
                 <img class="rounded-circle header-profile-user" src="{{ asset('assets/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
                 <span class="text-start ms-xl-2 overflow-hidden flex-grow-1 sideba-user-content">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text text-truncate mb-0">
-                        {{ $authUser?->name ?? 'کاربر' }} {{ $authUser?->last_name }}
+                        {{ $authUser?->name ?? __('header.user') }} {{ $authUser?->last_name }}
                     </span>
                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text">
-                        {{ $authUser?->username ?? 'مهمان' }}
+                        {{ $authUser?->username ?? __('header.guest') }}
                     </span>
                 </span>
             </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
-            <h6 class="dropdown-header">خوش آمدید {{ $authUser?->name ?? '' }}</h6>
+            <h6 class="dropdown-header">{{ __('header.welcome') }} {{ $authUser?->name ?? '' }}</h6>
             @auth
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="dropdown-item">
                         <i class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i>
-                        <span class="align-middle">خروج</span>
+                        <span class="align-middle">{{ __('header.logout') }}</span>
                     </button>
                 </form>
             @else
                 <a class="dropdown-item" href="{{ route('login') }}">
                     <i class="mdi mdi-login text-muted fs-lg align-middle me-1"></i>
-                    <span class="align-middle">ورود</span>
+                    <span class="align-middle">{{ __('header.login') }}</span>
                 </a>
             @endauth
         </div>
