@@ -57,7 +57,7 @@ class RentalController extends Controller
 
         return redirect()
             ->route('rentals.index')
-            ->with('success', 'مورد اجاره با موفقیت ذخیره شد.');
+            ->with('success', __('rentals.saved'));
     }
 
     public function edit(Rental $rental): View
@@ -85,7 +85,7 @@ class RentalController extends Controller
 
         return redirect()
             ->route('rentals.index')
-            ->with('success', 'مورد اجاره با موفقیت ویرایش شد.');
+            ->with('success', __('rentals.updated'));
     }
 
     public function downloadImage(Rental $rental): StreamedResponse
@@ -102,7 +102,7 @@ class RentalController extends Controller
 
         return redirect()
             ->route('rentals.index')
-            ->with('success', 'مورد اجاره با موفقیت حذف شد.');
+            ->with('success', __('rentals.deleted'));
     }
 
     /**

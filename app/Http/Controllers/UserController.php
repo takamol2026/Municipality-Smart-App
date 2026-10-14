@@ -48,7 +48,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('users.index')
-            ->with('success', 'کاربر با موفقیت ذخیره شد.');
+            ->with('success', __('users.saved'));
     }
 
     public function edit(User $user): View
@@ -69,7 +69,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('users.index')
-            ->with('success', 'کاربر با موفقیت ویرایش شد.');
+            ->with('success', __('users.updated'));
     }
 
     public function destroy(Request $request, User $user): RedirectResponse
@@ -77,7 +77,7 @@ class UserController extends Controller
         if ($user->is($request->user())) {
             return redirect()
                 ->route('users.index')
-                ->with('error', 'حساب کاربری خودتان را نمی‌توانید حذف کنید.');
+                ->with('error', __('users.delete_self'));
         }
 
         try {
@@ -85,11 +85,11 @@ class UserController extends Controller
         } catch (QueryException) {
             return redirect()
                 ->route('users.index')
-                ->with('error', 'این کاربر به دلیل داشتن اطلاعات مرتبط قابل حذف نیست.');
+                ->with('error', __('users.delete_blocked'));
         }
 
         return redirect()
             ->route('users.index')
-            ->with('success', 'کاربر با موفقیت حذف شد.');
+            ->with('success', __('users.deleted'));
     }
 }

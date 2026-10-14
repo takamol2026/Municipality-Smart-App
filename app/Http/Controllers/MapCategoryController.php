@@ -54,7 +54,7 @@ class MapCategoryController extends Controller
 
         return redirect()
             ->route('map-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(MapCategory $mapCategory): View
@@ -81,7 +81,7 @@ class MapCategoryController extends Controller
 
         return redirect()
             ->route('map-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function downloadImage(MapCategory $mapCategory): StreamedResponse
@@ -96,7 +96,7 @@ class MapCategoryController extends Controller
         if ($mapCategory->locations()->exists()) {
             return redirect()
                 ->route('map-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن مکان قابل حذف نیست.');
+                ->with('error', __('map_locations.category_delete_blocked'));
         }
 
         $this->deleteImage($mapCategory->img);
@@ -104,7 +104,7 @@ class MapCategoryController extends Controller
 
         return redirect()
             ->route('map-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 
     private function deleteImage(?string $path): void

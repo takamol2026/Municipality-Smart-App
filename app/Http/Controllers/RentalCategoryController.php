@@ -54,7 +54,7 @@ class RentalCategoryController extends Controller
 
         return redirect()
             ->route('rental-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(RentalCategory $rentalCategory): View
@@ -81,7 +81,7 @@ class RentalCategoryController extends Controller
 
         return redirect()
             ->route('rental-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function downloadImage(RentalCategory $rentalCategory): StreamedResponse
@@ -96,7 +96,7 @@ class RentalCategoryController extends Controller
         if ($rentalCategory->rentals()->exists()) {
             return redirect()
                 ->route('rental-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن مورد اجاره قابل حذف نیست.');
+                ->with('error', __('rentals.category_delete_blocked'));
         }
 
         $this->deleteImage($rentalCategory->img);
@@ -104,7 +104,7 @@ class RentalCategoryController extends Controller
 
         return redirect()
             ->route('rental-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 
     private function deleteImage(?string $path): void

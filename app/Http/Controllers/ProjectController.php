@@ -63,7 +63,7 @@ class ProjectController extends Controller
 
         return redirect()
             ->route('projects.index')
-            ->with('success', 'پروژه با موفقیت ذخیره شد.');
+            ->with('success', __('projects.saved'));
     }
 
     public function edit(Project $project): View
@@ -97,7 +97,7 @@ class ProjectController extends Controller
 
         return redirect()
             ->route('projects.index')
-            ->with('success', 'پروژه با موفقیت ویرایش شد.');
+            ->with('success', __('projects.updated'));
     }
 
     public function downloadImage(Project $project): StreamedResponse
@@ -128,7 +128,7 @@ class ProjectController extends Controller
 
         return redirect()
             ->route('projects.edit', $project)
-            ->with('success', 'رسانه با موفقیت حذف شد.');
+            ->with('success', __('common.media_deleted'));
     }
 
     public function destroy(Project $project): RedirectResponse
@@ -144,7 +144,7 @@ class ProjectController extends Controller
 
         return redirect()
             ->route('projects.index')
-            ->with('success', 'پروژه با موفقیت حذف شد.');
+            ->with('success', __('projects.deleted'));
     }
 
     /**

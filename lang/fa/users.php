@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'title' => 'کاربران',
+    'list' => 'لیست کاربران',
+    'create' => 'افزودن کاربر',
+    'edit' => 'ویرایش کاربر',
+    'name_placeholder' => 'نام کاربر را وارد کنید',
+    'first_name_placeholder' => 'نام را وارد کنید',
+    'last_name' => 'نام خانوادگی',
+    'last_name_placeholder' => 'نام خانوادگی را وارد کنید',
+    'username' => 'نام کاربری',
+    'username_placeholder' => 'نام کاربری را وارد کنید',
+    'name_pair' => 'نام / نام خانوادگی',
+    'account_pair' => 'ایمیل / نام کاربری',
+    'password_pair' => 'رمز عبور / تکرار رمز عبور',
+    'password' => 'رمز عبور',
+    'password_placeholder' => 'رمز عبور را وارد کنید',
+    'password_confirmation' => 'تکرار رمز عبور',
+    'password_confirmation_placeholder' => 'تکرار رمز عبور را وارد کنید',
+    'password_optional' => 'در صورت خالی بودن تغییر نمی‌کند',
+    'delete_confirm' => 'این کاربر حذف شود؟',
+    'saved' => 'کاربر با موفقیت ذخیره شد.',
+    'updated' => 'کاربر با موفقیت ویرایش شد.',
+    'deleted' => 'کاربر با موفقیت حذف شد.',
+    'delete_self' => 'حساب کاربری خودتان را نمی‌توانید حذف کنید.',
+    'delete_blocked' => 'این کاربر به دلیل داشتن اطلاعات مرتبط قابل حذف نیست.',
+];

@@ -61,7 +61,7 @@ class MapLocationController extends Controller
 
         return redirect()
             ->route('map-locations.index')
-            ->with('success', 'مکان با موفقیت ذخیره شد.');
+            ->with('success', __('map_locations.saved'));
     }
 
     public function edit(MapLocation $mapLocation): View
@@ -94,7 +94,7 @@ class MapLocationController extends Controller
 
         return redirect()
             ->route('map-locations.index')
-            ->with('success', 'مکان با موفقیت ویرایش شد.');
+            ->with('success', __('map_locations.updated'));
     }
 
     public function downloadImage(MapLocation $mapLocation): StreamedResponse
@@ -120,7 +120,7 @@ class MapLocationController extends Controller
 
         return redirect()
             ->route('map-locations.edit', $mapLocation)
-            ->with('success', 'رسانه با موفقیت حذف شد.');
+            ->with('success', __('common.media_deleted'));
     }
 
     public function destroy(MapLocation $mapLocation): RedirectResponse
@@ -135,7 +135,7 @@ class MapLocationController extends Controller
 
         return redirect()
             ->route('map-locations.index')
-            ->with('success', 'مکان با موفقیت حذف شد.');
+            ->with('success', __('map_locations.deleted'));
     }
 
     /**

@@ -42,9 +42,9 @@ class ProjectMedia extends Model
     public function typeLabel(): string
     {
         return match ($this->type) {
-            'image' => 'تصویر',
-            'video' => 'ویدیو',
-            'document' => 'سند',
+            'image' => __('common.image'),
+            'video' => __('common.video'),
+            'document' => __('common.document'),
             default => $this->type ?: '—',
         };
     }

@@ -45,7 +45,7 @@ class SafaeiCategoryController extends Controller
 
         return redirect()
             ->route('safaei-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(SafaeiCategory $safaeiCategory): View
@@ -64,7 +64,7 @@ class SafaeiCategoryController extends Controller
 
         return redirect()
             ->route('safaei-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function destroy(SafaeiCategory $safaeiCategory): RedirectResponse
@@ -72,13 +72,13 @@ class SafaeiCategoryController extends Controller
         if ($safaeiCategory->files()->exists()) {
             return redirect()
                 ->route('safaei-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن فایل قابل حذف نیست.');
+                ->with('error', __('safaei.category_delete_blocked'));
         }
 
         $safaeiCategory->delete();
 
         return redirect()
             ->route('safaei-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 }

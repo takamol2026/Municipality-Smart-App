@@ -54,7 +54,7 @@ class ProjectCategoryController extends Controller
 
         return redirect()
             ->route('project-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(ProjectCategory $projectCategory): View
@@ -81,7 +81,7 @@ class ProjectCategoryController extends Controller
 
         return redirect()
             ->route('project-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function downloadImage(ProjectCategory $projectCategory): StreamedResponse
@@ -96,7 +96,7 @@ class ProjectCategoryController extends Controller
         if ($projectCategory->projects()->exists()) {
             return redirect()
                 ->route('project-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن پروژه قابل حذف نیست.');
+                ->with('error', __('projects.category_delete_blocked'));
         }
 
         $this->deleteImage($projectCategory->img);
@@ -104,7 +104,7 @@ class ProjectCategoryController extends Controller
 
         return redirect()
             ->route('project-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 
     private function deleteImage(?string $path): void

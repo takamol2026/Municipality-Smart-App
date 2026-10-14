@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'title' => 'Users',
+    'list' => 'User list',
+    'create' => 'Add user',
+    'edit' => 'Edit user',
+    'name_placeholder' => 'Enter the user name',
+    'first_name_placeholder' => 'Enter the first name',
+    'last_name' => 'Last name',
+    'last_name_placeholder' => 'Enter the last name',
+    'username' => 'Username',
+    'username_placeholder' => 'Enter the username',
+    'name_pair' => 'First name / last name',
+    'account_pair' => 'Email / username',
+    'password_pair' => 'Password / confirm password',
+    'password' => 'Password',
+    'password_placeholder' => 'Enter the password',
+    'password_confirmation' => 'Confirm password',
+    'password_confirmation_placeholder' => 'Re-enter the password',
+    'password_optional' => 'Leave blank to keep the current password',
+    'delete_confirm' => 'Delete this user?',
+    'saved' => 'User saved successfully.',
+    'updated' => 'User updated successfully.',
+    'deleted' => 'User deleted successfully.',
+    'delete_self' => 'You cannot delete your own account.',
+    'delete_blocked' => 'This user cannot be deleted because related records exist.',
+];

@@ -50,7 +50,7 @@ class SafaeiController extends Controller
 
         return redirect()
             ->route('safaei.index')
-            ->with('success', 'فایل با موفقیت ذخیره شد.');
+            ->with('success', __('safaei.saved'));
     }
 
     public function edit(Safaei $safaei): View
@@ -75,7 +75,7 @@ class SafaeiController extends Controller
 
         return redirect()
             ->route('safaei.index')
-            ->with('success', 'فایل با موفقیت ویرایش شد.');
+            ->with('success', __('safaei.updated'));
     }
 
     public function download(Safaei $safaei): StreamedResponse
@@ -92,7 +92,7 @@ class SafaeiController extends Controller
 
         return redirect()
             ->route('safaei.index')
-            ->with('success', 'فایل با موفقیت حذف شد.');
+            ->with('success', __('safaei.deleted'));
     }
 
     /**

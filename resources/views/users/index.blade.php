@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'لیست کاربران')
-@section('page-title', 'لیست کاربران')
+@section('title', __('users.list'))
+@section('page-title', __('users.list'))
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">داشبورد</a></li>
-    <li class="breadcrumb-item active">کاربران</li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('dashboard.title') }}</a></li>
+    <li class="breadcrumb-item active">{{ __('users.title') }}</li>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">جستجو</h5>
+                    <h5 class="card-title mb-0">{{ __('common.search') }}</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('users.index') }}" method="GET">
@@ -22,25 +22,25 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label for="name" class="form-label">نام</label>
+                                        <label for="name" class="form-label">{{ __('common.name') }}</label>
                                     </div>
                                     <div class="col-lg-10">
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="نام کاربر را وارد کنید">
+                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="{{ __('users.name_placeholder') }}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label class="form-label">وضعیت</label>
+                                        <label class="form-label">{{ __('common.status') }}</label>
                                     </div>
                                     <div class="col-lg-10">
                                         <div class="form-check form-check-inline form-radio-success">
                                             <input class="form-check-input" type="radio" name="status" id="status_active" value="active" @checked(request('status') === 'active')>
-                                            <label class="form-check-label" for="status_active">فعال</label>
+                                            <label class="form-check-label" for="status_active">{{ __('common.active') }}</label>
                                         </div>
                                         <div class="form-check form-check-inline form-radio-danger">
                                             <input class="form-check-input" type="radio" name="status" id="status_inactive" value="inactive" @checked(request('status') === 'inactive')>
-                                            <label class="form-check-label" for="status_inactive">غیرفعال</label>
+                                            <label class="form-check-label" for="status_inactive">{{ __('common.inactive') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -48,8 +48,8 @@
                                     <div class="col-lg-2"></div>
                                     <div class="col-lg-10">
                                         <div class="text-start">
-                                            <button type="submit" class="btn btn-primary">جستجو</button>
-                                            <a href="{{ route('users.index') }}" class="btn btn-light">پاک کردن</a>
+                                            <button type="submit" class="btn btn-primary">{{ __('common.search') }}</button>
+                                            <a href="{{ route('users.index') }}" class="btn btn-light">{{ __('common.clear') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@
 
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title mb-0">کاربران</h5>
+                    <h5 class="card-title mb-0">{{ __('users.title') }}</h5>
                     <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
-                        <i class="bx bx-plus"></i> افزودن کاربر
+                        <i class="bx bx-plus"></i> {{ __('users.create') }}
                     </a>
                 </div>
                 <div class="card-body">
@@ -87,13 +87,13 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>نام</th>
-                                    <th>نام کاربری</th>
-                                    <th>ایمیل</th>
-                                    <th>تلفن</th>
-                                    <th>وضعیت</th>
-                                    <th>تاریخ ثبت</th>
-                                    <th>عملیات</th>
+                                    <th>{{ __('common.name') }}</th>
+                                    <th>{{ __('users.username') }}</th>
+                                    <th>{{ __('common.email') }}</th>
+                                    <th>{{ __('common.phone') }}</th>
+                                    <th>{{ __('common.status') }}</th>
+                                    <th>{{ __('common.created_at') }}</th>
+                                    <th>{{ __('common.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,27 +106,27 @@
                                         <td>{{ $user->phone ?: '—' }}</td>
                                         <td>
                                             @if ($user->status === \App\Enums\RecordStatus::Active)
-                                                <span class="badge bg-success-subtle text-success">فعال</span>
+                                                <span class="badge bg-success-subtle text-success">{{ __('common.active') }}</span>
                                             @else
-                                                <span class="badge bg-danger-subtle text-danger">غیرفعال</span>
+                                                <span class="badge bg-danger-subtle text-danger">{{ __('common.inactive') }}</span>
                                             @endif
                                         </td>
                                         <td>{{ $user->created_at?->format('Y/m/d') }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#userModal{{ $user->id }}">نمایش</button>
-                                                <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary">ویرایش</a>
-                                                <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('این کاربر حذف شود؟')">
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#userModal{{ $user->id }}">{{ __('common.show') }}</button>
+                                                <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary">{{ __('common.edit') }}</a>
+                                                <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm(@json(__('users.delete_confirm')))">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">حذف</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">{{ __('common.delete') }}</button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center text-muted py-4">موردی ثبت نشده است.</td>
+                                        <td colspan="8" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -144,41 +144,41 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="userModalLabel{{ $user->id }}">لیست اطلاعات وارد شده</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                                        <h5 class="modal-title" id="userModalLabel{{ $user->id }}">{{ __('common.details') }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('common.close') }}"></button>
                                     </div>
                                     <div class="modal-body">
                                         <dl class="row mb-0">
-                                            <dt class="col-sm-3">نام</dt>
+                                            <dt class="col-sm-3">{{ __('common.name') }}</dt>
                                             <dd class="col-sm-9">{{ $user->name }}</dd>
 
-                                            <dt class="col-sm-3">نام خانوادگی</dt>
+                                            <dt class="col-sm-3">{{ __('users.last_name') }}</dt>
                                             <dd class="col-sm-9">{{ $user->last_name ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">نام کاربری</dt>
+                                            <dt class="col-sm-3">{{ __('users.username') }}</dt>
                                             <dd class="col-sm-9">{{ $user->username ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">ایمیل</dt>
+                                            <dt class="col-sm-3">{{ __('common.email') }}</dt>
                                             <dd class="col-sm-9">{{ $user->email }}</dd>
 
-                                            <dt class="col-sm-3">تلفن</dt>
+                                            <dt class="col-sm-3">{{ __('common.phone') }}</dt>
                                             <dd class="col-sm-9">{{ $user->phone ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">وضعیت</dt>
+                                            <dt class="col-sm-3">{{ __('common.status') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($user->status === \App\Enums\RecordStatus::Active)
-                                                    فعال
+                                                    {{ __('common.active') }}
                                                 @else
-                                                    غیرفعال
+                                                    {{ __('common.inactive') }}
                                                 @endif
                                             </dd>
 
-                                            <dt class="col-sm-3">تاریخ ثبت</dt>
+                                            <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
                                             <dd class="col-sm-9 mb-0">{{ $user->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
                                         </dl>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('common.close') }}</button>
                                     </div>
                                 </div>
                             </div>

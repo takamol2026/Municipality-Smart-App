@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'title' => 'کاروونکي',
+    'list' => 'د کاروونکو لیست',
+    'create' => 'کاروونکی اضافه کړئ',
+    'edit' => 'کاروونکی سم کړئ',
+    'name_placeholder' => 'د کاروونکي نوم وليکئ',
+    'first_name_placeholder' => 'نوم وليکئ',
+    'last_name' => 'تخلص',
+    'last_name_placeholder' => 'تخلص وليکئ',
+    'username' => 'کارن نوم',
+    'username_placeholder' => 'کارن نوم وليکئ',
+    'name_pair' => 'نوم / تخلص',
+    'account_pair' => 'ایمیل / کارن نوم',
+    'password_pair' => 'پټنوم / د پټنوم تکرار',
+    'password' => 'پټنوم',
+    'password_placeholder' => 'پټنوم وليکئ',
+    'password_confirmation' => 'د پټنوم تکرار',
+    'password_confirmation_placeholder' => 'د پټنوم تکرار وليکئ',
+    'password_optional' => 'که خالي وي نه بدلیږي',
+    'delete_confirm' => 'دا کاروونکی ړنګ شي؟',
+    'saved' => 'کاروونکی په بریالیتوب سره خوندي شو.',
+    'updated' => 'کاروونکی په بریالیتوب سره سم شو.',
+    'deleted' => 'کاروونکی په بریالیتوب سره ړنګ شو.',
+    'delete_self' => 'خپل حساب نشئ ړنګولی.',
+    'delete_blocked' => 'دا کاروونکی د اړوندو معلوماتو د لرلو له امله نشي ړنګېدای.',
+];

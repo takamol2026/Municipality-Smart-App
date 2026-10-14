@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title' => 'Rentals',
+    'list' => 'Rental list',
+    'create' => 'Add rental',
+    'edit' => 'Edit rental',
+    'name_placeholder' => 'Enter the rental name',
+    'price_period' => 'Rental price / rental period',
+    'price' => 'Rental price',
+    'period' => 'Rental period',
+    'duration' => 'Duration',
+    'period_placeholder' => 'Rental period (days)',
+    'days' => ':count days',
+    'delete_confirm' => 'Delete this rental?',
+    'categories_list' => 'Rental categories',
+    'categories_create' => 'Add rental category',
+    'categories_edit' => 'Edit rental category',
+    'category_delete_blocked' => 'This category cannot be deleted because it has rentals.',
+    'saved' => 'Rental saved successfully.',
+    'updated' => 'Rental updated successfully.',
+    'deleted' => 'Rental deleted successfully.',
+];

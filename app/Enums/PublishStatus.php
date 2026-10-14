@@ -11,9 +11,9 @@ enum PublishStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::InProgress => 'در حال کار',
-            self::Completed => 'تمام شده',
-            self::NotStarted => 'هنوز شروع نشده',
+            self::InProgress => __('projects.in_progress'),
+            self::Completed => __('projects.completed'),
+            self::NotStarted => __('projects.not_started'),
         };
     }
 }
