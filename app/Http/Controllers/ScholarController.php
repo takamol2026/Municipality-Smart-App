@@ -54,7 +54,7 @@ class ScholarController extends Controller
 
         return redirect()
             ->route('scholars.index')
-            ->with('success', 'عالم با موفقیت ذخیره شد.');
+            ->with('success', __('scholars.saved'));
     }
 
     public function edit(Scholar $scholar): View
@@ -79,7 +79,7 @@ class ScholarController extends Controller
 
         return redirect()
             ->route('scholars.index')
-            ->with('success', 'عالم با موفقیت ویرایش شد.');
+            ->with('success', __('scholars.updated'));
     }
 
     public function downloadImage(Scholar $scholar): StreamedResponse
@@ -96,7 +96,7 @@ class ScholarController extends Controller
 
         return redirect()
             ->route('scholars.index')
-            ->with('success', 'عالم با موفقیت حذف شد.');
+            ->with('success', __('scholars.deleted'));
     }
 
     private function deleteScholarImage(?string $path): void

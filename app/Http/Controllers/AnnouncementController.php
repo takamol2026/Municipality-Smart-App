@@ -61,7 +61,7 @@ class AnnouncementController extends Controller
 
         return redirect()
             ->route('announcements.index')
-            ->with('success', 'اطلاعیه با موفقیت ذخیره شد.');
+            ->with('success', __('announcements.saved'));
     }
 
     public function edit(Announcement $announcement): View
@@ -94,7 +94,7 @@ class AnnouncementController extends Controller
 
         return redirect()
             ->route('announcements.index')
-            ->with('success', 'اطلاعیه با موفقیت ویرایش شد.');
+            ->with('success', __('announcements.updated'));
     }
 
     public function downloadImage(Announcement $announcement): StreamedResponse
@@ -119,7 +119,7 @@ class AnnouncementController extends Controller
 
         return redirect()
             ->route('announcements.index')
-            ->with('success', 'اطلاعیه با موفقیت حذف شد.');
+            ->with('success', __('announcements.deleted'));
     }
 
     /**

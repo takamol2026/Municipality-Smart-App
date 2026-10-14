@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Announcements',
+    'list' => 'Announcement list',
+    'create' => 'Add announcement',
+    'edit' => 'Edit announcement',
+    'title_label' => 'Title',
+    'title_placeholder' => 'Enter the announcement title',
+    'dates' => 'Publish date / expiry date',
+    'publish_date' => 'Publish date',
+    'expire_date' => 'Expiry date',
+    'content' => 'Content',
+    'content_placeholder' => 'Enter the content',
+    'image_attachment' => 'Image / attachment',
+    'attachment' => 'Attachment',
+    'download_attachment' => 'Download attachment',
+    'download_current_attachment' => 'Download current attachment',
+    'delete_confirm' => 'Delete this announcement?',
+    'categories_list' => 'Announcement categories',
+    'categories_create' => 'Add announcement category',
+    'categories_edit' => 'Edit announcement category',
+    'category_delete_blocked' => 'This category cannot be deleted because it has announcements.',
+    'saved' => 'Announcement saved successfully.',
+    'updated' => 'Announcement updated successfully.',
+    'deleted' => 'Announcement deleted successfully.',
+];

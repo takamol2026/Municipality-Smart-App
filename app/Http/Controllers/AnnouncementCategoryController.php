@@ -48,7 +48,7 @@ class AnnouncementCategoryController extends Controller
 
         return redirect()
             ->route('announcement-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(AnnouncementCategory $announcementCategory): View
@@ -70,7 +70,7 @@ class AnnouncementCategoryController extends Controller
 
         return redirect()
             ->route('announcement-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function destroy(AnnouncementCategory $announcementCategory): RedirectResponse
@@ -78,13 +78,13 @@ class AnnouncementCategoryController extends Controller
         if ($announcementCategory->announcements()->exists()) {
             return redirect()
                 ->route('announcement-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن اطلاعیه قابل حذف نیست.');
+                ->with('error', __('announcements.category_delete_blocked'));
         }
 
         $announcementCategory->delete();
 
         return redirect()
             ->route('announcement-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 }

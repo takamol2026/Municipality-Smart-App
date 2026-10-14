@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'خبرتیاوې',
+    'list' => 'د خبرتیاوو لیست',
+    'create' => 'خبرتیا اضافه کړئ',
+    'edit' => 'خبرتیا سم کړئ',
+    'title_label' => 'سرلیک',
+    'title_placeholder' => 'د خبرتیا سرلیک وليکئ',
+    'dates' => 'د خپرېدو نیټه / د پای نیټه',
+    'publish_date' => 'د خپرېدو نیټه',
+    'expire_date' => 'د پای نیټه',
+    'content' => 'منځپانګه',
+    'content_placeholder' => 'منځپانګه وليکئ',
+    'image_attachment' => 'انځور / ضمیمه',
+    'attachment' => 'ضمیمه',
+    'download_attachment' => 'ضمیمه ډاونلوډ کړئ',
+    'download_current_attachment' => 'اوسنۍ ضمیمه ډاونلوډ کړئ',
+    'delete_confirm' => 'دا خبرتیا ړنګه شي؟',
+    'categories_list' => 'د خبرتیاوو د کټګورۍ لیست',
+    'categories_create' => 'د خبرتیا کټګوري اضافه کړئ',
+    'categories_edit' => 'د خبرتیا کټګوري سم کړئ',
+    'category_delete_blocked' => 'دا کټګوري د خبرتیا د لرلو له امله نشي ړنګېدای.',
+    'saved' => 'خبرتیا په بریالیتوب سره خوندي شوه.',
+    'updated' => 'خبرتیا په بریالیتوب سره سمه شوه.',
+    'deleted' => 'خبرتیا په بریالیتوب سره ړنګه شوه.',
+];

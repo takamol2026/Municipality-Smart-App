@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'لیست اطلاعیه‌ها')
-@section('page-title', 'لیست اطلاعیه‌ها')
+@section('title', __('announcements.list'))
+@section('page-title', __('announcements.list'))
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">داشبورد</a></li>
-    <li class="breadcrumb-item active">اطلاعیه‌ها</li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('dashboard.title') }}</a></li>
+    <li class="breadcrumb-item active">{{ __('announcements.title') }}</li>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">جستجو</h5>
+                    <h5 class="card-title mb-0">{{ __('common.search') }}</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('announcements.index') }}" method="GET">
@@ -22,25 +22,25 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label for="name" class="form-label">عنوان</label>
+                                        <label for="name" class="form-label">{{ __('announcements.title_label') }}</label>
                                     </div>
                                     <div class="col-lg-10">
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="عنوان اطلاعیه را وارد کنید">
+                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="{{ __('announcements.title_placeholder') }}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label class="form-label">وضعیت</label>
+                                        <label class="form-label">{{ __('common.status') }}</label>
                                     </div>
                                     <div class="col-lg-10">
                                         <div class="form-check form-check-inline form-radio-success">
                                             <input class="form-check-input" type="radio" name="status" id="status_active" value="active" @checked(request('status') === 'active')>
-                                            <label class="form-check-label" for="status_active">فعال</label>
+                                            <label class="form-check-label" for="status_active">{{ __('common.active') }}</label>
                                         </div>
                                         <div class="form-check form-check-inline form-radio-danger">
                                             <input class="form-check-input" type="radio" name="status" id="status_inactive" value="inactive" @checked(request('status') === 'inactive')>
-                                            <label class="form-check-label" for="status_inactive">غیرفعال</label>
+                                            <label class="form-check-label" for="status_inactive">{{ __('common.inactive') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -48,8 +48,8 @@
                                     <div class="col-lg-2"></div>
                                     <div class="col-lg-10">
                                         <div class="text-start">
-                                            <button type="submit" class="btn btn-primary">جستجو</button>
-                                            <a href="{{ route('announcements.index') }}" class="btn btn-light">پاک کردن</a>
+                                            <button type="submit" class="btn btn-primary">{{ __('common.search') }}</button>
+                                            <a href="{{ route('announcements.index') }}" class="btn btn-light">{{ __('common.clear') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +62,9 @@
 
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title mb-0">اطلاعیه‌ها</h5>
+                    <h5 class="card-title mb-0">{{ __('announcements.title') }}</h5>
                     <a href="{{ route('announcements.create') }}" class="btn btn-primary btn-sm">
-                        <i class="bx bx-plus"></i> افزودن اطلاعیه
+                        <i class="bx bx-plus"></i> {{ __('announcements.create') }}
                     </a>
                 </div>
                 <div class="card-body">
@@ -80,13 +80,13 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>عنوان</th>
-                                    <th>دسته‌بندی</th>
-                                    <th>وضعیت</th>
-                                    <th>ترتیب</th>
-                                    <th>تاریخ انتشار</th>
-                                    <th>تاریخ ثبت</th>
-                                    <th>عملیات</th>
+                                    <th>{{ __('announcements.title_label') }}</th>
+                                    <th>{{ __('common.category') }}</th>
+                                    <th>{{ __('common.status') }}</th>
+                                    <th>{{ __('common.order') }}</th>
+                                    <th>{{ __('announcements.publish_date') }}</th>
+                                    <th>{{ __('common.created_at') }}</th>
+                                    <th>{{ __('common.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,9 +97,9 @@
                                         <td>{{ $announcement->category?->name ?: '—' }}</td>
                                         <td>
                                             @if ($announcement->status === \App\Enums\RecordStatus::Active)
-                                                <span class="badge bg-success-subtle text-success">فعال</span>
+                                                <span class="badge bg-success-subtle text-success">{{ __('common.active') }}</span>
                                             @else
-                                                <span class="badge bg-danger-subtle text-danger">غیرفعال</span>
+                                                <span class="badge bg-danger-subtle text-danger">{{ __('common.inactive') }}</span>
                                             @endif
                                         </td>
                                         <td>{{ $announcement->sort_order }}</td>
@@ -107,19 +107,19 @@
                                         <td>{{ $announcement->created_at?->format('Y/m/d') }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#announcementModal{{ $announcement->id }}">نمایش</button>
-                                                <a href="{{ route('announcements.edit', $announcement) }}" class="btn btn-sm btn-primary">ویرایش</a>
-                                                <form action="{{ route('announcements.destroy', $announcement) }}" method="POST" onsubmit="return confirm('این اطلاعیه حذف شود؟')">
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#announcementModal{{ $announcement->id }}">{{ __('common.show') }}</button>
+                                                <a href="{{ route('announcements.edit', $announcement) }}" class="btn btn-sm btn-primary">{{ __('common.edit') }}</a>
+                                                <form action="{{ route('announcements.destroy', $announcement) }}" method="POST" onsubmit="return confirm(@json(__('announcements.delete_confirm')))">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">حذف</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">{{ __('common.delete') }}</button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center text-muted py-4">موردی ثبت نشده است.</td>
+                                        <td colspan="8" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -137,74 +137,74 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="announcementModalLabel{{ $announcement->id }}">لیست اطلاعات وارد شده</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                                        <h5 class="modal-title" id="announcementModalLabel{{ $announcement->id }}">{{ __('common.details') }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('common.close') }}"></button>
                                     </div>
                                     <div class="modal-body">
                                         <dl class="row mb-0">
-                                            <dt class="col-sm-3">عنوان</dt>
+                                            <dt class="col-sm-3">{{ __('announcements.title_label') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->title }}</dd>
 
-                                            <dt class="col-sm-3">دسته‌بندی</dt>
+                                            <dt class="col-sm-3">{{ __('common.category') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->category?->name ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">اسلاگ</dt>
+                                            <dt class="col-sm-3">{{ __('common.slug') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->slug ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">وضعیت</dt>
+                                            <dt class="col-sm-3">{{ __('common.status') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($announcement->status === \App\Enums\RecordStatus::Active)
-                                                    فعال
+                                                    {{ __('common.active') }}
                                                 @else
-                                                    غیرفعال
+                                                    {{ __('common.inactive') }}
                                                 @endif
                                             </dd>
 
-                                            <dt class="col-sm-3">ترتیب نمایش</dt>
+                                            <dt class="col-sm-3">{{ __('common.sort_order') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->sort_order }}</dd>
 
-                                            <dt class="col-sm-3">تاریخ انتشار</dt>
+                                            <dt class="col-sm-3">{{ __('announcements.publish_date') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->publish_date?->format('Y/m/d') ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">تاریخ انقضا</dt>
+                                            <dt class="col-sm-3">{{ __('announcements.expire_date') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->expire_date?->format('Y/m/d') ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">توضیح کوتاه</dt>
+                                            <dt class="col-sm-3">{{ __('common.short_description') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $announcement->short_description ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">محتوا</dt>
+                                            <dt class="col-sm-3">{{ __('announcements.content') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $announcement->content ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">تصویر</dt>
+                                            <dt class="col-sm-3">{{ __('common.image') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($announcement->image)
                                                     <div class="d-flex flex-column align-items-start gap-2">
                                                         <img src="{{ asset('storage/'.$announcement->image) }}" alt="{{ $announcement->title }}" class="img-thumbnail" style="max-height: 160px;">
-                                                        <a href="{{ route('announcements.image', $announcement) }}" class="btn btn-sm btn-primary">دانلود تصویر</a>
+                                                        <a href="{{ route('announcements.image', $announcement) }}" class="btn btn-sm btn-primary">{{ __('common.download_image') }}</a>
                                                     </div>
                                                 @else
                                                     —
                                                 @endif
                                             </dd>
 
-                                            <dt class="col-sm-3">پیوست</dt>
+                                            <dt class="col-sm-3">{{ __('announcements.attachment') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($announcement->attachment)
-                                                    <a href="{{ route('announcements.attachment', $announcement) }}" class="btn btn-sm btn-primary">دانلود پیوست</a>
+                                                    <a href="{{ route('announcements.attachment', $announcement) }}" class="btn btn-sm btn-primary">{{ __('announcements.download_attachment') }}</a>
                                                 @else
                                                     —
                                                 @endif
                                             </dd>
 
-                                            <dt class="col-sm-3">تاریخ ثبت</dt>
+                                            <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
                                             <dd class="col-sm-9">{{ $announcement->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
 
-                                            <dt class="col-sm-3">ثبت‌کننده</dt>
+                                            <dt class="col-sm-3">{{ __('common.creator') }}</dt>
                                             <dd class="col-sm-9 mb-0">{{ trim(($announcement->user?->name ?? '').' '.($announcement->user?->last_name ?? '')) ?: '—' }}</dd>
                                         </dl>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('common.close') }}</button>
                                     </div>
                                 </div>
                             </div>

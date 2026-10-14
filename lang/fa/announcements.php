@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'اطلاعیه‌ها',
+    'list' => 'لیست اطلاعیه‌ها',
+    'create' => 'افزودن اطلاعیه',
+    'edit' => 'ویرایش اطلاعیه',
+    'title_label' => 'عنوان',
+    'title_placeholder' => 'عنوان اطلاعیه را وارد کنید',
+    'dates' => 'تاریخ انتشار / تاریخ انقضا',
+    'publish_date' => 'تاریخ انتشار',
+    'expire_date' => 'تاریخ انقضا',
+    'content' => 'محتوا',
+    'content_placeholder' => 'محتوا را وارد کنید',
+    'image_attachment' => 'تصویر / پیوست',
+    'attachment' => 'پیوست',
+    'download_attachment' => 'دانلود پیوست',
+    'download_current_attachment' => 'دانلود پیوست فعلی',
+    'delete_confirm' => 'این اطلاعیه حذف شود؟',
+    'categories_list' => 'لیست دسته‌بندی اطلاعیه‌ها',
+    'categories_create' => 'افزودن دسته‌بندی اطلاعیه',
+    'categories_edit' => 'ویرایش دسته‌بندی اطلاعیه',
+    'category_delete_blocked' => 'این دسته‌بندی به دلیل داشتن اطلاعیه قابل حذف نیست.',
+    'saved' => 'اطلاعیه با موفقیت ذخیره شد.',
+    'updated' => 'اطلاعیه با موفقیت ویرایش شد.',
+    'deleted' => 'اطلاعیه با موفقیت حذف شد.',
+];

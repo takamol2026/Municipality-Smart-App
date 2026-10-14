@@ -54,7 +54,7 @@ class HistoricalAttractionCategoryController extends Controller
 
         return redirect()
             ->route('historical-attraction-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(HistoricalAttractionCategory $historicalAttractionCategory): View
@@ -81,7 +81,7 @@ class HistoricalAttractionCategoryController extends Controller
 
         return redirect()
             ->route('historical-attraction-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function downloadImage(HistoricalAttractionCategory $historicalAttractionCategory): StreamedResponse
@@ -96,7 +96,7 @@ class HistoricalAttractionCategoryController extends Controller
         if ($historicalAttractionCategory->attractions()->exists()) {
             return redirect()
                 ->route('historical-attraction-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن جاذبه قابل حذف نیست.');
+                ->with('error', __('historical_attractions.category_delete_blocked'));
         }
 
         $this->deleteImage($historicalAttractionCategory->image);
@@ -104,7 +104,7 @@ class HistoricalAttractionCategoryController extends Controller
 
         return redirect()
             ->route('historical-attraction-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 
     private function deleteImage(?string $path): void

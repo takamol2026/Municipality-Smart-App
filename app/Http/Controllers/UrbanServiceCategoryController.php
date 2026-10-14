@@ -48,7 +48,7 @@ class UrbanServiceCategoryController extends Controller
 
         return redirect()
             ->route('urban-service-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ذخیره شد.');
+            ->with('success', __('common.category_saved'));
     }
 
     public function edit(UrbanServiceCategory $urbanServiceCategory): View
@@ -70,7 +70,7 @@ class UrbanServiceCategoryController extends Controller
 
         return redirect()
             ->route('urban-service-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
+            ->with('success', __('common.category_updated'));
     }
 
     public function destroy(UrbanServiceCategory $urbanServiceCategory): RedirectResponse
@@ -78,13 +78,13 @@ class UrbanServiceCategoryController extends Controller
         if ($urbanServiceCategory->services()->exists()) {
             return redirect()
                 ->route('urban-service-categories.index')
-                ->with('error', 'این دسته‌بندی به دلیل داشتن خدمات قابل حذف نیست.');
+                ->with('error', __('urban_services.category_delete_blocked'));
         }
 
         $urbanServiceCategory->delete();
 
         return redirect()
             ->route('urban-service-categories.index')
-            ->with('success', 'دسته‌بندی با موفقیت حذف شد.');
+            ->with('success', __('common.category_deleted'));
     }
 }

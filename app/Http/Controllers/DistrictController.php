@@ -58,7 +58,7 @@ class DistrictController extends Controller
 
         return redirect()
             ->route('districts.index')
-            ->with('success', 'منطقه با موفقیت ذخیره شد.');
+            ->with('success', __('districts.saved'));
     }
 
     public function edit(District $district): View
@@ -88,7 +88,7 @@ class DistrictController extends Controller
 
         return redirect()
             ->route('districts.index')
-            ->with('success', 'منطقه با موفقیت ویرایش شد.');
+            ->with('success', __('districts.updated'));
     }
 
     public function downloadImage(District $district): StreamedResponse
@@ -114,7 +114,7 @@ class DistrictController extends Controller
 
         return redirect()
             ->route('districts.edit', $district)
-            ->with('success', 'تصویر با موفقیت حذف شد.');
+            ->with('success', __('districts.image_deleted'));
     }
 
     public function destroy(District $district): RedirectResponse
@@ -129,7 +129,7 @@ class DistrictController extends Controller
 
         return redirect()
             ->route('districts.index')
-            ->with('success', 'منطقه با موفقیت حذف شد.');
+            ->with('success', __('districts.deleted'));
     }
 
     private function storeDistrictImages(District $district, Request $request): void

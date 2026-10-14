@@ -57,7 +57,7 @@ class HistoricalAttractionController extends Controller
 
         return redirect()
             ->route('historical-attractions.index')
-            ->with('success', 'جاذبه با موفقیت ذخیره شد.');
+            ->with('success', __('historical_attractions.saved'));
     }
 
     public function edit(HistoricalAttraction $historicalAttraction): View
@@ -85,7 +85,7 @@ class HistoricalAttractionController extends Controller
 
         return redirect()
             ->route('historical-attractions.index')
-            ->with('success', 'جاذبه با موفقیت ویرایش شد.');
+            ->with('success', __('historical_attractions.updated'));
     }
 
     public function downloadImage(HistoricalAttraction $historicalAttraction): StreamedResponse
@@ -102,7 +102,7 @@ class HistoricalAttractionController extends Controller
 
         return redirect()
             ->route('historical-attractions.index')
-            ->with('success', 'جاذبه با موفقیت حذف شد.');
+            ->with('success', __('historical_attractions.deleted'));
     }
 
     /**

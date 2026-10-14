@@ -51,7 +51,7 @@ class UrbanServiceController extends Controller
 
         return redirect()
             ->route('urban-services.index')
-            ->with('success', 'خدمت با موفقیت ذخیره شد.');
+            ->with('success', __('urban_services.saved'));
     }
 
     public function edit(UrbanService $urbanService): View
@@ -74,7 +74,7 @@ class UrbanServiceController extends Controller
 
         return redirect()
             ->route('urban-services.index')
-            ->with('success', 'خدمت با موفقیت ویرایش شد.');
+            ->with('success', __('urban_services.updated'));
     }
 
     public function destroy(UrbanService $urbanService): RedirectResponse
@@ -83,7 +83,7 @@ class UrbanServiceController extends Controller
 
         return redirect()
             ->route('urban-services.index')
-            ->with('success', 'خدمت با موفقیت حذف شد.');
+            ->with('success', __('urban_services.deleted'));
     }
 
     /**
