@@ -92,7 +92,7 @@
                             <tbody>
                                 @forelse ($districts as $district)
                                     <tr>
-                                        <td>{{ $district->id }}</td>
+                                        <td>{{ $districts->firstItem() + $loop->index }}</td>
                                         <td>{{ $district->name }}</td>
                                         <td>{{ $district->number ?: '—' }}</td>
                                         <td>{{ $district->slug }}</td>

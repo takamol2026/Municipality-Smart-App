@@ -73,7 +73,7 @@
                             <tbody>
                                 @forelse ($files as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $files->firstItem() + $loop->index }}</td>
                                         <td>{{ $item->category?->name ?: '—' }}</td>
                                         <td>{{ $item->fileName() }}</td>
                                         <td>{{ $item->created_at?->format('Y/m/d') }}</td>

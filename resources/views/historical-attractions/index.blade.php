@@ -92,7 +92,7 @@
                             <tbody>
                                 @forelse ($attractions as $attraction)
                                     <tr>
-                                        <td>{{ $attraction->id }}</td>
+                                        <td>{{ $attractions->firstItem() + $loop->index }}</td>
                                         <td>{{ $attraction->name }}</td>
                                         <td>{{ $attraction->category?->name ?: '—' }}</td>
                                         <td>{{ $attraction->slug }}</td>

@@ -98,7 +98,7 @@
                             <tbody>
                                 @forelse ($categories as $category)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $categories->firstItem() + $loop->index }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>

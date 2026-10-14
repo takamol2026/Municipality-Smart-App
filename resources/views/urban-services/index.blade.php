@@ -92,7 +92,7 @@
                             <tbody>
                                 @forelse ($services as $service)
                                     <tr>
-                                        <td>{{ $service->id }}</td>
+                                        <td>{{ $services->firstItem() + $loop->index }}</td>
                                         <td>{{ $service->name }}</td>
                                         <td>{{ $service->category?->name ?: '—' }}</td>
                                         <td>{{ $service->slug }}</td>

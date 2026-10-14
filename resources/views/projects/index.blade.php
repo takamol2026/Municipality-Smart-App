@@ -93,7 +93,7 @@
                             <tbody>
                                 @forelse ($projects as $project)
                                     <tr>
-                                        <td>{{ $project->id }}</td>
+                                        <td>{{ $projects->firstItem() + $loop->index }}</td>
                                         <td>{{ $project->title }}</td>
                                         <td>{{ $project->category?->name ?: '—' }}</td>
                                         <td>

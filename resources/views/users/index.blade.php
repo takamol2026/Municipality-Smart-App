@@ -99,7 +99,7 @@
                             <tbody>
                                 @forelse ($users as $user)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $users->firstItem() + $loop->index }}</td>
                                         <td>{{ trim($user->name.' '.$user->last_name) }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->email }}</td>

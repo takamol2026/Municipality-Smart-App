@@ -92,7 +92,7 @@
                             <tbody>
                                 @forelse ($locations as $location)
                                     <tr>
-                                        <td>{{ $location->id }}</td>
+                                        <td>{{ $locations->firstItem() + $loop->index }}</td>
                                         <td>{{ $location->name }}</td>
                                         <td>{{ $location->category?->name ?: '—' }}</td>
                                         <td>{{ $location->phone ?: '—' }}</td>

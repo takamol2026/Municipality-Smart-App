@@ -91,7 +91,7 @@
                             <tbody>
                                 @forelse ($scholars as $scholar)
                                     <tr>
-                                        <td>{{ $scholar->id }}</td>
+                                        <td>{{ $scholars->firstItem() + $loop->index }}</td>
                                         <td>{{ $scholar->name }}</td>
                                         <td>{{ $scholar->slug }}</td>
                                         <td>

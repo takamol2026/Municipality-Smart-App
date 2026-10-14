@@ -93,7 +93,7 @@
                             <tbody>
                                 @forelse ($rentals as $rental)
                                     <tr>
-                                        <td>{{ $rental->id }}</td>
+                                        <td>{{ $rentals->firstItem() + $loop->index }}</td>
                                         <td>{{ $rental->name }}</td>
                                         <td>{{ $rental->category?->name ?: '—' }}</td>
                                         <td>{{ $rental->rental_price !== null ? number_format($rental->rental_price) : '—' }}</td>
