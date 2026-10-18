@@ -65,10 +65,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" placeholder="{{ __('users.username_placeholder') }}" required>
-                                                @error('username')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                <input type="text" id="username" class="form-control" value="{{ $user->username }}" readonly>
+                                                <div class="form-text">{{ __('profile.username_locked') }}</div>
                                             </div>
                                         </div>
                                     </div>

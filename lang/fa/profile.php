@@ -3,6 +3,7 @@
 return [
     'title' => 'پروفایل',
     'edit' => 'ویرایش پروفایل',
+    'username_locked' => 'نام کاربری قابل ویرایش نیست.',
     'change_password' => 'تغییر رمز عبور',
     'current_password' => 'رمز عبور فعلی',
     'new_password' => 'رمز عبور جدید را وارد کنید',

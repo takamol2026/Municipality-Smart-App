@@ -3,6 +3,7 @@
 return [
     'title' => 'پروفایل',
     'edit' => 'پروفایل سم کړئ',
+    'username_locked' => 'کارن نوم نشي بدلېدای.',
     'change_password' => 'پټنوم بدل کړئ',
     'current_password' => 'اوسنی پټنوم',
     'new_password' => 'نوی پټنوم وليکئ',

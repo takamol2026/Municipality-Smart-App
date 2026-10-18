@@ -3,6 +3,7 @@
 return [
     'title' => 'Profile',
     'edit' => 'Edit profile',
+    'username_locked' => 'The username cannot be changed.',
     'change_password' => 'Change password',
     'current_password' => 'Current password',
     'new_password' => 'Enter the new password',
