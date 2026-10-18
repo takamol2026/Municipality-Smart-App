@@ -3,6 +3,8 @@
 return [
     'org_title' => 'ریاست شاروالی ولایت هرات',
     'sidebar_brand' => 'ورود به آپلیکشن هوشمند ریاست شاروالی هرات',
+    'sidebar_brand_line1' => 'ورود به آپلیکشن هوشمند',
+    'sidebar_brand_line2' => 'ریاست شاروالی هرات',
     'sidebar_brand_short' => 'شاروالی هرات',
     'admin_panel' => 'پنل مدیریت',
     'search' => 'جستجو',

@@ -3,6 +3,8 @@
 return [
     'org_title' => 'د هرات ولایت د ښاروالۍ ریاست',
     'sidebar_brand' => 'د هرات ښاروالۍ د هوښیار اپلیکیشن ته ننوتل',
+    'sidebar_brand_line1' => 'هوښیار اپلیکیشن ته ننوتل',
+    'sidebar_brand_line2' => 'د هرات ښاروالۍ ریاست',
     'sidebar_brand_short' => 'د هرات ښاروالي',
     'admin_panel' => 'د مدیریت پینل',
     'search' => 'لټون',

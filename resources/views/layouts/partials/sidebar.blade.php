@@ -14,20 +14,10 @@
 
 <div class="app-menu navbar-menu">
     <div class="navbar-brand-box">
-        <a href="{{ route('dashboard') }}" class="logo logo-dark">
-            <span class="logo-sm">
-                <span class="sidebar-brand-title">{{ __('header.sidebar_brand_short') }}</span>
-            </span>
-            <span class="logo-lg">
-                <span class="sidebar-brand-title">{{ __('header.sidebar_brand') }}</span>
-            </span>
-        </a>
-        <a href="{{ route('dashboard') }}" class="logo logo-light">
-            <span class="logo-sm">
-                <span class="sidebar-brand-title">{{ __('header.sidebar_brand_short') }}</span>
-            </span>
-            <span class="logo-lg">
-                <span class="sidebar-brand-title">{{ __('header.sidebar_brand') }}</span>
+        <a href="{{ route('dashboard') }}" class="sidebar-brand-link">
+            <span class="sidebar-brand">
+                <span class="sidebar-brand-line">{{ __('header.sidebar_brand_line1') }}</span>
+                <span class="sidebar-brand-line is-emphasis">{{ __('header.sidebar_brand_line2') }}</span>
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -332,24 +322,32 @@
 <!-- Left Sidebar End -->
 
 <style>
-    .navbar-brand-box .logo {
-        display: flex;
-        align-items: center;
-        min-height: 70px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+    .app-menu .navbar-brand-box {
+        height: auto;
+        padding: 18px 16px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .sidebar-brand-title {
+    .sidebar-brand-link {
         display: block;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 1.5;
-        white-space: normal;
-        text-align: center;
-        padding: 0 4px;
+        line-height: 1.4;
+        text-decoration: none;
     }
-    .logo-light .sidebar-brand-title {
-        color: var(--tb-body-color, #212529);
+    .sidebar-brand {
+        display: block;
+        text-align: center;
+        white-space: normal;
+    }
+    .sidebar-brand-line {
+        display: block;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.7;
+    }
+    .sidebar-brand-line.is-emphasis {
+        color: #fff;
+        font-size: 13.5px;
+        font-weight: 700;
+        margin-top: 2px;
     }
 </style>
