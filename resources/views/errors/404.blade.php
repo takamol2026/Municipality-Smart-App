@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>صفحه پیدا نشد | پنل مدیریت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ asset('assets/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/assets/images/municipality_logo.jpg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <script src="{{ asset('assets/assets/js/layout.js') }}"></script>
@@ -39,8 +39,8 @@
                             <div class="p-2">
                                 <div class="mb-4 pb-2 text-center mt-3">
                                     <a href="{{ url('/') }}" class="auth-logo">
-                                        <img src="{{ asset('assets/assets/images/logo-dark.png') }}" alt="" height="30" class="auth-logo-dark mx-auto">
-                                        <img src="{{ asset('assets/assets/images/logo-light.png') }}" alt="" height="30" class="auth-logo-light mx-auto">
+                                        <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="90" class="auth-logo-dark mx-auto">
+                                        <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="90" class="auth-logo-light mx-auto">
                                     </a>
                                 </div>
                                 <div class="error-img text-center px-5">

@@ -2,6 +2,8 @@
 
 return [
     'org_title' => 'Herat Provincial Municipality',
+    'sidebar_brand' => 'Enter the Herat Municipality Smart Application',
+    'sidebar_brand_short' => 'Herat Municipality',
     'admin_panel' => 'Admin panel',
     'search' => 'Search',
     'search_placeholder' => 'Search...',
@@ -11,6 +13,8 @@ return [
     'user' => 'User',
     'guest' => 'Guest',
     'welcome' => 'Welcome',
+    'edit_profile' => 'Edit profile',
+    'change_password' => 'Change password',
     'logout' => 'Log out',
     'login' => 'Log in',
     'language' => 'Language',

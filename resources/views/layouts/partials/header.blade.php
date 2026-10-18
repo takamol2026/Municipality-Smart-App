@@ -11,19 +11,19 @@
                     <div class="navbar-brand-box horizontal-logo">
                         <a href="{{ route('dashboard') }}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                                <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="36">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('assets/assets/images/logo-dark.png') }}" alt="" height="22">
+                                <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="44">
                             </span>
                         </a>
 
                         <a href="{{ route('dashboard') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                                <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="36">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('assets/assets/images/logo-light.png') }}" alt="" height="22">
+                                <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="44">
                             </span>
                         </a>
                     </div>
@@ -105,20 +105,7 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <h6 class="dropdown-header">{{ __('header.welcome') }} {{ $authUser?->name ?? '' }}</h6>
-                            @auth
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">
-                                        <i class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i>
-                                        <span class="align-middle">{{ __('header.logout') }}</span>
-                                    </button>
-                                </form>
-                            @else
-                                <a class="dropdown-item" href="{{ route('login') }}">
-                                    <i class="mdi mdi-login text-muted fs-lg align-middle me-1"></i>
-                                    <span class="align-middle">{{ __('header.login') }}</span>
-                                </a>
-                            @endauth
+                            @include('layouts.partials.user-dropdown')
                         </div>
                     </div>
                 </div>

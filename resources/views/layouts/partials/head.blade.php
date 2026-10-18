@@ -1,5 +1,5 @@
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/assets/images/municipality_logo.jpg') }}">
         
         <!-- Fonts css load -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

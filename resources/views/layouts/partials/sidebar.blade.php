@@ -16,18 +16,18 @@
     <div class="navbar-brand-box">
         <a href="{{ route('dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                <span class="sidebar-brand-title">{{ __('header.sidebar_brand_short') }}</span>
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('assets/assets/images/logo-dark.png') }}" alt="" height="22">
+                <span class="sidebar-brand-title">{{ __('header.sidebar_brand') }}</span>
             </span>
         </a>
         <a href="{{ route('dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('assets/assets/images/logo-sm.png') }}" alt="" height="22">
+                <span class="sidebar-brand-title">{{ __('header.sidebar_brand_short') }}</span>
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('assets/assets/images/logo-light.png') }}" alt="" height="22">
+                <span class="sidebar-brand-title">{{ __('header.sidebar_brand') }}</span>
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -65,10 +65,10 @@
                     <div class="collapse menu-dropdown {{ $isActive('districts') ? 'show' : '' }}" id="sidebarDistricts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->routeIs('districts.index') ? 'active' : '' }}">{{ __('sidebar.districts_list') }}</a>
+                                <a href="{{ route('districts.create') }}" class="nav-link {{ request()->routeIs('districts.create') ? 'active' : '' }}">{{ __('sidebar.districts_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('districts.create') }}" class="nav-link {{ request()->routeIs('districts.create') ? 'active' : '' }}">{{ __('sidebar.districts_create') }}</a>
+                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->routeIs('districts.index') ? 'active' : '' }}">{{ __('sidebar.districts_list') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -86,16 +86,16 @@
                     <div class="collapse menu-dropdown {{ $urbanOpen ? 'show' : '' }}" id="sidebarUrbanServices">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('urban-services.index') }}" class="nav-link {{ request()->routeIs('urban-services.index') ? 'active' : '' }}">{{ __('sidebar.services_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('urban-services.create') }}" class="nav-link {{ request()->routeIs('urban-services.create') ? 'active' : '' }}">{{ __('sidebar.services_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('urban-service-categories.index') }}" class="nav-link {{ request()->routeIs('urban-service-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('urban-services.index') }}" class="nav-link {{ request()->routeIs('urban-services.index') ? 'active' : '' }}">{{ __('sidebar.services_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('urban-service-categories.create') }}" class="nav-link {{ request()->routeIs('urban-service-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('urban-service-categories.index') }}" class="nav-link {{ request()->routeIs('urban-service-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -113,16 +113,16 @@
                     <div class="collapse menu-dropdown {{ $historicalOpen ? 'show' : '' }}" id="sidebarHistorical">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('historical-attractions.index') }}" class="nav-link {{ request()->routeIs('historical-attractions.index') ? 'active' : '' }}">{{ __('sidebar.attractions_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('historical-attractions.create') }}" class="nav-link {{ request()->routeIs('historical-attractions.create') ? 'active' : '' }}">{{ __('sidebar.attractions_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('historical-attraction-categories.index') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('historical-attractions.index') }}" class="nav-link {{ request()->routeIs('historical-attractions.index') ? 'active' : '' }}">{{ __('sidebar.attractions_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('historical-attraction-categories.create') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('historical-attraction-categories.index') }}" class="nav-link {{ request()->routeIs('historical-attraction-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -139,10 +139,10 @@
                     <div class="collapse menu-dropdown {{ $isActive('scholars') ? 'show' : '' }}" id="sidebarScholars">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('scholars.index') }}" class="nav-link {{ request()->routeIs('scholars.index') ? 'active' : '' }}">{{ __('sidebar.scholars_list') }}</a>
+                                <a href="{{ route('scholars.create') }}" class="nav-link {{ request()->routeIs('scholars.create') ? 'active' : '' }}">{{ __('sidebar.scholars_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('scholars.create') }}" class="nav-link {{ request()->routeIs('scholars.create') ? 'active' : '' }}">{{ __('sidebar.scholars_create') }}</a>
+                                <a href="{{ route('scholars.index') }}" class="nav-link {{ request()->routeIs('scholars.index') ? 'active' : '' }}">{{ __('sidebar.scholars_list') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -160,16 +160,16 @@
                     <div class="collapse menu-dropdown {{ $announcementsOpen ? 'show' : '' }}" id="sidebarAnnouncements">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('announcements.index') }}" class="nav-link {{ request()->routeIs('announcements.index') ? 'active' : '' }}">{{ __('sidebar.announcements_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('announcements.create') }}" class="nav-link {{ request()->routeIs('announcements.create') ? 'active' : '' }}">{{ __('sidebar.announcements_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('announcement-categories.index') }}" class="nav-link {{ request()->routeIs('announcement-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('announcements.index') }}" class="nav-link {{ request()->routeIs('announcements.index') ? 'active' : '' }}">{{ __('sidebar.announcements_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('announcement-categories.create') }}" class="nav-link {{ request()->routeIs('announcement-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('announcement-categories.index') }}" class="nav-link {{ request()->routeIs('announcement-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -187,16 +187,16 @@
                     <div class="collapse menu-dropdown {{ $projectsOpen ? 'show' : '' }}" id="sidebarProjects">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">{{ __('sidebar.projects_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('projects.create') }}" class="nav-link {{ request()->routeIs('projects.create') ? 'active' : '' }}">{{ __('sidebar.projects_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('project-categories.index') }}" class="nav-link {{ request()->routeIs('project-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">{{ __('sidebar.projects_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('project-categories.create') }}" class="nav-link {{ request()->routeIs('project-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('project-categories.index') }}" class="nav-link {{ request()->routeIs('project-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -214,16 +214,16 @@
                     <div class="collapse menu-dropdown {{ $mapOpen ? 'show' : '' }}" id="sidebarMapLocations">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('map-locations.index') }}" class="nav-link {{ request()->routeIs('map-locations.index') ? 'active' : '' }}">{{ __('sidebar.locations_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('map-locations.create') }}" class="nav-link {{ request()->routeIs('map-locations.create') ? 'active' : '' }}">{{ __('sidebar.locations_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('map-categories.index') }}" class="nav-link {{ request()->routeIs('map-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('map-locations.index') }}" class="nav-link {{ request()->routeIs('map-locations.index') ? 'active' : '' }}">{{ __('sidebar.locations_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('map-categories.create') }}" class="nav-link {{ request()->routeIs('map-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('map-categories.index') }}" class="nav-link {{ request()->routeIs('map-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -241,16 +241,16 @@
                     <div class="collapse menu-dropdown {{ $rentalsOpen ? 'show' : '' }}" id="sidebarRentals">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('rentals.index') }}" class="nav-link {{ request()->routeIs('rentals.index') ? 'active' : '' }}">{{ __('sidebar.rentals_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('rentals.create') }}" class="nav-link {{ request()->routeIs('rentals.create') ? 'active' : '' }}">{{ __('sidebar.rentals_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('rental-categories.index') }}" class="nav-link {{ request()->routeIs('rental-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('rentals.index') }}" class="nav-link {{ request()->routeIs('rentals.index') ? 'active' : '' }}">{{ __('sidebar.rentals_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('rental-categories.create') }}" class="nav-link {{ request()->routeIs('rental-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('rental-categories.index') }}" class="nav-link {{ request()->routeIs('rental-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -268,16 +268,16 @@
                     <div class="collapse menu-dropdown {{ $safaeiOpen ? 'show' : '' }}" id="sidebarSafaei">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('safaei.index') }}" class="nav-link {{ request()->routeIs('safaei.index') ? 'active' : '' }}">{{ __('sidebar.files_list') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('safaei.create') }}" class="nav-link {{ request()->routeIs('safaei.create') ? 'active' : '' }}">{{ __('sidebar.files_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('safaei-categories.index') }}" class="nav-link {{ request()->routeIs('safaei-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
+                                <a href="{{ route('safaei.index') }}" class="nav-link {{ request()->routeIs('safaei.index') ? 'active' : '' }}">{{ __('sidebar.files_list') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('safaei-categories.create') }}" class="nav-link {{ request()->routeIs('safaei-categories.create') ? 'active' : '' }}">{{ __('sidebar.categories_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('safaei-categories.index') }}" class="nav-link {{ request()->routeIs('safaei-categories.index') ? 'active' : '' }}">{{ __('sidebar.categories') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -296,10 +296,10 @@
                     <div class="collapse menu-dropdown {{ $isActive('users') ? 'show' : '' }}" id="sidebarUsers">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">{{ __('sidebar.users_list') }}</a>
+                                <a href="{{ route('users.create') }}" class="nav-link {{ request()->routeIs('users.create') ? 'active' : '' }}">{{ __('sidebar.users_create') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('users.create') }}" class="nav-link {{ request()->routeIs('users.create') ? 'active' : '' }}">{{ __('sidebar.users_create') }}</a>
+                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">{{ __('sidebar.users_list') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -311,8 +311,7 @@
     <div class="dropdown sidebar-user mt-4">
         <button type="button" class="btn sidebar-user-button shadow-none w-100" id="sidebar-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center overflow-hidden">
-                <img class="rounded-circle header-profile-user" src="{{ asset('assets/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
-                <span class="text-start ms-xl-2 overflow-hidden flex-grow-1 sideba-user-content">
+                <span class="text-start overflow-hidden flex-grow-1 sideba-user-content">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text text-truncate mb-0">
                         {{ $authUser?->name ?? __('header.user') }} {{ $authUser?->last_name }}
                     </span>
@@ -324,23 +323,33 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <h6 class="dropdown-header">{{ __('header.welcome') }} {{ $authUser?->name ?? '' }}</h6>
-            @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="dropdown-item">
-                        <i class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i>
-                        <span class="align-middle">{{ __('header.logout') }}</span>
-                    </button>
-                </form>
-            @else
-                <a class="dropdown-item" href="{{ route('login') }}">
-                    <i class="mdi mdi-login text-muted fs-lg align-middle me-1"></i>
-                    <span class="align-middle">{{ __('header.login') }}</span>
-                </a>
-            @endauth
+            @include('layouts.partials.user-dropdown')
         </div>
     </div>
 
     <div class="sidebar-background"></div>
 </div>
 <!-- Left Sidebar End -->
+
+<style>
+    .navbar-brand-box .logo {
+        display: flex;
+        align-items: center;
+        min-height: 70px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .sidebar-brand-title {
+        display: block;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.5;
+        white-space: normal;
+        text-align: center;
+        padding: 0 4px;
+    }
+    .logo-light .sidebar-brand-title {
+        color: var(--tb-body-color, #212529);
+    }
+</style>

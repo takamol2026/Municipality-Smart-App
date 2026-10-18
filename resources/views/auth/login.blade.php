@@ -6,7 +6,7 @@
     <title>ورود | پنل مدیریت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ asset('assets/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/assets/images/municipality_logo.jpg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <script src="{{ asset('assets/assets/js/layout.js') }}"></script>
@@ -40,8 +40,8 @@
                             <div class="text-center mt-4">
                                 <div class="mb-4 pb-2">
                                     <a href="{{ url('/') }}" class="auth-logo">
-                                        <img src="{{ asset('assets/assets/images/logo-dark.png') }}" alt="" height="30" class="auth-logo-dark mx-auto">
-                                        <img src="{{ asset('assets/assets/images/logo-light.png') }}" alt="" height="30" class="auth-logo-light mx-auto">
+                                        <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="90" class="auth-logo-dark mx-auto">
+                                        <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="90" class="auth-logo-light mx-auto">
                                     </a>
                                 </div>
                                 <h5 class="fs-3xl">خوش آمدید</h5>

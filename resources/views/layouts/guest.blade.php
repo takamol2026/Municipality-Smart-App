@@ -10,7 +10,9 @@
     <main class="auth-shell">
         <section class="auth-panel">
             <div>
-                <div class="auth-mark">ش</div>
+                <div class="auth-mark">
+                    <img src="{{ asset('assets/assets/images/municipality_logo.jpg') }}" alt="{{ __('header.org_title') }}" height="72">
+                </div>
                 <h1>پنل مدیریت</h1>
                 <p>ورود کارکنان برای مدیریت ناحیه‌ها، خدمات، اطلاعیه‌ها و پروژه‌ها.</p>
             </div>
