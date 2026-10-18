@@ -350,4 +350,22 @@
         font-weight: 700;
         margin-top: 2px;
     }
+
+    @media (min-width: 768px) {
+        html[data-layout="vertical"][data-sidebar-size="sm"],
+        html[data-layout="vertical"][data-sidebar-size="sm"] #layout-wrapper,
+        html[data-layout="vertical"][data-sidebar-size="sm"] .main-content {
+            min-height: 100vh !important;
+        }
+    }
+
+    html[data-sidebar-size="sm"] .app-menu .navbar-brand-box {
+        height: var(--tb-header-height);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    html[data-sidebar-size="sm"] .sidebar-brand {
+        display: none;
+    }
 </style>
