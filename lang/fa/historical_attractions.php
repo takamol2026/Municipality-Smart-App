@@ -9,6 +9,8 @@ return [
     'name_placeholder' => 'نام جاذبه را وارد کنید',
     'history' => 'تاریخچه',
     'history_placeholder' => 'تاریخچه را وارد کنید',
+    'location' => 'موقعیت',
+    'location_placeholder' => 'موقعیت را وارد کنید',
     'delete_confirm' => 'این جاذبه حذف شود؟',
     'categories_list' => 'لیست دسته‌بندی جاذبه‌های تاریخی',
     'categories_create' => 'افزودن دسته‌بندی جاذبه',

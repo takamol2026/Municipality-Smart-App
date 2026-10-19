@@ -9,6 +9,8 @@ return [
     'name_placeholder' => 'Enter the attraction name',
     'history' => 'History',
     'history_placeholder' => 'Enter the history',
+    'location' => 'Location',
+    'location_placeholder' => 'Enter the location',
     'delete_confirm' => 'Delete this attraction?',
     'categories_list' => 'Historical attraction categories',
     'categories_create' => 'Add attraction category',

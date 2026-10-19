@@ -9,6 +9,8 @@ return [
     'name_placeholder' => 'د ځای نوم وليکئ',
     'history' => 'تاریخچه',
     'history_placeholder' => 'تاریخچه وليکئ',
+    'location' => 'موقعیت',
+    'location_placeholder' => 'موقعیت وليکئ',
     'delete_confirm' => 'دا ځای ړنګ شي؟',
     'categories_list' => 'د تاریخي ځایونو د کټګورۍ لیست',
     'categories_create' => 'د ځای کټګوري اضافه کړئ',

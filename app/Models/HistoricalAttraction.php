@@ -21,6 +21,7 @@ class HistoricalAttraction extends Model
         'description',
         'history',
         'address',
+        'location',
         'image',
         'status',
         'sort_order',

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->longText('history')->nullable();
             $table->text('address')->nullable();
+            $table->string('location')->nullable();
             $table->string('image')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->unsignedInteger('sort_order')->default(0);

@@ -54,6 +54,7 @@ class HistoricalAttractionController extends ApiController
             'description' => $attraction->description,
             'history' => $attraction->history,
             'address' => $attraction->address,
+            'location' => $attraction->location,
             'image_url' => $this->fileUrl($attraction->image),
             'status' => $this->enumValue($attraction->status),
             'sort_order' => $attraction->sort_order,

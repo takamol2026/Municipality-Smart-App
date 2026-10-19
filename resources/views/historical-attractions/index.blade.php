@@ -97,6 +97,7 @@
                                     <th>{{ __('common.name') }}</th>
                                     <th>{{ __('common.lang') }}</th>
                                     <th>{{ __('common.category') }}</th>
+                                    <th>{{ __('historical_attractions.location') }}</th>
                                     <th>{{ __('common.slug') }}</th>
                                     <th>{{ __('common.status') }}</th>
                                     <th>{{ __('common.order') }}</th>
@@ -111,6 +112,7 @@
                                         <td>{{ $attraction->name }}</td>
                                         <td>{{ $attraction->lang?->label() ?: '—' }}</td>
                                         <td>{{ $attraction->category?->name ?: '—' }}</td>
+                                        <td>{{ $attraction->location ?: '—' }}</td>
                                         <td>{{ $attraction->slug }}</td>
                                         <td>
                                             @if ($attraction->status === \App\Enums\RecordStatus::Active)
@@ -135,7 +137,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="9" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                        <td colspan="10" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -193,6 +195,9 @@
 
                                             <dt class="col-sm-3">{{ __('common.address') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $attraction->address ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('historical_attractions.location') }}</dt>
+                                            <dd class="col-sm-9">{{ $attraction->location ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.image') }}</dt>
                                             <dd class="col-sm-9">

@@ -27,6 +27,7 @@ class HistoricalAttractionSeeder extends Seeder
                 'description' => "توضیحات جاذبه تاریخی شماره {$i}.",
                 'history' => "پیشینه جاذبه تاریخی شماره {$i}.",
                 'address' => "آدرس جاذبه تاریخی {$i}، هرات",
+                'location' => "هرات، ناحیه {$i}",
                 'status' => RecordStatus::Active,
                 'sort_order' => $i,
                 'user_id' => $userId,

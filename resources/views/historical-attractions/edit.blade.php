@@ -160,6 +160,18 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label for="location" class="form-label">{{ __('historical_attractions.location') }}</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="location" id="location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location', $attraction->location) }}" placeholder="{{ __('historical_attractions.location_placeholder') }}">
+                                        @error('location')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label for="image" class="form-label">{{ __('common.image') }}</label>
                                     </div>
                                     <div class="col-lg-10">
