@@ -18,6 +18,7 @@ class DistrictStoreValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'number' => ['nullable', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:districts,slug'],
             'description' => ['nullable', 'string'],

@@ -19,6 +19,7 @@ class DistrictUpdateValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'number' => ['nullable', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('districts', 'slug')->ignore($this->route('district'))],
             'description' => ['nullable', 'string'],

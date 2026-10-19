@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\District;
 use Database\Seeders\Concerns\UpsertsSeed;
@@ -18,6 +19,7 @@ class DistrictSeeder extends Seeder
         for ($i = 1; $i <= $this->seedCount(); $i++) {
             $this->upsert(District::class, ['slug' => "district-{$i}"], [
                 'name' => "ناحیه {$i} هرات",
+                'lang' => Language::All,
                 'number' => (string) $i,
                 'description' => "اطلاعات ناحیه {$i} شهر هرات.",
                 'address' => "آدرس ناحیه {$i}، شهر هرات",

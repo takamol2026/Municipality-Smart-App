@@ -43,6 +43,8 @@ class DistrictController extends ApiController
         return [
             'id' => $district->id,
             'name' => $district->name,
+            'lang' => $this->enumValue($district->lang),
+            'lang_label' => $district->lang?->label(),
             'number' => $district->number,
             'slug' => $district->slug,
             'description' => $district->description,

@@ -31,6 +31,20 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label class="form-label">{{ __('districts.lang') }}</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @foreach (\App\Enums\Language::cases() as $language)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="lang" id="lang_{{ $language->value }}" value="{{ $language->value }}" @checked(request('lang') === $language->value)>
+                                                <label class="form-check-label" for="lang_{{ $language->value }}">{{ $language->label() }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label class="form-label">{{ __('common.status') }}</label>
                                     </div>
                                     <div class="col-lg-10">
@@ -81,6 +95,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('common.name') }}</th>
+                                    <th>{{ __('districts.lang') }}</th>
                                     <th>{{ __('districts.number') }}</th>
                                     <th>{{ __('common.slug') }}</th>
                                     <th>{{ __('common.status') }}</th>
@@ -94,6 +109,7 @@
                                     <tr>
                                         <td>{{ $districts->firstItem() + $loop->index }}</td>
                                         <td>{{ $district->name }}</td>
+                                        <td>{{ $district->lang?->label() ?: '—' }}</td>
                                         <td>{{ $district->number ?: '—' }}</td>
                                         <td>{{ $district->slug }}</td>
                                         <td>
@@ -119,7 +135,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                        <td colspan="9" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -144,6 +160,9 @@
                                         <dl class="row mb-0">
                                             <dt class="col-sm-3">{{ __('common.name') }}</dt>
                                             <dd class="col-sm-9">{{ $district->name }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('districts.lang') }}</dt>
+                                            <dd class="col-sm-9">{{ $district->lang?->label() ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('districts.number') }}</dt>
                                             <dd class="col-sm-9">{{ $district->number ?: '—' }}</dd>
