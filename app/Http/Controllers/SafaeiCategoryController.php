@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Http\Requests\SafaeiCategoryStoreValidation;
 use App\Http\Requests\SafaeiCategoryUpdateValidation;
@@ -18,6 +19,9 @@ class SafaeiCategoryController extends Controller
             ->with('user')
             ->when($request->filled('name'), function ($query) use ($request) {
                 $query->where('name', 'like', '%'.$request->string('name').'%');
+            })
+            ->when($request->filled('lang'), function ($query) use ($request) {
+                $query->where('lang', $request->string('lang'));
             })
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->string('status'));
@@ -38,6 +42,7 @@ class SafaeiCategoryController extends Controller
     {
         $validated = $request->validated();
 
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
         $validated['user_id'] = $request->user()->id;
 
@@ -58,6 +63,7 @@ class SafaeiCategoryController extends Controller
     public function update(SafaeiCategoryUpdateValidation $request, SafaeiCategory $safaeiCategory): RedirectResponse
     {
         $validated = $request->validated();
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
 
         $safaeiCategory->update($validated);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,7 @@ class SafaeiCategory extends Model
 
     protected $fillable = [
         'name',
+        'lang',
         'description',
         'status',
         'user_id',
@@ -24,6 +26,7 @@ class SafaeiCategory extends Model
     protected function casts(): array
     {
         return [
+            'lang' => Language::class,
             'status' => RecordStatus::class,
         ];
     }

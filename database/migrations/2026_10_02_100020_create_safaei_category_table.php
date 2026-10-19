@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('safaei_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('lang', ['fa', 'ps', 'en', 'all'])->default('all');
             $table->text('description')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('user_id')->constrained()->restrictOnDelete();

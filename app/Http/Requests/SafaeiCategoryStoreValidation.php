@@ -18,6 +18,7 @@ class SafaeiCategoryStoreValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'description' => ['nullable', 'string'],
             'status' => ['required', 'in:active,inactive'],
         ];

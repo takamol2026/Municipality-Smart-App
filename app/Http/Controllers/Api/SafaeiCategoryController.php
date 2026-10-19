@@ -42,6 +42,8 @@ class SafaeiCategoryController extends ApiController
         return [
             'id' => $category->id,
             'name' => $category->name,
+            'lang' => $this->enumValue($category->lang),
+            'lang_label' => $category->lang?->label(),
             'description' => $category->description,
             'status' => $this->enumValue($category->status),
             'safaeis_count' => $category->safaeis_count,

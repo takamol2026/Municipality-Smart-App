@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\SafaeiCategory;
 use Database\Seeders\Concerns\UpsertsSeed;
@@ -17,6 +18,7 @@ class SafaeiCategorySeeder extends Seeder
 
         for ($i = 1; $i <= $this->seedCount(); $i++) {
             $this->upsert(SafaeiCategory::class, ['name' => "دسته صفایی {$i}"], [
+                'lang' => Language::All,
                 'description' => "توضیحات دسته صفایی {$i}.",
                 'status' => RecordStatus::Active,
                 'user_id' => $userId,
