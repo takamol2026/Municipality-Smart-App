@@ -19,6 +19,7 @@ class HistoricalAttractionCategoryUpdateValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('historical_attraction_categories', 'slug')->ignore($this->route('historicalAttractionCategory'))],
             'description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:2048'],

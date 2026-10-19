@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\HistoricalAttractionCategory;
 use Database\Seeders\Concerns\UpsertsSeed;
@@ -18,6 +19,7 @@ class HistoricalAttractionCategorySeeder extends Seeder
         for ($i = 1; $i <= $this->seedCount(); $i++) {
             $this->upsert(HistoricalAttractionCategory::class, ['slug' => "historical-category-{$i}"], [
                 'name' => "دسته‌بندی جاذبه تاریخی {$i}",
+                'lang' => Language::All,
                 'description' => "توضیحات دسته‌بندی جاذبه تاریخی {$i}.",
                 'status' => RecordStatus::Active,
                 'sort_order' => $i,

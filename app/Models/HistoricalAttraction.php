@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class HistoricalAttraction extends Model
     protected $fillable = [
         'historical_attraction_category_id',
         'name',
+        'lang',
         'slug',
         'short_description',
         'description',
@@ -28,6 +30,7 @@ class HistoricalAttraction extends Model
     protected function casts(): array
     {
         return [
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];

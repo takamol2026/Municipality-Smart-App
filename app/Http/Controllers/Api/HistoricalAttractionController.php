@@ -47,6 +47,8 @@ class HistoricalAttractionController extends ApiController
         return [
             'id' => $attraction->id,
             'name' => $attraction->name,
+            'lang' => $this->enumValue($attraction->lang),
+            'lang_label' => $attraction->lang?->label(),
             'slug' => $attraction->slug,
             'short_description' => $attraction->short_description,
             'description' => $attraction->description,

@@ -19,6 +19,7 @@ class HistoricalAttractionStoreValidation extends FormRequest
         return [
             'historical_attraction_category_id' => ['required', 'exists:historical_attraction_categories,id'],
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:historical_attractions,slug'],
             'short_description' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],

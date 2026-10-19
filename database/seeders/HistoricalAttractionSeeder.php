@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\HistoricalAttraction;
 use App\Models\HistoricalAttractionCategory;
@@ -21,6 +22,7 @@ class HistoricalAttractionSeeder extends Seeder
             $this->upsert(HistoricalAttraction::class, ['slug' => "historical-{$i}"], [
                 'historical_attraction_category_id' => $categories["historical-category-{$i}"],
                 'name' => "جاذبه تاریخی {$i}",
+                'lang' => Language::All,
                 'short_description' => "خلاصه جاذبه تاریخی {$i} در هرات.",
                 'description' => "توضیحات جاذبه تاریخی شماره {$i}.",
                 'history' => "پیشینه جاذبه تاریخی شماره {$i}.",
