@@ -8,6 +8,7 @@ use App\Http\Requests\DistrictStoreValidation;
 use App\Http\Requests\DistrictUpdateValidation;
 use App\Models\District;
 use App\Models\DistrictFile;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,7 @@ class DistrictController extends Controller
         unset($validated['images']);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('districts', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'districts');
         }
 
         $district = District::create($validated);
@@ -86,7 +87,7 @@ class DistrictController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteDistrictImage($district->image);
-            $validated['image'] = $request->file('image')->store('districts', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'districts');
         }
 
         $district->update($validated);
@@ -146,7 +147,7 @@ class DistrictController extends Controller
 
         foreach ($request->file('images') as $image) {
             $district->files()->create([
-                'location' => $image->store('districts', 'public'),
+                'location' => StoredImage::store($image, 'districts'),
             ]);
         }
     }

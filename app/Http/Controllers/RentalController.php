@@ -8,6 +8,7 @@ use App\Http\Requests\RentalStoreValidation;
 use App\Http\Requests\RentalUpdateValidation;
 use App\Models\Rental;
 use App\Models\RentalCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,7 @@ class RentalController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('rentals', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'rentals');
         }
 
         Rental::create($validated);
@@ -84,7 +85,7 @@ class RentalController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteImage($rental->image);
-            $validated['image'] = $request->file('image')->store('rentals', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'rentals');
         }
 
         $rental->update($validated);

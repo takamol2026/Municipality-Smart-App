@@ -9,6 +9,7 @@ use App\Http\Requests\ProjectUpdateValidation;
 use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\ProjectMedia;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -55,7 +56,7 @@ class ProjectController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('projects', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'projects');
         }
 
         $project = Project::create($validated);
@@ -88,7 +89,7 @@ class ProjectController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteFile($project->image);
-            $validated['image'] = $request->file('image')->store('projects', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'projects');
         }
 
         $project->update($validated);
@@ -171,9 +172,9 @@ class ProjectController extends Controller
             $project->media()->create([
                 'title' => $item['title'] ?? null,
                 'type' => filled($item['type'] ?? null) ? $item['type'] : $this->guessMediaType($file),
-                'file' => $file->store('project-media', 'public'),
+                'file' => StoredImage::store($file, 'project-media'),
                 'thumbnail' => $thumbnail instanceof UploadedFile
-                    ? $thumbnail->store('project-media/thumbnails', 'public')
+                    ? StoredImage::store($thumbnail, 'project-media/thumbnails')
                     : null,
                 'sort_order' => $item['sort_order'] ?? $index,
                 'status' => RecordStatus::Active,
@@ -200,14 +201,14 @@ class ProjectController extends Controller
             $file = $request->file("existing_media.$id.file");
             if ($file instanceof UploadedFile) {
                 $this->deleteFile($media->file);
-                $data['file'] = $file->store('project-media', 'public');
+                $data['file'] = StoredImage::store($file, 'project-media');
                 $data['type'] = filled($item['type'] ?? null) ? $item['type'] : $this->guessMediaType($file);
             }
 
             $thumbnail = $request->file("existing_media.$id.thumbnail");
             if ($thumbnail instanceof UploadedFile) {
                 $this->deleteFile($media->thumbnail);
-                $data['thumbnail'] = $thumbnail->store('project-media/thumbnails', 'public');
+                $data['thumbnail'] = StoredImage::store($thumbnail, 'project-media/thumbnails');
             }
 
             $media->update($data);

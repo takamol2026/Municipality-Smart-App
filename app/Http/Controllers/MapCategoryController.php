@@ -7,6 +7,7 @@ use App\Enums\RecordStatus;
 use App\Http\Requests\MapCategoryStoreValidation;
 use App\Http\Requests\MapCategoryUpdateValidation;
 use App\Models\MapCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class MapCategoryController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('img')) {
-            $validated['img'] = $request->file('img')->store('map-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'map-categories');
         }
 
         MapCategory::create($validated);
@@ -80,7 +81,7 @@ class MapCategoryController extends Controller
 
         if ($request->hasFile('img')) {
             $this->deleteImage($mapCategory->img);
-            $validated['img'] = $request->file('img')->store('map-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'map-categories');
         }
 
         $mapCategory->update($validated);

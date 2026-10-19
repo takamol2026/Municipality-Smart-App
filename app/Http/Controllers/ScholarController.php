@@ -7,6 +7,7 @@ use App\Enums\RecordStatus;
 use App\Http\Requests\ScholarStoreValidation;
 use App\Http\Requests\ScholarUpdateValidation;
 use App\Models\Scholar;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class ScholarController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('scholars', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'scholars');
         }
 
         Scholar::create($validated);
@@ -78,7 +79,7 @@ class ScholarController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteScholarImage($scholar->image);
-            $validated['image'] = $request->file('image')->store('scholars', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'scholars');
         }
 
         $scholar->update($validated);

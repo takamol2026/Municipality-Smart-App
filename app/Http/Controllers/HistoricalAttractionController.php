@@ -8,6 +8,7 @@ use App\Http\Requests\HistoricalAttractionStoreValidation;
 use App\Http\Requests\HistoricalAttractionUpdateValidation;
 use App\Models\HistoricalAttraction;
 use App\Models\HistoricalAttractionCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,7 @@ class HistoricalAttractionController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('historical-attractions', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'historical-attractions');
         }
 
         HistoricalAttraction::create($validated);
@@ -84,7 +85,7 @@ class HistoricalAttractionController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteImage($historicalAttraction->image);
-            $validated['image'] = $request->file('image')->store('historical-attractions', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'historical-attractions');
         }
 
         $historicalAttraction->update($validated);

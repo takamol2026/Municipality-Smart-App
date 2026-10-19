@@ -8,6 +8,7 @@ use App\Http\Requests\AnnouncementStoreValidation;
 use App\Http\Requests\AnnouncementUpdateValidation;
 use App\Models\Announcement;
 use App\Models\AnnouncementCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -55,11 +56,11 @@ class AnnouncementController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('announcements', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'announcements');
         }
 
         if ($request->hasFile('attachment')) {
-            $validated['attachment'] = $request->file('attachment')->store('announcements/attachments', 'public');
+            $validated['attachment'] = StoredImage::store($request->file('attachment'), 'announcements/attachments');
         }
 
         Announcement::create($validated);
@@ -88,12 +89,12 @@ class AnnouncementController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteFile($announcement->image);
-            $validated['image'] = $request->file('image')->store('announcements', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'announcements');
         }
 
         if ($request->hasFile('attachment')) {
             $this->deleteFile($announcement->attachment);
-            $validated['attachment'] = $request->file('attachment')->store('announcements/attachments', 'public');
+            $validated['attachment'] = StoredImage::store($request->file('attachment'), 'announcements/attachments');
         }
 
         $announcement->update($validated);

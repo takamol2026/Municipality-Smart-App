@@ -22,7 +22,7 @@ class RentalCategoryUpdateValidation extends FormRequest
             'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('rental_categories', 'slug')->ignore($this->route('rentalCategory'))],
             'description' => ['nullable', 'string'],
-            'img' => ['nullable', 'image', 'max:2048'],
+            'img' => ['nullable', 'image', 'max:40960'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

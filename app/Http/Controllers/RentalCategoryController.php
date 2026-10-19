@@ -7,6 +7,7 @@ use App\Enums\RecordStatus;
 use App\Http\Requests\RentalCategoryStoreValidation;
 use App\Http\Requests\RentalCategoryUpdateValidation;
 use App\Models\RentalCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class RentalCategoryController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('img')) {
-            $validated['img'] = $request->file('img')->store('rental-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'rental-categories');
         }
 
         RentalCategory::create($validated);
@@ -80,7 +81,7 @@ class RentalCategoryController extends Controller
 
         if ($request->hasFile('img')) {
             $this->deleteImage($rentalCategory->img);
-            $validated['img'] = $request->file('img')->store('rental-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'rental-categories');
         }
 
         $rentalCategory->update($validated);

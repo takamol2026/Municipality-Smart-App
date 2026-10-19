@@ -7,6 +7,7 @@ use App\Enums\RecordStatus;
 use App\Http\Requests\HistoricalAttractionCategoryStoreValidation;
 use App\Http\Requests\HistoricalAttractionCategoryUpdateValidation;
 use App\Models\HistoricalAttractionCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class HistoricalAttractionCategoryController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('historical-attraction-categories', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'historical-attraction-categories');
         }
 
         HistoricalAttractionCategory::create($validated);
@@ -80,7 +81,7 @@ class HistoricalAttractionCategoryController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteImage($historicalAttractionCategory->image);
-            $validated['image'] = $request->file('image')->store('historical-attraction-categories', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'historical-attraction-categories');
         }
 
         $historicalAttractionCategory->update($validated);

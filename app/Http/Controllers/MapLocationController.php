@@ -9,6 +9,7 @@ use App\Http\Requests\MapLocationUpdateValidation;
 use App\Models\MapCategory;
 use App\Models\MapLocation;
 use App\Models\MapMedia;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -58,7 +59,7 @@ class MapLocationController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('map-locations', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'map-locations');
         }
 
         $location = MapLocation::create($validated);
@@ -91,7 +92,7 @@ class MapLocationController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteFile($mapLocation->image);
-            $validated['image'] = $request->file('image')->store('map-locations', 'public');
+            $validated['image'] = StoredImage::store($request->file('image'), 'map-locations');
         }
 
         $mapLocation->update($validated);
@@ -165,7 +166,7 @@ class MapLocationController extends Controller
 
             $mapLocation->media()->create([
                 'type' => filled($item['type'] ?? null) ? $item['type'] : $this->guessMediaType($file),
-                'location' => $file->store('map-media', 'public'),
+                'location' => StoredImage::store($file, 'map-media'),
                 'user_id' => $request->user()->id,
             ]);
         }
@@ -187,7 +188,7 @@ class MapLocationController extends Controller
             $file = $request->file("existing_media.$id.file");
             if ($file instanceof UploadedFile) {
                 $this->deleteFile($media->location);
-                $data['location'] = $file->store('map-media', 'public');
+                $data['location'] = StoredImage::store($file, 'map-media');
                 $data['type'] = filled($item['type'] ?? null) ? $item['type'] : $this->guessMediaType($file);
             }
 

@@ -9,6 +9,7 @@ use App\Http\Requests\SafaeiUpdateValidation;
 use App\Models\Safaei;
 use App\Models\SafaeiCategory;
 use App\Models\SafaeiPhoto;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -53,7 +54,7 @@ class SafaeiController extends Controller
         $safaei = Safaei::create($validated);
 
         $safaei->photos()->create([
-            'file_path' => $file->store('safaei', 'public'),
+            'file_path' => StoredImage::store($file, 'safaei'),
         ]);
 
         return redirect()
@@ -76,7 +77,7 @@ class SafaeiController extends Controller
 
         if ($request->hasFile('file')) {
             $this->deleteFile($safaei->file_path);
-            $validated['file_path'] = $request->file('file')->store('safaei', 'public');
+            $validated['file_path'] = StoredImage::store($request->file('file'), 'safaei');
         }
 
         $safaei->update($validated);

@@ -6,6 +6,7 @@ use App\Enums\RecordStatus;
 use App\Http\Requests\ProjectCategoryStoreValidation;
 use App\Http\Requests\ProjectCategoryUpdateValidation;
 use App\Models\ProjectCategory;
+use App\Support\StoredImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -47,7 +48,7 @@ class ProjectCategoryController extends Controller
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('img')) {
-            $validated['img'] = $request->file('img')->store('project-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'project-categories');
         }
 
         ProjectCategory::create($validated);
@@ -74,7 +75,7 @@ class ProjectCategoryController extends Controller
 
         if ($request->hasFile('img')) {
             $this->deleteImage($projectCategory->img);
-            $validated['img'] = $request->file('img')->store('project-categories', 'public');
+            $validated['img'] = StoredImage::store($request->file('img'), 'project-categories');
         }
 
         $projectCategory->update($validated);
