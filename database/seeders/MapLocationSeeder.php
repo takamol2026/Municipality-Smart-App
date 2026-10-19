@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\MapCategory;
 use App\Models\MapLocation;
@@ -21,6 +22,7 @@ class MapLocationSeeder extends Seeder
             $this->upsert(MapLocation::class, ['slug' => "map-location-{$i}"], [
                 'map_category_id' => $categories["map-category-{$i}"],
                 'name' => "مکان نقشه {$i}",
+                'lang' => Language::All,
                 'description' => "توضیحات مکان نقشه {$i}.",
                 'address' => "آدرس مکان {$i}، هرات",
                 'phone' => '041'.str_pad((string) $i, 7, '0', STR_PAD_LEFT),

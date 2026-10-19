@@ -26,6 +26,7 @@ class MapLocationStoreValidation extends FormRequest
         return [
             'map_category_id' => ['required', 'exists:map_categories,id'],
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:map_locations,slug'],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\MapCategory;
 use Database\Seeders\Concerns\UpsertsSeed;
@@ -18,6 +19,7 @@ class MapCategorySeeder extends Seeder
         for ($i = 1; $i <= $this->seedCount(); $i++) {
             $this->upsert(MapCategory::class, ['slug' => "map-category-{$i}"], [
                 'name' => "دسته‌بندی نقشه {$i}",
+                'lang' => Language::All,
                 'description' => "توضیحات دسته‌بندی نقشه {$i}.",
                 'status' => RecordStatus::Active,
                 'sort_order' => $i,

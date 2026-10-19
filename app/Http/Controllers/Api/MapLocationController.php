@@ -48,6 +48,8 @@ class MapLocationController extends ApiController
         return [
             'id' => $location->id,
             'name' => $location->name,
+            'lang' => $this->enumValue($location->lang),
+            'lang_label' => $location->lang?->label(),
             'slug' => $location->slug,
             'description' => $location->description,
             'address' => $location->address,

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class MapCategory extends Model
 
     protected $fillable = [
         'name',
+        'lang',
         'slug',
         'description',
         'img',
@@ -25,6 +27,7 @@ class MapCategory extends Model
     protected function casts(): array
     {
         return [
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];
