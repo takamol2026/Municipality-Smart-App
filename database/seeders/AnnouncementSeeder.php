@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\Announcement;
 use App\Models\AnnouncementCategory;
@@ -21,6 +22,7 @@ class AnnouncementSeeder extends Seeder
             $this->upsert(Announcement::class, ['slug' => "announcement-{$i}"], [
                 'announcement_category_id' => $categories["announcement-category-{$i}"],
                 'title' => "اطلاعیه {$i}",
+                'lang' => Language::All,
                 'short_description' => "خلاصه اطلاعیه {$i}.",
                 'content' => "متن اطلاعیه شماره {$i} از شاروالی هرات.",
                 'publish_date' => now()->subDays($i)->toDateString(),

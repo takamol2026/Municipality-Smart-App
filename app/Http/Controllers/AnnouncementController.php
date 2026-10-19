@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Http\Requests\AnnouncementStoreValidation;
 use App\Http\Requests\AnnouncementUpdateValidation;
@@ -22,6 +23,9 @@ class AnnouncementController extends Controller
             ->with(['user', 'category'])
             ->when($request->filled('name'), function ($query) use ($request) {
                 $query->where('title', 'like', '%'.$request->string('name').'%');
+            })
+            ->when($request->filled('lang'), function ($query) use ($request) {
+                $query->where('lang', $request->string('lang'));
             })
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->string('status'));
@@ -46,6 +50,7 @@ class AnnouncementController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
         $validated['user_id'] = $request->user()->id;
 
@@ -78,6 +83,7 @@ class AnnouncementController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
 
         if ($request->hasFile('image')) {

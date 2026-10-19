@@ -58,6 +58,8 @@ class AnnouncementController extends ApiController
         return [
             'id' => $announcement->id,
             'title' => $announcement->title,
+            'lang' => $this->enumValue($announcement->lang),
+            'lang_label' => $announcement->lang?->label(),
             'slug' => $announcement->slug,
             'short_description' => $announcement->short_description,
             'content' => $announcement->content,

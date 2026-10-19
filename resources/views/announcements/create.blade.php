@@ -25,6 +25,23 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label class="form-label">{{ __('common.lang') }} <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @foreach (\App\Enums\Language::cases() as $language)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input @error('lang') is-invalid @enderror" type="radio" name="lang" id="lang_{{ $language->value }}" value="{{ $language->value }}" @checked(old('lang', \App\Enums\Language::All->value) === $language->value)>
+                                                <label class="form-check-label" for="lang_{{ $language->value }}">{{ $language->label() }}</label>
+                                            </div>
+                                        @endforeach
+                                        @error('lang')
+                                            <div class="text-danger small d-block mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label for="title" class="form-label">{{ __('announcements.title_label') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-lg-10">

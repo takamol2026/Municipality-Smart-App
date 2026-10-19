@@ -43,6 +43,8 @@ class AnnouncementCategoryController extends ApiController
         return [
             'id' => $category->id,
             'name' => $category->name,
+            'lang' => $this->enumValue($category->lang),
+            'lang_label' => $category->lang?->label(),
             'slug' => $category->slug,
             'status' => $this->enumValue($category->status),
             'sort_order' => $category->sort_order,

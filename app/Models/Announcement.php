@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,6 +12,7 @@ class Announcement extends Model
     protected $fillable = [
         'announcement_category_id',
         'title',
+        'lang',
         'slug',
         'short_description',
         'content',
@@ -28,6 +30,7 @@ class Announcement extends Model
         return [
             'publish_date' => 'date',
             'expire_date' => 'date',
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];

@@ -20,6 +20,7 @@ class AnnouncementUpdateValidation extends FormRequest
         return [
             'announcement_category_id' => ['required', 'exists:announcement_categories,id'],
             'title' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('announcements', 'slug')->ignore($this->route('announcement'))],
             'short_description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
