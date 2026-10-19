@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,7 @@ class Scholar extends Model
 
     protected $fillable = [
         'name',
+        'lang',
         'slug',
         'short_bio',
         'biography',
@@ -31,6 +33,7 @@ class Scholar extends Model
         return [
             'birth_date' => 'date',
             'death_date' => 'date',
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];

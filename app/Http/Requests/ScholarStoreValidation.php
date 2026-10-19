@@ -18,6 +18,7 @@ class ScholarStoreValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:scholars,slug'],
             'short_bio' => ['nullable', 'string'],
             'biography' => ['nullable', 'string'],

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\Scholar;
 use Database\Seeders\Concerns\UpsertsSeed;
@@ -20,6 +21,7 @@ class ScholarSeeder extends Seeder
 
             $this->upsert(Scholar::class, ['slug' => "scholar-{$i}"], [
                 'name' => "عالم {$i}",
+                'lang' => Language::All,
                 'short_bio' => "معرفی کوتاه عالم {$i}.",
                 'biography' => "زندگی‌نامه عالم شماره {$i} از هرات.",
                 'birth_date' => "{$birthYear}-01-01",

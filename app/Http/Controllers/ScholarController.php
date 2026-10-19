@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Http\Requests\ScholarStoreValidation;
 use App\Http\Requests\ScholarUpdateValidation;
@@ -21,6 +22,9 @@ class ScholarController extends Controller
             ->with('user')
             ->when($request->filled('name'), function ($query) use ($request) {
                 $query->where('name', 'like', '%'.$request->string('name').'%');
+            })
+            ->when($request->filled('lang'), function ($query) use ($request) {
+                $query->where('lang', $request->string('lang'));
             })
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->string('status'));
@@ -43,6 +47,7 @@ class ScholarController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
         $validated['user_id'] = $request->user()->id;
 
@@ -68,6 +73,7 @@ class ScholarController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
 
         if ($request->hasFile('image')) {

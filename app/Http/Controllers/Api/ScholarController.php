@@ -40,6 +40,8 @@ class ScholarController extends ApiController
         return [
             'id' => $scholar->id,
             'name' => $scholar->name,
+            'lang' => $this->enumValue($scholar->lang),
+            'lang_label' => $scholar->lang?->label(),
             'slug' => $scholar->slug,
             'short_bio' => $scholar->short_bio,
             'biography' => $scholar->biography,
