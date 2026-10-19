@@ -43,6 +43,8 @@ class RentalCategoryController extends ApiController
         return [
             'id' => $category->id,
             'name' => $category->name,
+            'lang' => $this->enumValue($category->lang),
+            'lang_label' => $category->lang?->label(),
             'slug' => $category->slug,
             'description' => $category->description,
             'image_url' => $this->fileUrl($category->img),

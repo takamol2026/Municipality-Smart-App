@@ -28,6 +28,7 @@ class RentalUpdateValidation extends FormRequest
         return [
             'rental_category_id' => ['required', 'exists:rental_categories,id'],
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('rentals', 'slug')->ignore($this->route('rental'))],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],

@@ -47,6 +47,8 @@ class RentalController extends ApiController
         return [
             'id' => $rental->id,
             'name' => $rental->name,
+            'lang' => $this->enumValue($rental->lang),
+            'lang_label' => $rental->lang?->label(),
             'slug' => $rental->slug,
             'description' => $rental->description,
             'address' => $rental->address,

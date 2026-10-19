@@ -31,6 +31,20 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label class="form-label">{{ __('common.lang') }}</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @foreach (\App\Enums\Language::cases() as $language)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="lang" id="lang_{{ $language->value }}" value="{{ $language->value }}" @checked(request('lang') === $language->value)>
+                                                <label class="form-check-label" for="lang_{{ $language->value }}">{{ $language->label() }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label class="form-label">{{ __('common.status') }}</label>
                                     </div>
                                     <div class="col-lg-10">
@@ -81,6 +95,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('common.name') }}</th>
+                                    <th>{{ __('common.lang') }}</th>
                                     <th>{{ __('common.category') }}</th>
                                     <th>{{ __('rentals.price') }}</th>
                                     <th>{{ __('rentals.duration') }}</th>
@@ -95,6 +110,7 @@
                                     <tr>
                                         <td>{{ $rentals->firstItem() + $loop->index }}</td>
                                         <td>{{ $rental->name }}</td>
+                                        <td>{{ $rental->lang?->label() ?: '—' }}</td>
                                         <td>{{ $rental->category?->name ?: '—' }}</td>
                                         <td>{{ $rental->rental_price !== null ? number_format($rental->rental_price) : '—' }}</td>
                                         <td>{{ $rental->rental_period !== null ? __('rentals.days', ['count' => $rental->rental_period]) : '—' }}</td>
@@ -121,7 +137,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="9" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                        <td colspan="10" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -146,6 +162,9 @@
                                         <dl class="row mb-0">
                                             <dt class="col-sm-3">{{ __('common.name') }}</dt>
                                             <dd class="col-sm-9">{{ $rental->name }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('common.lang') }}</dt>
+                                            <dd class="col-sm-9">{{ $rental->lang?->label() ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.category') }}</dt>
                                             <dd class="col-sm-9">{{ $rental->category?->name ?: '—' }}</dd>

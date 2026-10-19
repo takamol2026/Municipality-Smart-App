@@ -27,6 +27,7 @@ class RentalStoreValidation extends FormRequest
         return [
             'rental_category_id' => ['required', 'exists:rental_categories,id'],
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:rentals,slug'],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],

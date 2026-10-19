@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class Rental extends Model
     protected $fillable = [
         'rental_category_id',
         'name',
+        'lang',
         'slug',
         'description',
         'address',
@@ -30,6 +32,7 @@ class Rental extends Model
         return [
             'rental_price' => 'integer',
             'rental_period' => 'integer',
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];

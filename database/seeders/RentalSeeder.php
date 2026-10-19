@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\Rental;
 use App\Models\RentalCategory;
@@ -21,6 +22,7 @@ class RentalSeeder extends Seeder
             $this->upsert(Rental::class, ['slug' => "rental-{$i}"], [
                 'rental_category_id' => $categories["rental-category-{$i}"],
                 'name' => "مورد اجاره {$i}",
+                'lang' => Language::All,
                 'description' => "توضیحات مورد اجاره {$i}.",
                 'address' => "آدرس مورد اجاره {$i}، هرات",
                 'rental_price' => 5000 + ($i * 100),
