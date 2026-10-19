@@ -69,7 +69,7 @@ class SafaeiCategoryController extends Controller
 
     public function destroy(SafaeiCategory $safaeiCategory): RedirectResponse
     {
-        if ($safaeiCategory->files()->exists()) {
+        if ($safaeiCategory->safaeis()->exists()) {
             return redirect()
                 ->route('safaei-categories.index')
                 ->with('error', __('safaei.category_delete_blocked'));

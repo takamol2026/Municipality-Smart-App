@@ -2,6 +2,14 @@
 
 return [
     'title' => 'فایلونه',
+    'record' => 'صفایي',
+    'record_select' => 'صفایي وټاکئ',
+    'title_placeholder' => 'د صفایي سرلیک وليکئ',
+    'annual_fee' => 'کلنی فیس',
+    'annual_fee_placeholder' => 'کلنی فیس وليکئ',
+    'payment_condition' => 'د تادیې شرط',
+    'payment_condition_placeholder' => 'د تادیې شرط وليکئ',
+    'fee_condition' => 'فیس / د تادیې شرط',
     'list' => 'د صفایي د فایلونو لیست',
     'create' => 'د صفایي فایل اضافه کړئ',
     'create_short' => 'فایل اضافه کړئ',

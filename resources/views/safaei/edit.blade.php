@@ -26,16 +26,16 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label for="safaei_category_id" class="form-label">{{ __('common.category') }} <span class="text-danger">*</span></label>
+                                        <label for="safaei_id" class="form-label">{{ __('safaei.record') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-lg-10">
-                                        <select name="safaei_category_id" id="safaei_category_id" class="form-select @error('safaei_category_id') is-invalid @enderror" required>
-                                            <option value="">{{ __('common.category_select') }}</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}" @selected(old('safaei_category_id', $safaei->safaei_category_id) == $category->id)>{{ $category->name }}</option>
+                                        <select name="safaei_id" id="safaei_id" class="form-select @error('safaei_id') is-invalid @enderror" required>
+                                            <option value="">{{ __('safaei.record_select') }}</option>
+                                            @foreach ($safaeis as $record)
+                                                <option value="{{ $record->id }}" @selected(old('safaei_id', $safaei->safaei_id) == $record->id)>{{ $record->title }}</option>
                                             @endforeach
                                         </select>
-                                        @error('safaei_category_id')
+                                        @error('safaei_id')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

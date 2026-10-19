@@ -12,7 +12,7 @@ class SafaeiCategoryController extends ApiController
     public function index(Request $request): JsonResponse
     {
         $query = SafaeiCategory::query()
-            ->withCount('files')
+            ->withCount('safaeis')
             ->where('status', RecordStatus::Active);
 
         $this->applySearch($query, $request, 'name');
@@ -28,7 +28,7 @@ class SafaeiCategoryController extends ApiController
     public function show(int $category): JsonResponse
     {
         $category = SafaeiCategory::query()
-            ->withCount('files')
+            ->withCount('safaeis')
             ->where('status', RecordStatus::Active)
             ->findOrFail($category);
 
@@ -44,7 +44,7 @@ class SafaeiCategoryController extends ApiController
             'name' => $category->name,
             'description' => $category->description,
             'status' => $this->enumValue($category->status),
-            'files_count' => $category->files_count,
+            'safaeis_count' => $category->safaeis_count,
         ];
     }
 }

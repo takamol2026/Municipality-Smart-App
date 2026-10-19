@@ -2,6 +2,14 @@
 
 return [
     'title' => 'Files',
+    'record' => 'Sanitation',
+    'record_select' => 'Select a sanitation record',
+    'title_placeholder' => 'Enter the sanitation title',
+    'annual_fee' => 'Annual fee',
+    'annual_fee_placeholder' => 'Enter the annual fee',
+    'payment_condition' => 'Payment condition',
+    'payment_condition_placeholder' => 'Enter the payment condition',
+    'fee_condition' => 'Fee / payment condition',
     'list' => 'Sanitation file list',
     'create' => 'Add sanitation file',
     'create_short' => 'Add file',

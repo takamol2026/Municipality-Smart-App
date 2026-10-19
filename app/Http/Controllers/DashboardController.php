@@ -9,7 +9,7 @@ use App\Models\HistoricalAttraction;
 use App\Models\MapLocation;
 use App\Models\Project;
 use App\Models\Rental;
-use App\Models\Safaei;
+use App\Models\SafaeiPhoto;
 use App\Models\Scholar;
 use App\Models\UrbanService;
 use App\Models\User;
@@ -92,7 +92,7 @@ class DashboardController extends Controller
             ],
             [
                 'label' => __('sidebar.safaei'),
-                'count' => Safaei::count(),
+                'count' => SafaeiPhoto::count(),
                 'color' => 'danger',
                 'route' => route('safaei.index'),
             ],
@@ -121,7 +121,7 @@ class DashboardController extends Controller
                 Project::count(),
                 MapLocation::count(),
                 Rental::count(),
-                Safaei::count(),
+                SafaeiPhoto::count(),
             ],
         ];
 

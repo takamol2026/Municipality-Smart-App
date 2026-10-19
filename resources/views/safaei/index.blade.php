@@ -22,10 +22,10 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label for="name" class="form-label">{{ __('common.category') }}</label>
+                                        <label for="name" class="form-label">{{ __('safaei.record') }}</label>
                                     </div>
                                     <div class="col-lg-10">
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="{{ __('common.category_name_placeholder') }}">
+                                        <input type="text" name="name" id="name" class="form-control" value="{{ request('name') }}" placeholder="{{ __('safaei.title_placeholder') }}">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,7 +64,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{ __('common.category') }}</th>
+                                    <th>{{ __('safaei.record') }}</th>
                                     <th>{{ __('common.file') }}</th>
                                     <th>{{ __('common.created_at') }}</th>
                                     <th>{{ __('common.actions') }}</th>
@@ -74,7 +74,7 @@
                                 @forelse ($files as $item)
                                     <tr>
                                         <td>{{ $files->firstItem() + $loop->index }}</td>
-                                        <td>{{ $item->category?->name ?: '—' }}</td>
+                                        <td>{{ $item->safaei?->title ?: '—' }}</td>
                                         <td>{{ $item->fileName() }}</td>
                                         <td>{{ $item->created_at?->format('Y/m/d') }}</td>
                                         <td>
@@ -114,8 +114,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <dl class="row mb-0">
-                                            <dt class="col-sm-3">{{ __('common.category') }}</dt>
-                                            <dd class="col-sm-9">{{ $item->category?->name ?: '—' }}</dd>
+                                            <dt class="col-sm-3">{{ __('safaei.record') }}</dt>
+                                            <dd class="col-sm-9">{{ $item->safaei?->title ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.file') }}</dt>
                                             <dd class="col-sm-9">

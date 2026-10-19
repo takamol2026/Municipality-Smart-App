@@ -2,6 +2,14 @@
 
 return [
     'title' => 'فایل‌ها',
+    'record' => 'صفایی',
+    'record_select' => 'صفایی را انتخاب کنید',
+    'title_placeholder' => 'عنوان صفایی را وارد کنید',
+    'annual_fee' => 'فیس سالانه',
+    'annual_fee_placeholder' => 'فیس سالانه را وارد کنید',
+    'payment_condition' => 'شرط پرداخت',
+    'payment_condition_placeholder' => 'شرط پرداخت را وارد کنید',
+    'fee_condition' => 'فیس / شرط پرداخت',
     'list' => 'لیست فایل‌های صفایی',
     'create' => 'افزودن فایل صفایی',
     'create_short' => 'افزودن فایل',

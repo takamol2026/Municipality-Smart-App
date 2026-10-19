@@ -33,7 +33,7 @@ class SafaeiCategory extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function files(): HasMany
+    public function safaeis(): HasMany
     {
         return $this->hasMany(Safaei::class);
     }

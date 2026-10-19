@@ -2,32 +2,50 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
+use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Safaei extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'safaei';
 
     protected $fillable = [
-        'file_path',
         'safaei_category_id',
+        'title',
+        'lang',
+        'description',
+        'annual_fee',
+        'payment_condition',
+        'status',
+        'user_id',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'lang' => Language::class,
+            'status' => RecordStatus::class,
+        ];
+    }
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(SafaeiCategory::class, 'safaei_category_id');
     }
 
-    public function fileName(): string
+    public function user(): BelongsTo
     {
-        return $this->file_path ? basename($this->file_path) : '—';
+        return $this->belongsTo(User::class);
     }
 
-    public function isImageFile(): bool
+    public function photos(): HasMany
     {
-        $extension = strtolower(pathinfo((string) $this->file_path, PATHINFO_EXTENSION));
-
-        return in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'], true);
+        return $this->hasMany(SafaeiPhoto::class);
     }
 }

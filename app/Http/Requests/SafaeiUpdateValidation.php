@@ -17,7 +17,7 @@ class SafaeiUpdateValidation extends FormRequest
     public function rules(): array
     {
         return [
-            'safaei_category_id' => ['required', 'exists:safaei_category,id'],
+            'safaei_id' => ['required', 'exists:safaei,id'],
             'file' => ['nullable', 'file', 'max:20480'],
         ];
     }
