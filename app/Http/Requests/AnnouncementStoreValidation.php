@@ -23,7 +23,7 @@ class AnnouncementStoreValidation extends FormRequest
             'slug' => ['nullable', 'string', 'max:255', 'unique:announcements,slug'],
             'short_description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'attachment' => ['nullable', 'file', 'max:5120'],
             'publish_date' => ['nullable', 'date'],
             'expire_date' => ['nullable', 'date', 'after_or_equal:publish_date'],

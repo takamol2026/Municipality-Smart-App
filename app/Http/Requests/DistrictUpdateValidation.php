@@ -26,9 +26,9 @@ class DistrictUpdateValidation extends FormRequest
             'address' => ['nullable', 'string'],
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'email', 'max:255'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'images' => ['nullable', 'array'],
-            'images.*' => ['image', 'max:2048'],
+            'images.*' => ['image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

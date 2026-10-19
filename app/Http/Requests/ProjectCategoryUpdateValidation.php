@@ -21,7 +21,7 @@ class ProjectCategoryUpdateValidation extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('project_categories', 'slug')->ignore($this->route('projectCategory'))],
             'description' => ['nullable', 'string'],
-            'img' => ['nullable', 'image', 'max:2048'],
+            'img' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

@@ -20,7 +20,7 @@ class ProjectCategoryStoreValidation extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:project_categories,slug'],
             'description' => ['nullable', 'string'],
-            'img' => ['nullable', 'image', 'max:2048'],
+            'img' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

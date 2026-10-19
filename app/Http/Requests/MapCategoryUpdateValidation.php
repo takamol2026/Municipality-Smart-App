@@ -22,7 +22,7 @@ class MapCategoryUpdateValidation extends FormRequest
             'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('map_categories', 'slug')->ignore($this->route('mapCategory'))],
             'description' => ['nullable', 'string'],
-            'img' => ['nullable', 'image', 'max:2048'],
+            'img' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

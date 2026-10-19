@@ -27,7 +27,7 @@ class ScholarUpdateValidation extends FormRequest
             'death_date' => ['nullable', 'date', 'after_or_equal:birth_date'],
             'education' => ['nullable', 'string'],
             'works' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

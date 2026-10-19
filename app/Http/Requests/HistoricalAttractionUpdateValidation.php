@@ -27,7 +27,7 @@ class HistoricalAttractionUpdateValidation extends FormRequest
             'history' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
             'location' => ['nullable', 'string', 'max:255'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];

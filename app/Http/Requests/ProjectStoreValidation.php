@@ -33,7 +33,7 @@ class ProjectStoreValidation extends FormRequest
             'benefits' => ['nullable', 'string'],
             'start_date' => ['nullable', 'date'],
             'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'status_publish' => ['required', 'in:in_progress,completed,not_started'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
@@ -41,7 +41,7 @@ class ProjectStoreValidation extends FormRequest
             'media.*.title' => ['nullable', 'string', 'max:255'],
             'media.*.type' => ['nullable', 'in:image,video,document'],
             'media.*.file' => ['required', 'file', 'max:20480'],
-            'media.*.thumbnail' => ['nullable', 'image', 'max:2048'],
+            'media.*.thumbnail' => ['nullable', 'image'],
             'media.*.sort_order' => ['nullable', 'integer', 'min:0'],
         ];
     }

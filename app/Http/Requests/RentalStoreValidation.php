@@ -33,7 +33,7 @@ class RentalStoreValidation extends FormRequest
             'address' => ['nullable', 'string'],
             'rental_price' => ['nullable', 'integer', 'min:0'],
             'rental_period' => ['nullable', 'integer', 'min:0'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];
