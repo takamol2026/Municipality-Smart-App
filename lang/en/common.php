@@ -65,4 +65,9 @@ return [
     'remove_row' => 'Remove row',
     'untitled' => 'Untitled',
     'media_deleted' => 'Media deleted successfully.',
+    'lang' => 'Language',
+    'lang_dari' => 'Dari',
+    'lang_pashto' => 'Pashto',
+    'lang_english' => 'English',
+    'lang_all' => 'All',
 ];

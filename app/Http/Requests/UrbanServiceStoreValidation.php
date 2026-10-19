@@ -19,6 +19,7 @@ class UrbanServiceStoreValidation extends FormRequest
         return [
             'urban_service_category_id' => ['required', 'exists:urban_service_categories,id'],
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:urban_services,slug'],
             'short_description' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],

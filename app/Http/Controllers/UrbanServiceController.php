@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Http\Requests\UrbanServiceStoreValidation;
 use App\Http\Requests\UrbanServiceUpdateValidation;
@@ -20,6 +21,9 @@ class UrbanServiceController extends Controller
             ->with(['user', 'category'])
             ->when($request->filled('name'), function ($query) use ($request) {
                 $query->where('name', 'like', '%'.$request->string('name').'%');
+            })
+            ->when($request->filled('lang'), function ($query) use ($request) {
+                $query->where('lang', $request->string('lang'));
             })
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->string('status'));
@@ -44,6 +48,7 @@ class UrbanServiceController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
         $validated['user_id'] = $request->user()->id;
 
@@ -68,6 +73,7 @@ class UrbanServiceController extends Controller
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
+        $validated['lang'] = Language::from($validated['lang']);
         $validated['status'] = RecordStatus::from($validated['status']);
 
         $urbanService->update($validated);

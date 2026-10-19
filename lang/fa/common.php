@@ -65,4 +65,9 @@ return [
     'remove_row' => 'حذف ردیف',
     'untitled' => 'بدون عنوان',
     'media_deleted' => 'رسانه با موفقیت حذف شد.',
+    'lang' => 'زبان',
+    'lang_dari' => 'دری',
+    'lang_pashto' => 'پشتو',
+    'lang_english' => 'انگلیسی',
+    'lang_all' => 'همه',
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class UrbanServiceCategory extends Model
 
     protected $fillable = [
         'name',
+        'lang',
         'slug',
         'description',
         'status',
@@ -24,6 +26,7 @@ class UrbanServiceCategory extends Model
     protected function casts(): array
     {
         return [
+            'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
         ];

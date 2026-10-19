@@ -47,6 +47,8 @@ class UrbanServiceController extends ApiController
         return [
             'id' => $service->id,
             'name' => $service->name,
+            'lang' => $this->enumValue($service->lang),
+            'lang_label' => $service->lang?->label(),
             'slug' => $service->slug,
             'short_description' => $service->short_description,
             'description' => $service->description,

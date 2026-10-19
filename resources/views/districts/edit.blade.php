@@ -33,7 +33,7 @@
                             <div class="col-lg-8">
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label class="form-label">{{ __('districts.lang') }} <span class="text-danger">*</span></label>
+                                        <label class="form-label">{{ __('common.lang') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-lg-10">
                                         @foreach (\App\Enums\Language::cases() as $language)

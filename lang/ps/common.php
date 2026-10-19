@@ -65,4 +65,9 @@ return [
     'remove_row' => 'کته ړنګه کړئ',
     'untitled' => 'بې سرلیکه',
     'media_deleted' => 'رسنۍ په بریالیتوب سره ړنګه شوه.',
+    'lang' => 'ژبه',
+    'lang_dari' => 'دري',
+    'lang_pashto' => 'پښتو',
+    'lang_english' => 'انګلیسي',
+    'lang_all' => 'ټول',
 ];

@@ -19,6 +19,7 @@ class UrbanServiceCategoryUpdateValidation extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'lang' => ['required', 'in:fa,ps,en,all'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('urban_service_categories', 'slug')->ignore($this->route('urbanServiceCategory'))],
             'description' => ['nullable', 'string'],
             'status' => ['required', 'in:active,inactive'],

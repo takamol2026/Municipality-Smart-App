@@ -31,7 +31,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
-                                        <label class="form-label">{{ __('districts.lang') }}</label>
+                                        <label class="form-label">{{ __('common.lang') }}</label>
                                     </div>
                                     <div class="col-lg-10">
                                         @foreach (\App\Enums\Language::cases() as $language)
@@ -95,7 +95,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('common.name') }}</th>
-                                    <th>{{ __('districts.lang') }}</th>
+                                    <th>{{ __('common.lang') }}</th>
                                     <th>{{ __('districts.number') }}</th>
                                     <th>{{ __('common.slug') }}</th>
                                     <th>{{ __('common.status') }}</th>
@@ -161,7 +161,7 @@
                                             <dt class="col-sm-3">{{ __('common.name') }}</dt>
                                             <dd class="col-sm-9">{{ $district->name }}</dd>
 
-                                            <dt class="col-sm-3">{{ __('districts.lang') }}</dt>
+                                            <dt class="col-sm-3">{{ __('common.lang') }}</dt>
                                             <dd class="col-sm-9">{{ $district->lang?->label() ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('districts.number') }}</dt>

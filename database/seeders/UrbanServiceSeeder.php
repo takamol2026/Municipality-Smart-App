@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use App\Enums\RecordStatus;
 use App\Models\UrbanService;
 use App\Models\UrbanServiceCategory;
@@ -21,6 +22,7 @@ class UrbanServiceSeeder extends Seeder
             $this->upsert(UrbanService::class, ['slug' => "urban-service-{$i}"], [
                 'urban_service_category_id' => $categories["urban-category-{$i}"],
                 'name' => "خدمت شهری {$i}",
+                'lang' => Language::All,
                 'short_description' => "خلاصه خدمت شهری {$i}.",
                 'description' => "شرح کامل خدمت شهری شماره {$i} در شاروالی هرات.",
                 'status' => RecordStatus::Active,

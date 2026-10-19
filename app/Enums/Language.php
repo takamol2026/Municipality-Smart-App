@@ -12,10 +12,10 @@ enum Language: string
     public function label(): string
     {
         return match ($this) {
-            self::Dari => __('districts.lang_dari'),
-            self::Pashto => __('districts.lang_pashto'),
-            self::English => __('districts.lang_english'),
-            self::All => __('districts.lang_all'),
+            self::Dari => __('common.lang_dari'),
+            self::Pashto => __('common.lang_pashto'),
+            self::English => __('common.lang_english'),
+            self::All => __('common.lang_all'),
         };
     }
 }
