@@ -33,6 +33,7 @@ return [
     'files_list' => 'د فایلونو لیست',
     'files_create' => 'فایل اضافه کړئ',
     'complaints' => 'شکایتونه',
+    'suggestions' => 'وړاندیزونه',
     'management' => 'مدیریت',
     'users' => 'د کاروونکو ثبت',
     'users_list' => 'د کاروونکو لیست',

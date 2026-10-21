@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             SafaeiCategorySeeder::class,
             SafaeiSeeder::class,
             ComplaintSeeder::class,
+            SuggestionSeeder::class,
         ]);
     }
 }

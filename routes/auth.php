@@ -19,6 +19,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\SafaeiCategoryController;
 use App\Http\Controllers\SafaeiController;
 use App\Http\Controllers\ScholarController;
+use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
 use App\Http\Controllers\ProfileController;
@@ -176,6 +177,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints.index');
     Route::put('complaints/{complaint}', [ComplaintController::class, 'update'])->name('complaints.update');
+
+    Route::get('suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
+    Route::put('suggestions/{suggestion}', [SuggestionController::class, 'update'])->name('suggestions.update');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

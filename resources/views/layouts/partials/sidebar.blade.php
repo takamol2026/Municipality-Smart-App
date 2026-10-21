@@ -279,6 +279,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('suggestions.index') }}" class="nav-link menu-link {{ request()->routeIs('suggestions.index') ? 'active' : '' }}">
+                        <i class="bx bx-bulb"></i> <span>{{ __('sidebar.suggestions') }}</span>
+                    </a>
+                </li>
+
                 <li class="menu-title"><span>{{ __('sidebar.management') }}</span></li>
 
                 {{-- ثبت کاربران --}}

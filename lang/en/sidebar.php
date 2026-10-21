@@ -33,6 +33,7 @@ return [
     'files_list' => 'File list',
     'files_create' => 'Add file',
     'complaints' => 'Complaints',
+    'suggestions' => 'Suggestions',
     'management' => 'Administration',
     'users' => 'User registration',
     'users_list' => 'User list',

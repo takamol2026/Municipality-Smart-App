@@ -33,6 +33,7 @@ return [
     'files_list' => 'لیست فایل‌ها',
     'files_create' => 'افزودن فایل',
     'complaints' => 'شکایت‌ها',
+    'suggestions' => 'پیشنهادات',
     'management' => 'مدیریت',
     'users' => 'ثبت کاربران',
     'users_list' => 'لیست کاربران',

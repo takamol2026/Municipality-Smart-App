@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Enums\SuggestionStatus;
+use App\Http\Requests\SuggestionUpdateValidation;
+use App\Models\Suggestion;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class SuggestionController extends Controller
+{
+    public function index(Request $request): View
+    {
+        $suggestions = Suggestion::query()
+            ->when($request->filled('name'), function ($query) use ($request) {
+                $term = '%'.$request->string('name').'%';
+                $query->where(function ($query) use ($term) {
+                    $query->where('title', 'like', $term)
+                        ->orWhere('description', 'like', $term);
+                });
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                $query->where('status', $request->string('status'));
+            })
+            ->latest('id')
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('suggestions.index', compact('suggestions'));
+    }
+
+    public function update(SuggestionUpdateValidation $request, Suggestion $suggestion): RedirectResponse
+    {
+        $suggestion->update([
+            'status' => SuggestionStatus::from($request->validated('status')),
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('success', __('suggestions.status_updated'));
+    }
+}
