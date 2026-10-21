@@ -32,6 +32,7 @@ return [
     'safaei' => 'صفایی',
     'files_list' => 'لیست فایل‌ها',
     'files_create' => 'افزودن فایل',
+    'complaints' => 'شکایت‌ها',
     'management' => 'مدیریت',
     'users' => 'ثبت کاربران',
     'users_list' => 'لیست کاربران',

@@ -32,6 +32,7 @@ return [
     'safaei' => 'صفایي',
     'files_list' => 'د فایلونو لیست',
     'files_create' => 'فایل اضافه کړئ',
+    'complaints' => 'شکایتونه',
     'management' => 'مدیریت',
     'users' => 'د کاروونکو ثبت',
     'users_list' => 'د کاروونکو لیست',

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\AnnouncementCategoryController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HistoricalAttractionCategoryController;
@@ -172,6 +173,9 @@ Route::middleware('auth')->group(function () {
     Route::get('safaei/{safaei}/edit', [SafaeiController::class, 'edit'])->name('safaei.edit');
     Route::put('safaei/{safaei}', [SafaeiController::class, 'update'])->name('safaei.update');
     Route::delete('safaei/{safaei}', [SafaeiController::class, 'destroy'])->name('safaei.destroy');
+
+    Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+    Route::put('complaints/{complaint}', [ComplaintController::class, 'update'])->name('complaints.update');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');

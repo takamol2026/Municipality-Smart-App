@@ -9,3 +9,4 @@ require __DIR__.'/api/projects.php';
 require __DIR__.'/api/map-locations.php';
 require __DIR__.'/api/rentals.php';
 require __DIR__.'/api/safaei.php';
+require __DIR__.'/api/complaints.php';

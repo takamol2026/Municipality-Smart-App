@@ -273,6 +273,12 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('complaints.index') }}" class="nav-link menu-link {{ request()->routeIs('complaints.index') ? 'active' : '' }}">
+                        <i class="bx bx-message-error"></i> <span>{{ __('sidebar.complaints') }}</span>
+                    </a>
+                </li>
+
                 <li class="menu-title"><span>{{ __('sidebar.management') }}</span></li>
 
                 {{-- ثبت کاربران --}}
