@@ -120,7 +120,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $service->sort_order }}</td>
-                                        <td>{{ $service->created_at?->format('Y/m/d') }}</td>
+                                        <td>{{ jalali_date($service->created_at) }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
                                                 <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#serviceModal{{ $service->id }}">{{ __('common.show') }}</button>
@@ -189,7 +189,7 @@
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $service->description ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
-                                            <dd class="col-sm-9">{{ $service->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ jalali_date($service->created_at, 'Y/m/d H:i') ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.creator') }}</dt>
                                             <dd class="col-sm-9 mb-0">{{ trim(($service->user?->name ?? '').' '.($service->user?->last_name ?? '')) ?: '—' }}</dd>

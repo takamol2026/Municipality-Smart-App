@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -16,6 +17,8 @@ class ProjectUpdateValidation extends FormRequest
     {
         $this->merge([
             'media' => $this->filledMediaRows(),
+            'start_date' => Project::toGregorianDate($this->input('start_date')),
+            'end_date' => Project::toGregorianDate($this->input('end_date')),
         ]);
     }
 

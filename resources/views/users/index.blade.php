@@ -111,7 +111,7 @@
                                                 <span class="badge bg-danger-subtle text-danger">{{ __('common.inactive') }}</span>
                                             @endif
                                         </td>
-                                        <td>{{ $user->created_at?->format('Y/m/d') }}</td>
+                                        <td>{{ jalali_date($user->created_at) }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
                                                 <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#userModal{{ $user->id }}">{{ __('common.show') }}</button>
@@ -174,7 +174,7 @@
                                             </dd>
 
                                             <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
-                                            <dd class="col-sm-9 mb-0">{{ $user->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
+                                            <dd class="col-sm-9 mb-0">{{ jalali_date($user->created_at, 'Y/m/d H:i') ?: '—' }}</dd>
                                         </dl>
                                     </div>
                                     <div class="modal-footer">

@@ -119,8 +119,8 @@
                                             @endif
                                         </td>
                                         <td>{{ $announcement->sort_order }}</td>
-                                        <td>{{ $announcement->publish_date?->format('Y/m/d') ?: '—' }}</td>
-                                        <td>{{ $announcement->created_at?->format('Y/m/d') }}</td>
+                                        <td>{{ jalali_date($announcement->publish_date) ?: '—' }}</td>
+                                        <td>{{ jalali_date($announcement->created_at) }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
                                                 <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#announcementModal{{ $announcement->id }}">{{ __('common.show') }}</button>
@@ -183,10 +183,10 @@
                                             <dd class="col-sm-9">{{ $announcement->sort_order }}</dd>
 
                                             <dt class="col-sm-3">{{ __('announcements.publish_date') }}</dt>
-                                            <dd class="col-sm-9">{{ $announcement->publish_date?->format('Y/m/d') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ jalali_date($announcement->publish_date) ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('announcements.expire_date') }}</dt>
-                                            <dd class="col-sm-9">{{ $announcement->expire_date?->format('Y/m/d') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ jalali_date($announcement->expire_date) ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.short_description') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $announcement->short_description ?: '—' }}</dd>
@@ -216,7 +216,7 @@
                                             </dd>
 
                                             <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
-                                            <dd class="col-sm-9">{{ $announcement->created_at?->format('Y/m/d H:i') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ jalali_date($announcement->created_at, 'Y/m/d H:i') ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.creator') }}</dt>
                                             <dd class="col-sm-9 mb-0">{{ trim(($announcement->user?->name ?? '').' '.($announcement->user?->last_name ?? '')) ?: '—' }}</dd>

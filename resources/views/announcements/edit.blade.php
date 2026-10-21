@@ -89,13 +89,13 @@
                                     <div class="col-lg-10">
                                         <div class="row g-2">
                                             <div class="col-md-6">
-                                                <input type="date" name="publish_date" id="publish_date" aria-label="{{ __('announcements.publish_date') }}" class="form-control @error('publish_date') is-invalid @enderror" value="{{ old('publish_date', $announcement->publish_date?->format('Y-m-d')) }}">
+                                                <input type="text" name="publish_date" id="publish_date" data-jdp data-jdp-only-date aria-label="{{ __('announcements.publish_date') }}" placeholder="{{ __('announcements.publish_date') }}" class="form-control @error('publish_date') is-invalid @enderror" value="{{ \App\Models\Announcement::toJalaliDate(old('publish_date', $announcement->publish_date)) }}" autocomplete="off">
                                                 @error('publish_date')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="date" name="expire_date" id="expire_date" aria-label="{{ __('announcements.expire_date') }}" class="form-control @error('expire_date') is-invalid @enderror" value="{{ old('expire_date', $announcement->expire_date?->format('Y-m-d')) }}">
+                                                <input type="text" name="expire_date" id="expire_date" data-jdp data-jdp-only-date aria-label="{{ __('announcements.expire_date') }}" placeholder="{{ __('announcements.expire_date') }}" class="form-control @error('expire_date') is-invalid @enderror" value="{{ \App\Models\Announcement::toJalaliDate(old('expire_date', $announcement->expire_date)) }}" autocomplete="off">
                                                 @error('expire_date')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -204,3 +204,11 @@
         </div>
     </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/assets/libs/jalalidatepicker/jalalidatepicker.min.css') }}">
+@endpush
+
+@push('scripts')
+    @include('partials.jalali-datepicker')
+@endpush

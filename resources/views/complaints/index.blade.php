@@ -104,7 +104,7 @@
                                                     <span class="badge bg-danger-subtle text-danger">{{ $complaint->status->label() }}</span>
                                             @endswitch
                                         </td>
-                                        <td>{{ $complaint->created_at?->format('Y/m/d') }}</td>
+                                        <td>{{ jalali_date($complaint->created_at) }}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
                                                 <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#complaintModal{{ $complaint->id }}">{{ __('common.show') }}</button>
@@ -147,7 +147,7 @@
                                             <dd class="col-sm-9">{{ $complaint->status->label() }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.created_at') }}</dt>
-                                            <dd class="col-sm-9">{{ $complaint->created_at?->format('Y/m/d H:i') }}</dd>
+                                            <dd class="col-sm-9">{{ jalali_date($complaint->created_at, 'Y/m/d H:i') }}</dd>
                                         </dl>
                                     </div>
                                     <div class="modal-footer">
