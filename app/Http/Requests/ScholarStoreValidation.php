@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Scholar;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ScholarStoreValidation extends FormRequest
@@ -9,6 +10,14 @@ class ScholarStoreValidation extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'birth_date' => Scholar::toGregorianDate($this->input('birth_date')),
+            'death_date' => Scholar::toGregorianDate($this->input('death_date')),
+        ]);
     }
 
     /**

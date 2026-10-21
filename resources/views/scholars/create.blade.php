@@ -71,13 +71,13 @@
                                     <div class="col-lg-10">
                                         <div class="row g-2">
                                             <div class="col-md-6">
-                                                <input type="date" name="birth_date" id="birth_date" aria-label="{{ __('scholars.birth_date') }}" class="form-control @error('birth_date') is-invalid @enderror" value="{{ old('birth_date') }}">
+                                                <input type="text" name="birth_date" id="birth_date" data-jdp data-jdp-only-date aria-label="{{ __('scholars.birth_date') }}" placeholder="{{ __('scholars.birth_date') }}" class="form-control @error('birth_date') is-invalid @enderror" value="{{ \App\Models\Scholar::toJalaliDate(old('birth_date')) }}" autocomplete="off">
                                                 @error('birth_date')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="date" name="death_date" id="death_date" aria-label="{{ __('scholars.death_date') }}" class="form-control @error('death_date') is-invalid @enderror" value="{{ old('death_date') }}">
+                                                <input type="text" name="death_date" id="death_date" data-jdp data-jdp-only-date aria-label="{{ __('scholars.death_date') }}" placeholder="{{ __('scholars.death_date') }}" class="form-control @error('death_date') is-invalid @enderror" value="{{ \App\Models\Scholar::toJalaliDate(old('death_date')) }}" autocomplete="off">
                                                 @error('death_date')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -192,3 +192,11 @@
         </div>
     </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/assets/libs/jalalidatepicker/jalalidatepicker.min.css') }}">
+@endpush
+
+@push('scripts')
+    @include('partials.jalali-datepicker')
+@endpush

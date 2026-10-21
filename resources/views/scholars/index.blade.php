@@ -166,10 +166,10 @@
                                             <dd class="col-sm-9">{{ $scholar->slug ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('scholars.birth_date') }}</dt>
-                                            <dd class="col-sm-9">{{ $scholar->birth_date?->format('Y/m/d') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ $scholar->jalaliDate('birth_date') ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('scholars.death_date') }}</dt>
-                                            <dd class="col-sm-9">{{ $scholar->death_date?->format('Y/m/d') ?: '—' }}</dd>
+                                            <dd class="col-sm-9">{{ $scholar->jalaliDate('death_date') ?: '—' }}</dd>
 
                                             <dt class="col-sm-3">{{ __('common.status') }}</dt>
                                             <dd class="col-sm-9">

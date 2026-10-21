@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Enums\Language;
 use App\Enums\RecordStatus;
+use App\Traits\ConvertsJalaliDates;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Scholar extends Model
 {
+    use ConvertsJalaliDates;
     use SoftDeletes;
 
     protected $fillable = [
@@ -42,5 +44,13 @@ class Scholar extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected function jalaliDateAttributes(): array
+    {
+        return [
+            'birth_date',
+            'death_date',
+        ];
     }
 }
