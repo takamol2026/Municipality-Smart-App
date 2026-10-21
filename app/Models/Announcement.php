@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enums\Language;
 use App\Enums\RecordStatus;
+use App\Traits\ConvertsJalaliDates;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Announcement extends Model
 {
+    use ConvertsJalaliDates;
     protected $fillable = [
         'announcement_category_id',
         'title',
@@ -44,5 +46,13 @@ class Announcement extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected function jalaliDateAttributes(): array
+    {
+        return [
+            'publish_date',
+            'expire_date',
+        ];
     }
 }

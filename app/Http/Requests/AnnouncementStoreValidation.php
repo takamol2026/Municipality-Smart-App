@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Announcement;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AnnouncementStoreValidation extends FormRequest
@@ -9,6 +10,14 @@ class AnnouncementStoreValidation extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'publish_date' => Announcement::toGregorianDate($this->input('publish_date')),
+            'expire_date' => Announcement::toGregorianDate($this->input('expire_date')),
+        ]);
     }
 
     /**
