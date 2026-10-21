@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Enums\PublishStatus;
 use App\Enums\RecordStatus;
+use App\Traits\ConvertsJalaliDates;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
+    use ConvertsJalaliDates;
     protected $fillable = [
         'project_category_id',
         'title',
@@ -51,5 +53,13 @@ class Project extends Model
     public function media(): HasMany
     {
         return $this->hasMany(ProjectMedia::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    protected function jalaliDateAttributes(): array
+    {
+        return [
+            'start_date',
+            'end_date',
+        ];
     }
 }
