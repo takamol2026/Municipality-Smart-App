@@ -93,6 +93,47 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h4 class="card-title mb-0">{{ __('dashboard.recent_audits') }}</h4>
+                    <a href="{{ route('audit-logs.index') }}" class="btn btn-sm btn-primary">{{ __('dashboard.view_audits') }}</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{{ __('common.created_at') }}</th>
+                                    <th>{{ __('audit.user') }}</th>
+                                    <th>{{ __('audit.action') }}</th>
+                                    <th>{{ __('audit.subject') }}</th>
+                                    <th>{{ __('audit.record') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($recentAudits as $log)
+                                    <tr>
+                                        <td>{{ jalali_date($log->created_at, 'Y/m/d H:i') }}</td>
+                                        <td>{{ $log->actorName() }}</td>
+                                        <td><span class="badge {{ $log->action->badgeClass() }}">{{ $log->action->label() }}</span></td>
+                                        <td>{{ $log->subjectLabel() }}</td>
+                                        <td>{{ $log->record_label ?: '—' }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')

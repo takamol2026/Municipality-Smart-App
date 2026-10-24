@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\PublishStatus;
 use App\Models\Announcement;
+use App\Models\AuditLog;
 use App\Models\District;
 use App\Models\HistoricalAttraction;
 use App\Models\MapLocation;
@@ -156,7 +157,13 @@ class DashboardController extends Controller
             ],
         ];
 
-        return view('dashboard', compact('stats', 'tiles', 'moduleChart', 'projectStatusChart', 'monthlyChart'));
+        $recentAudits = AuditLog::query()
+            ->with('user')
+            ->latest('id')
+            ->limit(8)
+            ->get();
+
+        return view('dashboard', compact('stats', 'tiles', 'moduleChart', 'projectStatusChart', 'monthlyChart', 'recentAudits'));
     }
 
     /**

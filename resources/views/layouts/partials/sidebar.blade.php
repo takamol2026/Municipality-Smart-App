@@ -306,6 +306,12 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('audit-logs.index') }}" class="nav-link menu-link {{ request()->routeIs('audit-logs.index') ? 'active' : '' }}">
+                        <i class="bx bx-list-check"></i> <span>{{ __('audit.menu') }}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
