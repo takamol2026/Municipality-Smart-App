@@ -18,3 +18,6 @@
         <link href="{{ asset($isRtl ? 'assets/assets/css/app-rtl.min.css' : 'assets/assets/css/app.min.css') }}" rel="stylesheet" type="text/css">
         <!-- custom Css-->
         <link href="{{ asset($isRtl ? 'assets/assets/css/custom-rtl.min.css' : 'assets/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css">
+        @if (app()->getLocale() === 'ps')
+            <link href="{{ asset('assets/assets/css/pashto-font.css') }}" rel="stylesheet" type="text/css">
+        @endif

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Mj Pashtu";
+    src: url("../Mj_Pashtu-Light/Mj_Pashtu%20Light_0.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+html[lang="ps"] {
+    --tb-font-sans-serif: "Mj Pashtu", Tahoma, sans-serif;
+    --tb-font-monospace: "Mj Pashtu", Tahoma, sans-serif;
+    --tb-body-font-family: "Mj Pashtu", Tahoma, sans-serif;
+}
