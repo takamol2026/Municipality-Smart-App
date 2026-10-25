@@ -285,6 +285,25 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="#sidebarLicenseOnlineServices" class="nav-link menu-link {{ $isActive('license-online-services') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('license-online-services') ? 'true' : 'false' }}"
+                       aria-controls="sidebarLicenseOnlineServices">
+                        <i class="bx bx-id-card"></i> <span>{{ __('sidebar.license_online_services') }}</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('license-online-services') ? 'show' : '' }}" id="sidebarLicenseOnlineServices">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('license-online-services.create') }}" class="nav-link {{ request()->routeIs('license-online-services.create') ? 'active' : '' }}">{{ __('sidebar.license_online_services_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('license-online-services.index') }}" class="nav-link {{ request()->routeIs('license-online-services.index') ? 'active' : '' }}">{{ __('sidebar.license_online_services_list') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="menu-title"><span>{{ __('sidebar.management') }}</span></li>
 
                 {{-- ثبت کاربران --}}

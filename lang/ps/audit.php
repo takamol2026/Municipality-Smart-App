@@ -64,6 +64,8 @@ return [
         'SafaeiPhoto' => 'د صفایي انځور',
         'Complaint' => 'شکایت',
         'Suggestion' => 'وړاندیز',
+        'LicenseOnlineService' => 'د جواز غوښتنه او آنلاین فورم',
+        'LicenseOnlineServiceFile' => 'د جواز او آنلاین فورم فایل',
     ],
     'fields' => [
         'name' => 'نوم',
@@ -90,5 +92,11 @@ return [
         'end_date' => 'د پای نېټه',
         'birth_date' => 'د زیږون نېټه',
         'death_date' => 'د مړینې نېټه',
+        'type' => 'ډول',
+        'file_name' => 'د فایل نوم',
+        'file_path' => 'د فایل لار',
+        'file_type' => 'د فایل ډول',
+        'file_size' => 'د فایل حجم',
+        'license_online_service_id' => 'اړوند توکی',
     ],
 ];

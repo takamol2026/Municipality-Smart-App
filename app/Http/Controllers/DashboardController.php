@@ -7,6 +7,7 @@ use App\Models\Announcement;
 use App\Models\AuditLog;
 use App\Models\District;
 use App\Models\HistoricalAttraction;
+use App\Models\LicenseOnlineService;
 use App\Models\MapLocation;
 use App\Models\Project;
 use App\Models\Rental;
@@ -97,6 +98,12 @@ class DashboardController extends Controller
                 'color' => 'danger',
                 'route' => route('safaei.index'),
             ],
+            [
+                'label' => __('sidebar.license_online_services'),
+                'count' => LicenseOnlineService::count(),
+                'color' => 'primary',
+                'route' => route('license-online-services.index'),
+            ],
         ];
 
         $moduleChart = [
@@ -111,6 +118,7 @@ class DashboardController extends Controller
                 __('sidebar.map'),
                 __('sidebar.rentals'),
                 __('sidebar.safaei'),
+                __('sidebar.license_online_services'),
             ],
             'series' => [
                 User::count(),
@@ -123,6 +131,7 @@ class DashboardController extends Controller
                 MapLocation::count(),
                 Rental::count(),
                 SafaeiPhoto::count(),
+                LicenseOnlineService::count(),
             ],
         ];
 

@@ -64,6 +64,8 @@ return [
         'SafaeiPhoto' => 'Sanitation photo',
         'Complaint' => 'Complaint',
         'Suggestion' => 'Suggestion',
+        'LicenseOnlineService' => 'License and online form',
+        'LicenseOnlineServiceFile' => 'License and online form file',
     ],
     'fields' => [
         'name' => 'Name',
@@ -90,5 +92,11 @@ return [
         'end_date' => 'End date',
         'birth_date' => 'Birth date',
         'death_date' => 'Death date',
+        'type' => 'Type',
+        'file_name' => 'File name',
+        'file_path' => 'File path',
+        'file_type' => 'File type',
+        'file_size' => 'File size',
+        'license_online_service_id' => 'Related item',
     ],
 ];

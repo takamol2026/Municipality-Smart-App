@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\AuditAction;
 use App\Enums\ComplaintStatus;
 use App\Enums\Language;
+use App\Enums\LicenseOnlineServiceType;
 use App\Enums\PublishStatus;
 use App\Enums\SuggestionStatus;
 use Illuminate\Database\Eloquent\Model;
@@ -70,6 +71,8 @@ class AuditLog extends Model
             SafaeiPhoto::class,
             Complaint::class,
             Suggestion::class,
+            LicenseOnlineService::class,
+            LicenseOnlineServiceFile::class,
         ];
     }
 
@@ -159,6 +162,14 @@ class AuditLog extends Model
 
             if ($language !== null) {
                 return $language->label();
+            }
+        }
+
+        if ($field === 'type') {
+            $serviceType = LicenseOnlineServiceType::tryFrom($string);
+
+            if ($serviceType !== null) {
+                return $serviceType->label();
             }
         }
 

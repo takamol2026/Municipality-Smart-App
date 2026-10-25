@@ -144,4 +144,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SafaeiCategory::class);
     }
+
+    public function licenseOnlineServices(): HasMany
+    {
+        return $this->hasMany(LicenseOnlineService::class);
+    }
 }

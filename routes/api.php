@@ -11,3 +11,4 @@ require __DIR__.'/api/rentals.php';
 require __DIR__.'/api/safaei.php';
 require __DIR__.'/api/complaints.php';
 require __DIR__.'/api/suggestions.php';
+require __DIR__.'/api/license-online-services.php';

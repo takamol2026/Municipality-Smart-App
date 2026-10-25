@@ -64,6 +64,8 @@ return [
         'SafaeiPhoto' => 'تصویر صفایی',
         'Complaint' => 'شکایت',
         'Suggestion' => 'پیشنهاد',
+        'LicenseOnlineService' => 'درخواست جواز و فرم آنلاین',
+        'LicenseOnlineServiceFile' => 'فایل جواز و فرم آنلاین',
     ],
     'fields' => [
         'name' => 'نام',
@@ -90,5 +92,11 @@ return [
         'end_date' => 'تاریخ پایان',
         'birth_date' => 'تاریخ تولد',
         'death_date' => 'تاریخ وفات',
+        'type' => 'نوعیت',
+        'file_name' => 'نام فایل',
+        'file_path' => 'مسیر فایل',
+        'file_type' => 'نوع فایل',
+        'file_size' => 'حجم فایل',
+        'license_online_service_id' => 'مورد مرتبط',
     ],
 ];

@@ -1,18 +1,20 @@
 <?php
 
+use App\Http\Controllers\AnnouncementCategoryController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuditLogController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\AnnouncementCategoryController;
-use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HistoricalAttractionCategoryController;
 use App\Http\Controllers\HistoricalAttractionController;
+use App\Http\Controllers\LicenseOnlineServiceController;
 use App\Http\Controllers\MapCategoryController;
 use App\Http\Controllers\MapLocationController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RentalCategoryController;
@@ -23,7 +25,6 @@ use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -183,6 +184,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
     Route::put('suggestions/{suggestion}', [SuggestionController::class, 'update'])->name('suggestions.update');
+
+    Route::get('license-online-services', [LicenseOnlineServiceController::class, 'index'])->name('license-online-services.index');
+    Route::get('license-online-services/create', [LicenseOnlineServiceController::class, 'create'])->name('license-online-services.create');
+    Route::post('license-online-services', [LicenseOnlineServiceController::class, 'store'])->name('license-online-services.store');
+    Route::get('license-online-services/{licenseOnlineService}/image', [LicenseOnlineServiceController::class, 'downloadImage'])->name('license-online-services.image');
+    Route::get('license-online-services/{licenseOnlineService}/files/{file}', [LicenseOnlineServiceController::class, 'downloadFile'])->name('license-online-services.files.download');
+    Route::delete('license-online-services/{licenseOnlineService}/files/{file}', [LicenseOnlineServiceController::class, 'destroyFile'])->name('license-online-services.files.destroy');
+    Route::get('license-online-services/{licenseOnlineService}/edit', [LicenseOnlineServiceController::class, 'edit'])->name('license-online-services.edit');
+    Route::put('license-online-services/{licenseOnlineService}', [LicenseOnlineServiceController::class, 'update'])->name('license-online-services.update');
+    Route::delete('license-online-services/{licenseOnlineService}', [LicenseOnlineServiceController::class, 'destroy'])->name('license-online-services.destroy');
 
     Route::get('scholars', [ScholarController::class, 'index'])->name('scholars.index');
     Route::get('scholars/create', [ScholarController::class, 'create'])->name('scholars.create');
