@@ -23,6 +23,7 @@ use App\Http\Controllers\SafaeiCategoryController;
 use App\Http\Controllers\SafaeiController;
 use App\Http\Controllers\ScholarController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\ThemePreferenceController;
 use App\Http\Controllers\UrbanServiceCategoryController;
 use App\Http\Controllers\UrbanServiceController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::put('theme-preference', [ThemePreferenceController::class, 'update'])->name('theme.update');
+    Route::delete('theme-preference', [ThemePreferenceController::class, 'destroy'])->name('theme.reset');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');

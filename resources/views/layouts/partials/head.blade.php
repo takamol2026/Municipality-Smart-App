@@ -5,6 +5,34 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         
+        <script>
+            (function () {
+                var theme = @json(\App\Support\ThemePreference::all());
+                var root = document.documentElement;
+
+                Object.keys(theme).forEach(function (key) {
+                    if (!theme[key]) {
+                        return;
+                    }
+
+                    sessionStorage.setItem(key, theme[key]);
+
+                    if (key !== 'data-layout-auto') {
+                        root.setAttribute(key, theme[key]);
+                    }
+                });
+
+                root.classList.toggle('mode-auto', theme['data-layout-auto'] === 'true');
+
+                var snapshot = {};
+                Array.from(root.attributes).forEach(function (attribute) {
+                    if (attribute.nodeName && attribute.nodeName !== 'undefined') {
+                        snapshot[attribute.nodeName] = attribute.nodeValue;
+                    }
+                });
+                sessionStorage.setItem('defaultAttribute', JSON.stringify(snapshot));
+            })();
+        </script>
         <!-- Layout config Js -->
         <script src="{{ asset('assets/assets/js/layout.js') }}"></script>
         @php

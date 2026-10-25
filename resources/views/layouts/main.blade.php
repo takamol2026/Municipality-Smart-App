@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="vertical" data-sidebar="dark" data-sidebar-image="img-1" data-sidebar-size="lg" data-preloader="disable" data-theme="default" dir="{{ config('locales.supported.'.app()->getLocale().'.dir', 'rtl') }}" data-topbar="light" data-bs-theme="light" data-theme-color="0">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" {!! \App\Support\ThemePreference::htmlAttributeString() !!} data-theme="default" dir="{{ config('locales.supported.'.app()->getLocale().'.dir', 'rtl') }}" data-theme-color="0" @class(['mode-auto' => \App\Support\ThemePreference::all()['data-layout-auto'] === 'true'])>
 
 <head>
     <meta charset="utf-8">
