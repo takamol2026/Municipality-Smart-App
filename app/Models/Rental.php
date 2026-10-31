@@ -19,6 +19,8 @@ class Rental extends Model
         'slug',
         'description',
         'address',
+        'latitude',
+        'longitude',
         'rental_price',
         'rental_period',
         'image',
@@ -32,6 +34,8 @@ class Rental extends Model
         return [
             'rental_price' => 'integer',
             'rental_period' => 'integer',
+            'latitude' => 'decimal:4',
+            'longitude' => 'decimal:4',
             'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',

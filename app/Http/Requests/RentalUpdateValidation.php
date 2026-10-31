@@ -32,6 +32,8 @@ class RentalUpdateValidation extends FormRequest
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('rentals', 'slug')->ignore($this->route('rental'))],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90', 'decimal:0,4'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180', 'decimal:0,4'],
             'rental_price' => ['nullable', 'integer', 'min:0'],
             'rental_period' => ['nullable', 'integer', 'min:0'],
             'image' => ['nullable', 'image'],

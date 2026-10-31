@@ -52,6 +52,8 @@ class RentalController extends ApiController
             'slug' => $rental->slug,
             'description' => $rental->description,
             'address' => $rental->address,
+            'latitude' => $rental->latitude,
+            'longitude' => $rental->longitude,
             'rental_price' => $rental->rental_price,
             'rental_period' => $rental->rental_period,
             'image_url' => $this->fileUrl($rental->image),

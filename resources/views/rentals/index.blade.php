@@ -193,6 +193,12 @@
                                             <dt class="col-sm-3">{{ __('common.address') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $rental->address ?: '—' }}</dd>
 
+                                            <dt class="col-sm-3">{{ __('rentals.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $rental->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('rentals.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $rental->longitude ?: '—' }}</dd>
+
                                             <dt class="col-sm-3">{{ __('common.description') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $rental->description ?: '—' }}</dd>
 
