@@ -286,6 +286,25 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="#sidebarSocialLinks" class="nav-link menu-link {{ $isActive('social-links') ? '' : 'collapsed' }}"
+                       data-bs-toggle="collapse" role="button"
+                       aria-expanded="{{ $isActive('social-links') ? 'true' : 'false' }}"
+                       aria-controls="sidebarSocialLinks">
+                        <i class="bx bx-share-alt"></i> <span>{{ __('sidebar.social_links') }}</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ $isActive('social-links') ? 'show' : '' }}" id="sidebarSocialLinks">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('social-links.create') }}" class="nav-link {{ request()->routeIs('social-links.create') ? 'active' : '' }}">{{ __('sidebar.social_links_create') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('social-links.index') }}" class="nav-link {{ request()->routeIs('social-links.index') ? 'active' : '' }}">{{ __('sidebar.social_links_list') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
                     <a href="#sidebarLicenseOnlineServices" class="nav-link menu-link {{ $isActive('license-online-services') ? '' : 'collapsed' }}"
                        data-bs-toggle="collapse" role="button"
                        aria-expanded="{{ $isActive('license-online-services') ? 'true' : 'false' }}"

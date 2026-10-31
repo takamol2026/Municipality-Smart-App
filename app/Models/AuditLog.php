@@ -71,6 +71,7 @@ class AuditLog extends Model
             SafaeiPhoto::class,
             Complaint::class,
             Suggestion::class,
+            SocialLink::class,
             LicenseOnlineService::class,
             LicenseOnlineServiceFile::class,
         ];

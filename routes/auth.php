@@ -22,6 +22,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\SafaeiCategoryController;
 use App\Http\Controllers\SafaeiController;
 use App\Http\Controllers\ScholarController;
+use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\ThemePreferenceController;
 use App\Http\Controllers\UrbanServiceCategoryController;
@@ -189,6 +190,13 @@ Route::middleware('auth')->group(function () {
     Route::get('suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
     Route::get('suggestions/{suggestion}/image', [SuggestionController::class, 'downloadImage'])->name('suggestions.image');
     Route::put('suggestions/{suggestion}', [SuggestionController::class, 'update'])->name('suggestions.update');
+
+    Route::get('social-links', [SocialLinkController::class, 'index'])->name('social-links.index');
+    Route::get('social-links/create', [SocialLinkController::class, 'create'])->name('social-links.create');
+    Route::post('social-links', [SocialLinkController::class, 'store'])->name('social-links.store');
+    Route::get('social-links/{socialLink}/edit', [SocialLinkController::class, 'edit'])->name('social-links.edit');
+    Route::put('social-links/{socialLink}', [SocialLinkController::class, 'update'])->name('social-links.update');
+    Route::delete('social-links/{socialLink}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
 
     Route::get('license-online-services', [LicenseOnlineServiceController::class, 'index'])->name('license-online-services.index');
     Route::get('license-online-services/create', [LicenseOnlineServiceController::class, 'create'])->name('license-online-services.create');

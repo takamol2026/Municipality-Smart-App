@@ -13,6 +13,7 @@ use App\Models\Project;
 use App\Models\Rental;
 use App\Models\SafaeiPhoto;
 use App\Models\Scholar;
+use App\Models\SocialLink;
 use App\Models\UrbanService;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -104,6 +105,12 @@ class DashboardController extends Controller
                 'color' => 'primary',
                 'route' => route('license-online-services.index'),
             ],
+            [
+                'label' => __('sidebar.social_links'),
+                'count' => SocialLink::count(),
+                'color' => 'info',
+                'route' => route('social-links.index'),
+            ],
         ];
 
         $moduleChart = [
@@ -119,6 +126,7 @@ class DashboardController extends Controller
                 __('sidebar.rentals'),
                 __('sidebar.safaei'),
                 __('sidebar.license_online_services'),
+                __('sidebar.social_links'),
             ],
             'series' => [
                 User::count(),
@@ -132,6 +140,7 @@ class DashboardController extends Controller
                 Rental::count(),
                 SafaeiPhoto::count(),
                 LicenseOnlineService::count(),
+                SocialLink::count(),
             ],
         ];
 

@@ -149,4 +149,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(LicenseOnlineService::class);
     }
+
+    public function socialLinks(): HasMany
+    {
+        return $this->hasMany(SocialLink::class);
+    }
 }
