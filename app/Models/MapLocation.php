@@ -20,6 +20,8 @@ class MapLocation extends Model
         'slug',
         'description',
         'address',
+        'latitude',
+        'longitude',
         'phone',
         'image',
         'status',
@@ -33,6 +35,8 @@ class MapLocation extends Model
             'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
+            'latitude' => 'decimal:4',
+            'longitude' => 'decimal:4',
         ];
     }
 

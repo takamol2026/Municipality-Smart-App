@@ -185,6 +185,12 @@
                                             <dt class="col-sm-3">{{ __('common.address') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $location->address ?: '—' }}</dd>
 
+                                            <dt class="col-sm-3">{{ __('map_locations.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $location->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('map_locations.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $location->longitude ?: '—' }}</dd>
+
                                             <dt class="col-sm-3">{{ __('common.phone') }}</dt>
                                             <dd class="col-sm-9">{{ $location->phone ?: '—' }}</dd>
 

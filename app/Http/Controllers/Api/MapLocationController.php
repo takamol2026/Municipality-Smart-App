@@ -53,6 +53,8 @@ class MapLocationController extends ApiController
             'slug' => $location->slug,
             'description' => $location->description,
             'address' => $location->address,
+            'latitude' => $location->latitude,
+            'longitude' => $location->longitude,
             'phone' => $location->phone,
             'image_url' => $this->fileUrl($location->image),
             'status' => $this->enumValue($location->status),

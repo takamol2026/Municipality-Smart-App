@@ -31,6 +31,8 @@ class MapLocationUpdateValidation extends FormRequest
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('map_locations', 'slug')->ignore($this->route('mapLocation'))],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90', 'decimal:0,4'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180', 'decimal:0,4'],
             'phone' => ['nullable', 'string', 'max:20'],
             'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
