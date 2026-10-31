@@ -23,6 +23,8 @@ class DistrictStoreValidation extends FormRequest
             'slug' => ['nullable', 'string', 'max:255', 'unique:districts,slug'],
             'description' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90', 'decimal:0,4'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180', 'decimal:0,4'],
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'email', 'max:255'],
             'image' => ['nullable', 'image'],

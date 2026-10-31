@@ -49,6 +49,8 @@ class DistrictController extends ApiController
             'slug' => $district->slug,
             'description' => $district->description,
             'address' => $district->address,
+            'latitude' => $district->latitude,
+            'longitude' => $district->longitude,
             'phone' => $district->phone,
             'email' => $district->email,
             'image_url' => $this->fileUrl($district->image),

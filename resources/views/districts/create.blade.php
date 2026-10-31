@@ -150,6 +150,28 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label class="form-label">{{ __('districts.coordinates') }}</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <input type="number" name="latitude" id="latitude" aria-label="{{ __('districts.latitude') }}" class="form-control @error('latitude') is-invalid @enderror" value="{{ old('latitude') }}" placeholder="{{ __('districts.latitude_placeholder') }}" step="0.0001" min="-90" max="90">
+                                                @error('latitude')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="number" name="longitude" id="longitude" aria-label="{{ __('districts.longitude') }}" class="form-control @error('longitude') is-invalid @enderror" value="{{ old('longitude') }}" placeholder="{{ __('districts.longitude_placeholder') }}" step="0.0001" min="-180" max="180">
+                                                @error('longitude')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label for="image" class="form-label">{{ __('common.image') }}</label>
                                     </div>
                                     <div class="col-lg-10">

@@ -194,6 +194,12 @@
                                             <dt class="col-sm-3">{{ __('common.address') }}</dt>
                                             <dd class="col-sm-9" style="white-space: pre-wrap;">{{ $district->address ?: '—' }}</dd>
 
+                                            <dt class="col-sm-3">{{ __('districts.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $district->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('districts.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $district->longitude ?: '—' }}</dd>
+
                                             <dt class="col-sm-3">{{ __('common.image') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($district->image)
