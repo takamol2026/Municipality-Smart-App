@@ -199,6 +199,12 @@
                                             <dt class="col-sm-3">{{ __('historical_attractions.location') }}</dt>
                                             <dd class="col-sm-9">{{ $attraction->location ?: '—' }}</dd>
 
+                                            <dt class="col-sm-3">{{ __('historical_attractions.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $attraction->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('historical_attractions.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $attraction->longitude ?: '—' }}</dd>
+
                                             <dt class="col-sm-3">{{ __('common.image') }}</dt>
                                             <dd class="col-sm-9">
                                                 @if ($attraction->image)

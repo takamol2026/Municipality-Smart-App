@@ -26,6 +26,8 @@ class HistoricalAttractionStoreValidation extends FormRequest
             'history' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
             'location' => ['nullable', 'string', 'max:255'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90', 'decimal:0,4'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180', 'decimal:0,4'],
             'image' => ['nullable', 'image'],
             'status' => ['required', 'in:active,inactive'],
             'sort_order' => ['nullable', 'integer', 'min:0'],

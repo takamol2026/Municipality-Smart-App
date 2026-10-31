@@ -22,6 +22,8 @@ class HistoricalAttraction extends Model
         'history',
         'address',
         'location',
+        'latitude',
+        'longitude',
         'image',
         'status',
         'sort_order',
@@ -34,6 +36,8 @@ class HistoricalAttraction extends Model
             'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
+            'latitude' => 'decimal:4',
+            'longitude' => 'decimal:4',
         ];
     }
 

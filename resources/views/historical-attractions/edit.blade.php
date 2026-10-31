@@ -172,6 +172,28 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-2">
+                                        <label class="form-label">{{ __('historical_attractions.coordinates') }}</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <input type="number" name="latitude" id="latitude" aria-label="{{ __('historical_attractions.latitude') }}" class="form-control @error('latitude') is-invalid @enderror" value="{{ old('latitude', $attraction->latitude) }}" placeholder="{{ __('historical_attractions.latitude_placeholder') }}" step="0.0001" min="-90" max="90">
+                                                @error('latitude')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="number" name="longitude" id="longitude" aria-label="{{ __('historical_attractions.longitude') }}" class="form-control @error('longitude') is-invalid @enderror" value="{{ old('longitude', $attraction->longitude) }}" placeholder="{{ __('historical_attractions.longitude_placeholder') }}" step="0.0001" min="-180" max="180">
+                                                @error('longitude')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2">
                                         <label for="image" class="form-label">{{ __('common.image') }}</label>
                                     </div>
                                     <div class="col-lg-10">
