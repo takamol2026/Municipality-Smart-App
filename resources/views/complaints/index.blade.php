@@ -77,6 +77,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('complaints.title_label') }}</th>
+                                    <th>{{ __('complaints.full_name') }}</th>
+                                    <th>{{ __('complaints.phone') }}</th>
+                                    <th>{{ __('complaints.district') }}</th>
+                                    <th>{{ __('complaints.latitude') }}</th>
+                                    <th>{{ __('complaints.longitude') }}</th>
+                                    <th>{{ __('complaints.image') }}</th>
                                     <th>{{ __('complaints.description') }}</th>
                                     <th>{{ __('complaints.status') }}</th>
                                     <th>{{ __('common.created_at') }}</th>
@@ -88,6 +94,18 @@
                                     <tr>
                                         <td>{{ $complaints->firstItem() + $loop->index }}</td>
                                         <td>{{ $complaint->title }}</td>
+                                        <td>{{ $complaint->full_name ?: '—' }}</td>
+                                        <td>{{ $complaint->phone ?: '—' }}</td>
+                                        <td>{{ $complaint->district?->name ?: '—' }}</td>
+                                        <td>{{ $complaint->latitude ?: '—' }}</td>
+                                        <td>{{ $complaint->longitude ?: '—' }}</td>
+                                        <td>
+                                            @if ($complaint->image)
+                                                <img src="{{ asset('storage/'.$complaint->image) }}" alt="{{ $complaint->title }}" class="img-thumbnail" style="width: 48px; height: 48px; object-fit: cover;">
+                                            @else
+                                                —
+                                            @endif
+                                        </td>
                                         <td>{{ \Illuminate\Support\Str::limit($complaint->description, 80) }}</td>
                                         <td>
                                             @switch($complaint->status)
@@ -114,7 +132,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                        <td colspan="12" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -142,6 +160,33 @@
 
                                             <dt class="col-sm-3">{{ __('complaints.description') }}</dt>
                                             <dd class="col-sm-9">{{ $complaint->description }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.full_name') }}</dt>
+                                            <dd class="col-sm-9">{{ $complaint->full_name ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.phone') }}</dt>
+                                            <dd class="col-sm-9">{{ $complaint->phone ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.district') }}</dt>
+                                            <dd class="col-sm-9">{{ $complaint->district?->name ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $complaint->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $complaint->longitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('complaints.image') }}</dt>
+                                            <dd class="col-sm-9">
+                                                @if ($complaint->image)
+                                                    <div class="d-flex flex-column align-items-start gap-2">
+                                                        <img src="{{ asset('storage/'.$complaint->image) }}" alt="{{ $complaint->title }}" class="img-thumbnail" style="max-height: 160px;">
+                                                        <a href="{{ route('complaints.image', $complaint) }}" class="btn btn-sm btn-primary">{{ __('common.download_image') }}</a>
+                                                    </div>
+                                                @else
+                                                    —
+                                                @endif
+                                            </dd>
 
                                             <dt class="col-sm-3">{{ __('complaints.status') }}</dt>
                                             <dd class="col-sm-9">{{ $complaint->status->label() }}</dd>

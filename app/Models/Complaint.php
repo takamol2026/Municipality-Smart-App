@@ -4,12 +4,19 @@ namespace App\Models;
 
 use App\Enums\ComplaintStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Complaint extends Model
 {
     protected $fillable = [
         'title',
         'description',
+        'image',
+        'latitude',
+        'longitude',
+        'full_name',
+        'phone',
+        'district_id',
         'status',
     ];
 
@@ -17,6 +24,13 @@ class Complaint extends Model
     {
         return [
             'status' => ComplaintStatus::class,
+            'latitude' => 'decimal:4',
+            'longitude' => 'decimal:4',
         ];
+    }
+
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class);
     }
 }

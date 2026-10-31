@@ -183,6 +183,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('safaei/{safaei}', [SafaeiController::class, 'destroy'])->name('safaei.destroy');
 
     Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+    Route::get('complaints/{complaint}/image', [ComplaintController::class, 'downloadImage'])->name('complaints.image');
     Route::put('complaints/{complaint}', [ComplaintController::class, 'update'])->name('complaints.update');
 
     Route::get('suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
