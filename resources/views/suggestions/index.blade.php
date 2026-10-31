@@ -77,6 +77,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('suggestions.title_label') }}</th>
+                                    <th>{{ __('suggestions.full_name') }}</th>
+                                    <th>{{ __('suggestions.phone') }}</th>
+                                    <th>{{ __('suggestions.district') }}</th>
+                                    <th>{{ __('suggestions.latitude') }}</th>
+                                    <th>{{ __('suggestions.longitude') }}</th>
+                                    <th>{{ __('suggestions.image') }}</th>
                                     <th>{{ __('suggestions.description') }}</th>
                                     <th>{{ __('suggestions.status') }}</th>
                                     <th>{{ __('common.created_at') }}</th>
@@ -88,6 +94,18 @@
                                     <tr>
                                         <td>{{ $suggestions->firstItem() + $loop->index }}</td>
                                         <td>{{ $suggestion->title }}</td>
+                                        <td>{{ $suggestion->full_name ?: '—' }}</td>
+                                        <td>{{ $suggestion->phone ?: '—' }}</td>
+                                        <td>{{ $suggestion->district?->name ?: '—' }}</td>
+                                        <td>{{ $suggestion->latitude ?: '—' }}</td>
+                                        <td>{{ $suggestion->longitude ?: '—' }}</td>
+                                        <td>
+                                            @if ($suggestion->image)
+                                                <img src="{{ asset('storage/'.$suggestion->image) }}" alt="{{ $suggestion->title }}" class="img-thumbnail" style="width: 48px; height: 48px; object-fit: cover;">
+                                            @else
+                                                —
+                                            @endif
+                                        </td>
                                         <td>{{ \Illuminate\Support\Str::limit($suggestion->description, 80) }}</td>
                                         <td>
                                             @switch($suggestion->status)
@@ -114,7 +132,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
+                                        <td colspan="12" class="text-center text-muted py-4">{{ __('common.empty') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -142,6 +160,33 @@
 
                                             <dt class="col-sm-3">{{ __('suggestions.description') }}</dt>
                                             <dd class="col-sm-9">{{ $suggestion->description }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.full_name') }}</dt>
+                                            <dd class="col-sm-9">{{ $suggestion->full_name ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.phone') }}</dt>
+                                            <dd class="col-sm-9">{{ $suggestion->phone ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.district') }}</dt>
+                                            <dd class="col-sm-9">{{ $suggestion->district?->name ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.latitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $suggestion->latitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.longitude') }}</dt>
+                                            <dd class="col-sm-9">{{ $suggestion->longitude ?: '—' }}</dd>
+
+                                            <dt class="col-sm-3">{{ __('suggestions.image') }}</dt>
+                                            <dd class="col-sm-9">
+                                                @if ($suggestion->image)
+                                                    <div class="d-flex flex-column align-items-start gap-2">
+                                                        <img src="{{ asset('storage/'.$suggestion->image) }}" alt="{{ $suggestion->title }}" class="img-thumbnail" style="max-height: 160px;">
+                                                        <a href="{{ route('suggestions.image', $suggestion) }}" class="btn btn-sm btn-primary">{{ __('common.download_image') }}</a>
+                                                    </div>
+                                                @else
+                                                    —
+                                                @endif
+                                            </dd>
 
                                             <dt class="col-sm-3">{{ __('suggestions.status') }}</dt>
                                             <dd class="col-sm-9">{{ $suggestion->status->label() }}</dd>

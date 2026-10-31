@@ -187,6 +187,7 @@ Route::middleware('auth')->group(function () {
     Route::put('complaints/{complaint}', [ComplaintController::class, 'update'])->name('complaints.update');
 
     Route::get('suggestions', [SuggestionController::class, 'index'])->name('suggestions.index');
+    Route::get('suggestions/{suggestion}/image', [SuggestionController::class, 'downloadImage'])->name('suggestions.image');
     Route::put('suggestions/{suggestion}', [SuggestionController::class, 'update'])->name('suggestions.update');
 
     Route::get('license-online-services', [LicenseOnlineServiceController::class, 'index'])->name('license-online-services.index');
