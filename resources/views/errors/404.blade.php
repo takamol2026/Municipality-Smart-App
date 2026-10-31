@@ -65,7 +65,7 @@
 
     <script src="{{ asset('assets/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/assets/libs/simplebar/dist/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/assets/js/plugins.js') }}?v={{ filemtime(public_path('assets/assets/js/plugins.js')) }}"></script>
 </body>
 
 </html>

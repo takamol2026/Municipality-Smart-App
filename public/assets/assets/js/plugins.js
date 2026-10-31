@@ -7,12 +7,27 @@ Contact: Themesbrand@gmail.com
 File: Common Plugins Js File
 */
 
-//Common plugins
-if (document.querySelectorAll("[toast-list]"))
-  document.writeln("<script src='assets/libs/toastify-js/src/toastify.js'></script>");
+(function () {
+    var script = document.currentScript;
+    var base = "assets/assets/libs/";
 
-if (document.querySelectorAll("[data-provider]"))
-  document.writeln("<script src='assets/libs/flatpickr/dist/flatpickr.min.js'></script>");
+    if (script && script.src) {
+        base = script.src.replace(/\/js\/plugins\.js(?:\?.*)?$/i, "/libs/");
+    }
 
-if (document.querySelectorAll('[data-choices]'))
-  document.writeln("<script src='assets/libs/choices.js/public/assets/scripts/choices.min.js'></script>");
+    function load(src) {
+        document.writeln("<script src='" + src + "'><\/script>");
+    }
+
+    if (document.querySelectorAll("[toast-list]").length) {
+        load(base + "toastify-js/src/toastify.js");
+    }
+
+    if (document.querySelectorAll("[data-provider]").length) {
+        load(base + "flatpickr/dist/flatpickr.min.js");
+    }
+
+    if (document.querySelectorAll("[data-choices]").length) {
+        load(base + "choices.js/public/assets/scripts/choices.min.js");
+    }
+})();
