@@ -123,10 +123,14 @@
                                             @endswitch
                                         </td>
                                         <td>{{ jalali_date($complaint->created_at) }}</td>
-                                        <td>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#complaintModal{{ $complaint->id }}">{{ __('common.show') }}</button>
-                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#complaintStatusModal{{ $complaint->id }}">{{ __('complaints.change_status') }}</button>
+                                        <td class="text-nowrap">
+                                            <div class="d-inline-flex align-items-center gap-2">
+                                                <button type="button" class="btn btn-sm btn-info btn-icon" data-bs-toggle="modal" data-bs-target="#complaintModal{{ $complaint->id }}" title="{{ __('common.show') }}" aria-label="{{ __('common.show') }}">
+                                                    <i class="ri-eye-line"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-primary btn-icon" data-bs-toggle="modal" data-bs-target="#complaintStatusModal{{ $complaint->id }}" title="{{ __('complaints.change_status') }}" aria-label="{{ __('complaints.change_status') }}">
+                                                    <i class="ri-exchange-line"></i>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
