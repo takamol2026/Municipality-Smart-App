@@ -35,8 +35,8 @@ class MapLocation extends Model
             'lang' => Language::class,
             'status' => RecordStatus::class,
             'sort_order' => 'integer',
-            'latitude' => 'decimal:4',
-            'longitude' => 'decimal:4',
+            'latitude' => 'decimal:8',
+            'longitude' => 'decimal:8',
         ];
     }
 

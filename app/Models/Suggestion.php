@@ -24,8 +24,8 @@ class Suggestion extends Model
     {
         return [
             'status' => SuggestionStatus::class,
-            'latitude' => 'decimal:4',
-            'longitude' => 'decimal:4',
+            'latitude' => 'decimal:8',
+            'longitude' => 'decimal:8',
         ];
     }
 

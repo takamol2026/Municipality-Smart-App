@@ -122,13 +122,13 @@
                                     <div class="col-lg-10">
                                         <div class="row g-2">
                                             <div class="col-md-6">
-                                                <input type="number" name="latitude" id="latitude" aria-label="{{ __('rentals.latitude') }}" class="form-control @error('latitude') is-invalid @enderror" value="{{ old('latitude') }}" placeholder="{{ __('rentals.latitude_placeholder') }}" step="0.0001" min="-90" max="90">
+                                                <input type="number" name="latitude" id="latitude" aria-label="{{ __('rentals.latitude') }}" class="form-control @error('latitude') is-invalid @enderror" value="{{ old('latitude') }}" placeholder="{{ __('rentals.latitude_placeholder') }}" step="0.00000001" min="-90" max="90">
                                                 @error('latitude')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="number" name="longitude" id="longitude" aria-label="{{ __('rentals.longitude') }}" class="form-control @error('longitude') is-invalid @enderror" value="{{ old('longitude') }}" placeholder="{{ __('rentals.longitude_placeholder') }}" step="0.0001" min="-180" max="180">
+                                                <input type="number" name="longitude" id="longitude" aria-label="{{ __('rentals.longitude') }}" class="form-control @error('longitude') is-invalid @enderror" value="{{ old('longitude') }}" placeholder="{{ __('rentals.longitude_placeholder') }}" step="0.00000001" min="-180" max="180">
                                                 @error('longitude')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror

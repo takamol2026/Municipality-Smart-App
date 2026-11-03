@@ -24,8 +24,8 @@ class Complaint extends Model
     {
         return [
             'status' => ComplaintStatus::class,
-            'latitude' => 'decimal:4',
-            'longitude' => 'decimal:4',
+            'latitude' => 'decimal:8',
+            'longitude' => 'decimal:8',
         ];
     }
 
