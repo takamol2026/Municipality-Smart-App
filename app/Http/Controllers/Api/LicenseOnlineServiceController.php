@@ -3,26 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\LicenseOnlineServiceType;
-use App\Enums\RecordStatus;
-use App\Models\LicenseOnlineService;
-use App\Models\LicenseOnlineServiceFile;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class LicenseOnlineServiceController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = LicenseOnlineService::query()
-            ->with('files')
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_license_online_services');
         $this->applySearch($query, $request, 'name');
 
         $type = LicenseOnlineServiceType::tryFrom($request->string('type')->toString());
 
         if ($type !== null) {
-            $query->where('type', $type);
+            $query->where('type', $type->value);
         }
 
         $services = $query
@@ -31,42 +26,46 @@ class LicenseOnlineServiceController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($services, fn (LicenseOnlineService $service) => $this->payload($service));
+        $files = $this->rowsFor('vw_license_online_service_files', 'license_online_service_id', $services->getCollection()->pluck('id'))
+            ->sortBy('id')
+            ->groupBy(fn ($file) => (string) $file->license_online_service_id);
+
+        return $this->paginated($services, fn (object $service) => $this->payload($service, $files));
     }
 
     public function show(int $licenseOnlineService): JsonResponse
     {
-        $service = LicenseOnlineService::query()
-            ->with('files')
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($licenseOnlineService);
+        $service = $this->findView('vw_license_online_services', $licenseOnlineService);
+        $files = $this->rowsFor('vw_license_online_service_files', 'license_online_service_id', [$service->id])
+            ->sortBy('id')
+            ->groupBy(fn ($file) => (string) $file->license_online_service_id);
 
         return response()->json([
-            'data' => $this->payload($service),
+            'data' => $this->payload($service, $files),
         ]);
     }
 
-    private function payload(LicenseOnlineService $service): array
+    private function payload(object $service, Collection $files): array
     {
         return [
-            'id' => $service->id,
-            'type' => $this->enumValue($service->type),
-            'type_label' => $service->type?->label(),
+            'id' => (int) $service->id,
+            'type' => $service->type,
+            'type_label' => LicenseOnlineServiceType::tryFrom((string) $service->type)?->label(),
             'name' => $service->name,
-            'lang' => $this->enumValue($service->lang),
-            'lang_label' => $service->lang?->label(),
+            'lang' => $service->lang,
+            'lang_label' => $this->langLabel($service->lang),
             'description' => $service->description,
-            'image_url' => $this->fileUrl($service->image),
-            'status' => $this->enumValue($service->status),
-            'sort_order' => $service->sort_order,
-            'files' => $service->files->map(fn (LicenseOnlineServiceFile $file) => [
-                'id' => $file->id,
+            'image_url' => $this->viewUrl($service->image_url),
+            'status' => $service->status,
+            'sort_order' => (int) $service->sort_order,
+            'files' => $files->get((string) $service->id, collect())->map(fn ($file) => [
+                'id' => (int) $file->id,
                 'file_name' => $file->file_name,
                 'file_type' => $file->file_type,
-                'file_size' => $file->file_size,
-                'url' => $this->fileUrl($file->file_path),
+                'file_size' => (int) $file->file_size,
+                'url' => $this->viewUrl($file->url),
             ])->values(),
-            'created_at' => $service->created_at?->toIso8601String(),
+            'created_at' => $this->iso($service->created_at),
         ];
     }
 }

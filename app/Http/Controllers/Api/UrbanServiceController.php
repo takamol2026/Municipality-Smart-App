@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\UrbanService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,14 +9,11 @@ class UrbanServiceController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = UrbanService::query()
-            ->with('category')
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_urban_services');
         $this->applySearch($query, $request, 'name');
 
         if ($request->filled('category_id')) {
-            $query->where('urban_service_category_id', $request->integer('category_id'));
+            $query->where('category_id', $request->integer('category_id'));
         }
 
         $services = $query
@@ -27,39 +22,30 @@ class UrbanServiceController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($services, fn (UrbanService $service) => $this->payload($service));
+        return $this->paginated($services, fn (object $service) => $this->payload($service));
     }
 
     public function show(int $service): JsonResponse
     {
-        $service = UrbanService::query()
-            ->with('category')
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($service);
-
         return response()->json([
-            'data' => $this->payload($service),
+            'data' => $this->payload($this->findView('vw_urban_services', $service)),
         ]);
     }
 
-    private function payload(UrbanService $service): array
+    private function payload(object $service): array
     {
         return [
-            'id' => $service->id,
+            'id' => (int) $service->id,
             'name' => $service->name,
-            'lang' => $this->enumValue($service->lang),
-            'lang_label' => $service->lang?->label(),
+            'lang' => $service->lang,
+            'lang_label' => $this->langLabel($service->lang),
             'slug' => $service->slug,
             'short_description' => $service->short_description,
             'description' => $service->description,
-            'status' => $this->enumValue($service->status),
-            'sort_order' => $service->sort_order,
-            'category' => $service->category ? [
-                'id' => $service->category->id,
-                'name' => $service->category->name,
-                'slug' => $service->category->slug,
-            ] : null,
-            'created_at' => $service->created_at?->toIso8601String(),
+            'status' => $service->status,
+            'sort_order' => (int) $service->sort_order,
+            'category' => $this->categoryOf($service),
+            'created_at' => $this->iso($service->created_at),
         ];
     }
 }

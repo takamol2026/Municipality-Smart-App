@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\Announcement;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,12 +9,11 @@ class AnnouncementController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = Announcement::query()->with('category');
-        $this->published($query);
+        $query = $this->view('vw_announcements');
         $this->applySearch($query, $request, 'title');
 
         if ($request->filled('category_id')) {
-            $query->where('announcement_category_id', $request->integer('category_id'));
+            $query->where('category_id', $request->integer('category_id'));
         }
 
         $announcements = $query
@@ -26,55 +22,34 @@ class AnnouncementController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($announcements, fn (Announcement $announcement) => $this->payload($announcement));
+        return $this->paginated($announcements, fn (object $announcement) => $this->payload($announcement));
     }
 
     public function show(int $announcement): JsonResponse
     {
-        $query = Announcement::query()->with('category');
-        $this->published($query);
-
-        $announcement = $query->findOrFail($announcement);
-
         return response()->json([
-            'data' => $this->payload($announcement),
+            'data' => $this->payload($this->findView('vw_announcements', $announcement)),
         ]);
     }
 
-    private function published(Builder $query): void
-    {
-        $query
-            ->where('status', RecordStatus::Active)
-            ->where(function (Builder $query) {
-                $query->whereNull('publish_date')->orWhereDate('publish_date', '<=', now());
-            })
-            ->where(function (Builder $query) {
-                $query->whereNull('expire_date')->orWhereDate('expire_date', '>=', now());
-            });
-    }
-
-    private function payload(Announcement $announcement): array
+    private function payload(object $announcement): array
     {
         return [
-            'id' => $announcement->id,
+            'id' => (int) $announcement->id,
             'title' => $announcement->title,
-            'lang' => $this->enumValue($announcement->lang),
-            'lang_label' => $announcement->lang?->label(),
+            'lang' => $announcement->lang,
+            'lang_label' => $this->langLabel($announcement->lang),
             'slug' => $announcement->slug,
             'short_description' => $announcement->short_description,
             'content' => $announcement->content,
-            'image_url' => $this->fileUrl($announcement->image),
-            'attachment_url' => $this->fileUrl($announcement->attachment),
-            'publish_date' => $this->date($announcement->publish_date),
-            'expire_date' => $this->date($announcement->expire_date),
-            'status' => $this->enumValue($announcement->status),
-            'sort_order' => $announcement->sort_order,
-            'category' => $announcement->category ? [
-                'id' => $announcement->category->id,
-                'name' => $announcement->category->name,
-                'slug' => $announcement->category->slug,
-            ] : null,
-            'created_at' => $announcement->created_at?->toIso8601String(),
+            'image_url' => $this->viewUrl($announcement->image_url),
+            'attachment_url' => $this->viewUrl($announcement->attachment_url),
+            'publish_date' => $this->day($announcement->publish_date),
+            'expire_date' => $this->day($announcement->expire_date),
+            'status' => $announcement->status,
+            'sort_order' => (int) $announcement->sort_order,
+            'category' => $this->categoryOf($announcement),
+            'created_at' => $this->iso($announcement->created_at),
         ];
     }
 }

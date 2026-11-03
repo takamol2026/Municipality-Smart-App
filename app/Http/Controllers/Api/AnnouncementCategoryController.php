@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\AnnouncementCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,10 +9,7 @@ class AnnouncementCategoryController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = AnnouncementCategory::query()
-            ->withCount(['announcements' => fn ($announcements) => $announcements->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_announcement_categories');
         $this->applySearch($query, $request, 'name');
 
         $categories = $query
@@ -23,32 +18,27 @@ class AnnouncementCategoryController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($categories, fn (AnnouncementCategory $category) => $this->payload($category));
+        return $this->paginated($categories, fn (object $category) => $this->payload($category));
     }
 
     public function show(int $category): JsonResponse
     {
-        $category = AnnouncementCategory::query()
-            ->withCount(['announcements' => fn ($announcements) => $announcements->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($category);
-
         return response()->json([
-            'data' => $this->payload($category),
+            'data' => $this->payload($this->findView('vw_announcement_categories', $category)),
         ]);
     }
 
-    private function payload(AnnouncementCategory $category): array
+    private function payload(object $category): array
     {
         return [
-            'id' => $category->id,
+            'id' => (int) $category->id,
             'name' => $category->name,
-            'lang' => $this->enumValue($category->lang),
-            'lang_label' => $category->lang?->label(),
+            'lang' => $category->lang,
+            'lang_label' => $this->langLabel($category->lang),
             'slug' => $category->slug,
-            'status' => $this->enumValue($category->status),
-            'sort_order' => $category->sort_order,
-            'announcements_count' => $category->announcements_count,
+            'status' => $category->status,
+            'sort_order' => (int) $category->sort_order,
+            'announcements_count' => (int) $category->announcements_count,
         ];
     }
 }

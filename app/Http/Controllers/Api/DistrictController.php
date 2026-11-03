@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\District;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class DistrictController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = District::query()
-            ->with('files')
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_districts');
         $this->applySearch($query, $request, 'name');
 
         $districts = $query
@@ -23,28 +19,32 @@ class DistrictController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($districts, fn (District $district) => $this->payload($district));
+        $files = $this->rowsFor('vw_district_files', 'district_id', $districts->getCollection()->pluck('id'))
+            ->sortBy('id')
+            ->groupBy(fn ($file) => (string) $file->district_id);
+
+        return $this->paginated($districts, fn (object $district) => $this->payload($district, $files));
     }
 
     public function show(int $district): JsonResponse
     {
-        $district = District::query()
-            ->with('files')
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($district);
+        $district = $this->findView('vw_districts', $district);
+        $files = $this->rowsFor('vw_district_files', 'district_id', [$district->id])
+            ->sortBy('id')
+            ->groupBy(fn ($file) => (string) $file->district_id);
 
         return response()->json([
-            'data' => $this->payload($district),
+            'data' => $this->payload($district, $files),
         ]);
     }
 
-    private function payload(District $district): array
+    private function payload(object $district, Collection $files): array
     {
         return [
-            'id' => $district->id,
+            'id' => (int) $district->id,
             'name' => $district->name,
-            'lang' => $this->enumValue($district->lang),
-            'lang_label' => $district->lang?->label(),
+            'lang' => $district->lang,
+            'lang_label' => $this->langLabel($district->lang),
             'number' => $district->number,
             'slug' => $district->slug,
             'description' => $district->description,
@@ -53,14 +53,14 @@ class DistrictController extends ApiController
             'longitude' => $district->longitude,
             'phone' => $district->phone,
             'email' => $district->email,
-            'image_url' => $this->fileUrl($district->image),
-            'status' => $this->enumValue($district->status),
-            'sort_order' => $district->sort_order,
-            'files' => $district->files->map(fn ($file) => [
-                'id' => $file->id,
-                'url' => $this->fileUrl($file->location),
+            'image_url' => $this->viewUrl($district->image_url),
+            'status' => $district->status,
+            'sort_order' => (int) $district->sort_order,
+            'files' => $files->get((string) $district->id, collect())->map(fn ($file) => [
+                'id' => (int) $file->id,
+                'url' => $this->viewUrl($file->url),
             ])->values(),
-            'created_at' => $district->created_at?->toIso8601String(),
+            'created_at' => $this->iso($district->created_at),
         ];
     }
 }

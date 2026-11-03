@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\RentalCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,10 +9,7 @@ class RentalCategoryController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = RentalCategory::query()
-            ->withCount(['rentals' => fn ($rentals) => $rentals->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_rental_categories');
         $this->applySearch($query, $request, 'name');
 
         $categories = $query
@@ -23,34 +18,29 @@ class RentalCategoryController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($categories, fn (RentalCategory $category) => $this->payload($category));
+        return $this->paginated($categories, fn (object $category) => $this->payload($category));
     }
 
     public function show(int $category): JsonResponse
     {
-        $category = RentalCategory::query()
-            ->withCount(['rentals' => fn ($rentals) => $rentals->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($category);
-
         return response()->json([
-            'data' => $this->payload($category),
+            'data' => $this->payload($this->findView('vw_rental_categories', $category)),
         ]);
     }
 
-    private function payload(RentalCategory $category): array
+    private function payload(object $category): array
     {
         return [
-            'id' => $category->id,
+            'id' => (int) $category->id,
             'name' => $category->name,
-            'lang' => $this->enumValue($category->lang),
-            'lang_label' => $category->lang?->label(),
+            'lang' => $category->lang,
+            'lang_label' => $this->langLabel($category->lang),
             'slug' => $category->slug,
             'description' => $category->description,
-            'image_url' => $this->fileUrl($category->img),
-            'status' => $this->enumValue($category->status),
-            'sort_order' => $category->sort_order,
-            'rentals_count' => $category->rentals_count,
+            'image_url' => $this->viewUrl($category->image_url),
+            'status' => $category->status,
+            'sort_order' => (int) $category->sort_order,
+            'rentals_count' => (int) $category->rentals_count,
         ];
     }
 }

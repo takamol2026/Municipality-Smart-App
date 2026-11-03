@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\Rental;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,14 +9,11 @@ class RentalController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = Rental::query()
-            ->with('category')
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_rentals');
         $this->applySearch($query, $request, 'name');
 
         if ($request->filled('category_id')) {
-            $query->where('rental_category_id', $request->integer('category_id'));
+            $query->where('category_id', $request->integer('category_id'));
         }
 
         $rentals = $query
@@ -27,44 +22,35 @@ class RentalController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($rentals, fn (Rental $rental) => $this->payload($rental));
+        return $this->paginated($rentals, fn (object $rental) => $this->payload($rental));
     }
 
     public function show(int $rental): JsonResponse
     {
-        $rental = Rental::query()
-            ->with('category')
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($rental);
-
         return response()->json([
-            'data' => $this->payload($rental),
+            'data' => $this->payload($this->findView('vw_rentals', $rental)),
         ]);
     }
 
-    private function payload(Rental $rental): array
+    private function payload(object $rental): array
     {
         return [
-            'id' => $rental->id,
+            'id' => (int) $rental->id,
             'name' => $rental->name,
-            'lang' => $this->enumValue($rental->lang),
-            'lang_label' => $rental->lang?->label(),
+            'lang' => $rental->lang,
+            'lang_label' => $this->langLabel($rental->lang),
             'slug' => $rental->slug,
             'description' => $rental->description,
             'address' => $rental->address,
             'latitude' => $rental->latitude,
             'longitude' => $rental->longitude,
-            'rental_price' => $rental->rental_price,
-            'rental_period' => $rental->rental_period,
-            'image_url' => $this->fileUrl($rental->image),
-            'status' => $this->enumValue($rental->status),
-            'sort_order' => $rental->sort_order,
-            'category' => $rental->category ? [
-                'id' => $rental->category->id,
-                'name' => $rental->category->name,
-                'slug' => $rental->category->slug,
-            ] : null,
-            'created_at' => $rental->created_at?->toIso8601String(),
+            'rental_price' => $rental->rental_price === null ? null : (int) $rental->rental_price,
+            'rental_period' => $rental->rental_period === null ? null : (int) $rental->rental_period,
+            'image_url' => $this->viewUrl($rental->image_url),
+            'status' => $rental->status,
+            'sort_order' => (int) $rental->sort_order,
+            'category' => $this->categoryOf($rental),
+            'created_at' => $this->iso($rental->created_at),
         ];
     }
 }

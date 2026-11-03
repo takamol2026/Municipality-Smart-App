@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\SafaeiPhoto;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,16 +9,14 @@ class SafaeiController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = SafaeiPhoto::query()
-            ->with('safaei.category')
-            ->whereHas('safaei.category', fn ($category) => $category->where('status', RecordStatus::Active));
+        $query = $this->view('vw_safaei');
 
         if ($request->filled('search')) {
-            $query->where('file_path', 'like', '%'.$request->string('search').'%');
+            $query->where('file_url', 'like', '%'.$request->string('search').'%');
         }
 
         if ($request->filled('category_id')) {
-            $query->whereHas('safaei', fn ($safaei) => $safaei->where('safaei_category_id', $request->integer('category_id')));
+            $query->where('category_id', $request->integer('category_id'));
         }
 
         $files = $query
@@ -28,37 +24,32 @@ class SafaeiController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($files, fn (SafaeiPhoto $file) => $this->payload($file));
+        return $this->paginated($files, fn (object $file) => $this->payload($file));
     }
 
     public function show(int $file): JsonResponse
     {
-        $file = SafaeiPhoto::query()
-            ->with('safaei.category')
-            ->whereHas('safaei.category', fn ($category) => $category->where('status', RecordStatus::Active))
-            ->findOrFail($file);
-
         return response()->json([
-            'data' => $this->payload($file),
+            'data' => $this->payload($this->findView('vw_safaei', $file)),
         ]);
     }
 
-    private function payload(SafaeiPhoto $file): array
+    private function payload(object $file): array
     {
         return [
-            'id' => $file->id,
-            'file_name' => $file->fileName() === '—' ? null : $file->fileName(),
-            'file_url' => $this->fileUrl($file->file_path),
-            'is_image' => $file->isImageFile(),
-            'safaei' => $file->safaei ? [
-                'id' => $file->safaei->id,
-                'title' => $file->safaei->title,
-                'category' => $file->safaei->category ? [
-                    'id' => $file->safaei->category->id,
-                    'name' => $file->safaei->category->name,
-                ] : null,
-            ] : null,
-            'created_at' => $file->created_at?->toIso8601String(),
+            'id' => (int) $file->id,
+            'file_name' => $file->file_name,
+            'file_url' => $this->viewUrl($file->file_url),
+            'is_image' => (int) $file->is_image === 1,
+            'safaei' => $file->safaei_id === null ? null : [
+                'id' => (int) $file->safaei_id,
+                'title' => $file->safaei_title,
+                'category' => $file->category_id === null ? null : [
+                    'id' => (int) $file->category_id,
+                    'name' => $file->category_name,
+                ],
+            ],
+            'created_at' => $this->iso($file->created_at),
         ];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\ProjectCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,10 +9,7 @@ class ProjectCategoryController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = ProjectCategory::query()
-            ->withCount(['projects' => fn ($projects) => $projects->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_project_categories');
         $this->applySearch($query, $request, 'name');
 
         $categories = $query
@@ -23,32 +18,27 @@ class ProjectCategoryController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($categories, fn (ProjectCategory $category) => $this->payload($category));
+        return $this->paginated($categories, fn (object $category) => $this->payload($category));
     }
 
     public function show(int $category): JsonResponse
     {
-        $category = ProjectCategory::query()
-            ->withCount(['projects' => fn ($projects) => $projects->where('status', RecordStatus::Active)])
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($category);
-
         return response()->json([
-            'data' => $this->payload($category),
+            'data' => $this->payload($this->findView('vw_project_categories', $category)),
         ]);
     }
 
-    private function payload(ProjectCategory $category): array
+    private function payload(object $category): array
     {
         return [
-            'id' => $category->id,
+            'id' => (int) $category->id,
             'name' => $category->name,
             'slug' => $category->slug,
             'description' => $category->description,
-            'image_url' => $this->fileUrl($category->img),
-            'status' => $this->enumValue($category->status),
-            'sort_order' => $category->sort_order,
-            'projects_count' => $category->projects_count,
+            'image_url' => $this->viewUrl($category->image_url),
+            'status' => $category->status,
+            'sort_order' => (int) $category->sort_order,
+            'projects_count' => (int) $category->projects_count,
         ];
     }
 }

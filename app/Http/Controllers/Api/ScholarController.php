@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
 use App\Models\Scholar;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,8 +10,7 @@ class ScholarController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = Scholar::query()->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_scholars');
         $this->applySearch($query, $request, 'name');
 
         $scholars = $query
@@ -21,38 +19,34 @@ class ScholarController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($scholars, fn (Scholar $scholar) => $this->payload($scholar));
+        return $this->paginated($scholars, fn (object $scholar) => $this->payload($scholar));
     }
 
     public function show(int $scholar): JsonResponse
     {
-        $scholar = Scholar::query()
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($scholar);
-
         return response()->json([
-            'data' => $this->payload($scholar),
+            'data' => $this->payload($this->findView('vw_scholars', $scholar)),
         ]);
     }
 
-    private function payload(Scholar $scholar): array
+    private function payload(object $scholar): array
     {
         return [
-            'id' => $scholar->id,
+            'id' => (int) $scholar->id,
             'name' => $scholar->name,
-            'lang' => $this->enumValue($scholar->lang),
-            'lang_label' => $scholar->lang?->label(),
+            'lang' => $scholar->lang,
+            'lang_label' => $this->langLabel($scholar->lang),
             'slug' => $scholar->slug,
             'short_bio' => $scholar->short_bio,
             'biography' => $scholar->biography,
-            'birth_date' => $scholar->jalaliDate('birth_date'),
-            'death_date' => $scholar->jalaliDate('death_date'),
+            'birth_date' => Scholar::toJalaliDate($scholar->birth_date),
+            'death_date' => Scholar::toJalaliDate($scholar->death_date),
             'education' => $scholar->education,
             'works' => $scholar->works,
-            'image_url' => $this->fileUrl($scholar->image),
-            'status' => $this->enumValue($scholar->status),
-            'sort_order' => $scholar->sort_order,
-            'created_at' => $scholar->created_at?->toIso8601String(),
+            'image_url' => $this->viewUrl($scholar->image_url),
+            'status' => $scholar->status,
+            'sort_order' => (int) $scholar->sort_order,
+            'created_at' => $this->iso($scholar->created_at),
         ];
     }
 }

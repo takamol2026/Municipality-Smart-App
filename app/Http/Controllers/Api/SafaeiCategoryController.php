@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\RecordStatus;
-use App\Models\SafaeiCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,10 +9,7 @@ class SafaeiCategoryController extends ApiController
 {
     public function index(Request $request): JsonResponse
     {
-        $query = SafaeiCategory::query()
-            ->withCount('safaeis')
-            ->where('status', RecordStatus::Active);
-
+        $query = $this->view('vw_safaei_categories');
         $this->applySearch($query, $request, 'name');
 
         $categories = $query
@@ -22,31 +17,26 @@ class SafaeiCategoryController extends ApiController
             ->paginate($this->perPage($request))
             ->withQueryString();
 
-        return $this->paginated($categories, fn (SafaeiCategory $category) => $this->payload($category));
+        return $this->paginated($categories, fn (object $category) => $this->payload($category));
     }
 
     public function show(int $category): JsonResponse
     {
-        $category = SafaeiCategory::query()
-            ->withCount('safaeis')
-            ->where('status', RecordStatus::Active)
-            ->findOrFail($category);
-
         return response()->json([
-            'data' => $this->payload($category),
+            'data' => $this->payload($this->findView('vw_safaei_categories', $category)),
         ]);
     }
 
-    private function payload(SafaeiCategory $category): array
+    private function payload(object $category): array
     {
         return [
-            'id' => $category->id,
+            'id' => (int) $category->id,
             'name' => $category->name,
-            'lang' => $this->enumValue($category->lang),
-            'lang_label' => $category->lang?->label(),
+            'lang' => $category->lang,
+            'lang_label' => $this->langLabel($category->lang),
             'description' => $category->description,
-            'status' => $this->enumValue($category->status),
-            'safaeis_count' => $category->safaeis_count,
+            'status' => $category->status,
+            'safaeis_count' => (int) $category->safaeis_count,
         ];
     }
 }
